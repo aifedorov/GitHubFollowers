@@ -27,7 +27,8 @@ final class SearchViewController: UIViewController {
         textField.backgroundColor = .secondarySystemBackground
         
         textField.clearButtonMode = .whileEditing
-        textField.returnKeyType = .search
+        textField.returnKeyType = .done
+        textField.autocapitalizationType = .none
         
         textField.delegate = self
         return textField
@@ -68,20 +69,46 @@ final class SearchViewController: UIViewController {
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
-        searchButton.addAction(.init(handler: { _ in
-            // TODO: open search result view controller
+        searchButton.addAction(.init(handler: { [weak self] _ in
+            self?.showSearchResult()
         }), for: .touchUpInside)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnView(_:)))
         view.addGestureRecognizer(tapGesture)
+        
+        updateStateSearchButton(nil)
     }
     
     @objc private func didTapOnView(_ sender: UIView) {
         textField.resignFirstResponder()
     }
+    
+    private func showSearchResult() {
+        let searchViewController = SearchResultViewController()
+        navigationController?.pushViewController(searchViewController, animated: true)
+    }
+    
+    private func updateStateSearchButton(_ text: String?) {
+        guard let text = text else {
+            searchButton.isEnabled = false
+            return
+        }
+        
+        searchButton.isEnabled = !text.isEmpty
+    }
 }
 
 extension SearchViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        updateStateSearchButton(textField.text)
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        updateStateSearchButton(textField.text)
+        return true
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

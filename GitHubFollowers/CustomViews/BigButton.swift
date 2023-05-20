@@ -20,6 +20,12 @@ final class BigButton: UIButton {
         }
     }
     
+    override var isEnabled: Bool {
+        didSet {
+            tintColorDidChange()
+        }
+    }
+    
     init(title: String) {
         super.init(frame: .zero)
         
@@ -48,7 +54,7 @@ final class BigButton: UIButton {
     override func tintColorDidChange() {
         super.tintColorDidChange()
         
-        if tintAdjustmentMode == .dimmed {
+        if tintAdjustmentMode == .dimmed || !isEnabled {
             setTitleColor(.systemGray3, for: .normal)
             backgroundColor = .systemGray2
         } else {

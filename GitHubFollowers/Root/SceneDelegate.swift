@@ -23,17 +23,19 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func makeRootViewController() -> UIViewController {
         let rootViewController = UITabBarController()
-        let searchVC = SearchViewController()
-        searchVC.tabBarItem = UITabBarItem(title: "Followers",
+        let searchViewController = SearchViewController()
+        
+        searchViewController.tabBarItem = UITabBarItem(title: "Followers",
                                            image: UIImage(systemName: "person.3"),
                                            selectedImage: UIImage(systemName: "person.3.fill"))
         
-        let favoritesVC = FavoritesViewController()
-        favoritesVC.tabBarItem = UITabBarItem(title: "Favorites",
+        let favoritesViewController = FavoritesViewController()
+        favoritesViewController.tabBarItem = UITabBarItem(title: "Favorites",
                                            image: UIImage(systemName: "star"),
                                            selectedImage: UIImage(systemName: "star.fill"))
         
-        rootViewController.viewControllers = [searchVC, favoritesVC]
+        rootViewController.viewControllers = [NavigationViewController(rootViewController: searchViewController),
+                                              NavigationViewController(rootViewController: favoritesViewController)]
         rootViewController.selectedIndex = 0
         
         return rootViewController
@@ -44,4 +46,3 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UITabBar.appearance().barTintColor = .primaryColor
     }
 }
-

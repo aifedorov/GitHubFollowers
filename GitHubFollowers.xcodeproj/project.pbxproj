@@ -15,6 +15,8 @@
 		3BB30C222A0D076B00BE57A3 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB30C212A0D076B00BE57A3 /* FavoritesViewController.swift */; };
 		3BF7A2262A0E684500218AF8 /* UIColor+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7A2252A0E684500218AF8 /* UIColor+Style.swift */; };
 		3BF7A8E82A0EA82C00218AF8 /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7A8E72A0EA82C00218AF8 /* BigButton.swift */; };
+		3BF7AFEF2A13F31D00218AF8 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7AFEE2A13F31D00218AF8 /* SearchResultViewController.swift */; };
+		3BF7B6AF2A14F67300218AF8 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7B6AE2A14F67300218AF8 /* NavigationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		3BB30C212A0D076B00BE57A3 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		3BF7A2252A0E684500218AF8 /* UIColor+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Style.swift"; sourceTree = "<group>"; };
 		3BF7A8E72A0EA82C00218AF8 /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
+		3BF7AFEE2A13F31D00218AF8 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		3BF7B6AE2A14F67300218AF8 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +68,7 @@
 				3BF7A8EA2A0EA84100218AF8 /* Extensions */,
 				3BF7AFCC2A1117CA00218AF8 /* Model */,
 				3BF7A8EB2A0EA86700218AF8 /* Screens */,
-				3BF7AFCD2A11181800218AF8 /* Utilties */,
+				3BF7AFCD2A11181800218AF8 /* Utility */,
 				3BF7AFCA2A1116ED00218AF8 /* Root */,
 				3BF7AFCB2A11178B00218AF8 /* Resources */,
 			);
@@ -92,6 +96,8 @@
 			children = (
 				3BB30C212A0D076B00BE57A3 /* FavoritesViewController.swift */,
 				3BB30BF12A0A37D100BE57A3 /* SearchViewController.swift */,
+				3BF7AFEE2A13F31D00218AF8 /* SearchResultViewController.swift */,
+				3BF7B6AE2A14F67300218AF8 /* NavigationViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -122,11 +128,11 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		3BF7AFCD2A11181800218AF8 /* Utilties */ = {
+		3BF7AFCD2A11181800218AF8 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Utilties;
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,7 +205,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BF7B6AF2A14F67300218AF8 /* NavigationViewController.swift in Sources */,
 				3BF7A2262A0E684500218AF8 /* UIColor+Style.swift in Sources */,
+				3BF7AFEF2A13F31D00218AF8 /* SearchResultViewController.swift in Sources */,
 				3BB30C222A0D076B00BE57A3 /* FavoritesViewController.swift in Sources */,
 				3BB30BF22A0A37D100BE57A3 /* SearchViewController.swift in Sources */,
 				3BB30BEE2A0A37D100BE57A3 /* AppDelegate.swift in Sources */,
