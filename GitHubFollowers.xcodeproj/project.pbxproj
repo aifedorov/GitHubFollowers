@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B56C37C2A1D1409002825D9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B56C37B2A1D1409002825D9 /* NetworkManager.swift */; };
+		3B56C37C2A1D1409002825D9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B56C37B2A1D1409002825D9 /* NetworkService.swift */; };
 		3B56C37E2A1D1471002825D9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B56C37D2A1D1471002825D9 /* User.swift */; };
 		3BB30BEE2A0A37D100BE57A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB30BED2A0A37D100BE57A3 /* AppDelegate.swift */; };
 		3BB30BF02A0A37D100BE57A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB30BEF2A0A37D100BE57A3 /* SceneDelegate.swift */; };
@@ -22,7 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3B56C37B2A1D1409002825D9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		3B56C37B2A1D1409002825D9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		3B56C37D2A1D1471002825D9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3BB30BEA2A0A37D100BE57A3 /* GitHubFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BB30BED2A0A37D100BE57A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,12 +49,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3B56C37A2A1D13DA002825D9 /* Managers */ = {
+		3B56C37A2A1D13DA002825D9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				3B56C37B2A1D1409002825D9 /* NetworkManager.swift */,
+				3BF7AFCC2A1117CA00218AF8 /* Models */,
+				3B56C37B2A1D1409002825D9 /* NetworkService.swift */,
 			);
-			path = Managers;
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3B56C37F2A1E3AB7002825D9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3BF7A8EA2A0EA84100218AF8 /* Extensions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		3B56C3802A1E3AC3002825D9 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3B56C3812A1E3ADD002825D9 /* Buttons */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		3B56C3812A1E3ADD002825D9 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				3BF7A8E72A0EA82C00218AF8 /* BigButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		3B56C3822A1E3AFB002825D9 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				3BB30C212A0D076B00BE57A3 /* FavoritesViewController.swift */,
+				3B56CA412A1E3C08002825D9 /* Search */,
+				3BF7AFEE2A13F31D00218AF8 /* SearchResultViewController.swift */,
+				3BF7B6AE2A14F67300218AF8 /* NavigationViewController.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		3B56CA412A1E3C08002825D9 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				3BB30BF12A0A37D100BE57A3 /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		3BB30BE12A0A37D000BE57A3 = {
@@ -76,24 +120,14 @@
 		3BB30BEC2A0A37D100BE57A3 /* GitHubFollowers */ = {
 			isa = PBXGroup;
 			children = (
-				3BF7A8E92A0EA83500218AF8 /* CustomViews */,
-				3BF7A8EA2A0EA84100218AF8 /* Extensions */,
-				3B56C37A2A1D13DA002825D9 /* Managers */,
-				3BF7AFCC2A1117CA00218AF8 /* Model */,
-				3BF7A8EB2A0EA86700218AF8 /* Screens */,
-				3BF7AFCD2A11181800218AF8 /* Utility */,
+				3B56C37F2A1E3AB7002825D9 /* Common */,
+				3B56C3802A1E3AC3002825D9 /* UI */,
+				3B56C3822A1E3AFB002825D9 /* Modules */,
+				3B56C37A2A1D13DA002825D9 /* Services */,
 				3BF7AFCA2A1116ED00218AF8 /* Root */,
 				3BF7AFCB2A11178B00218AF8 /* Resources */,
 			);
 			path = GitHubFollowers;
-			sourceTree = "<group>";
-		};
-		3BF7A8E92A0EA83500218AF8 /* CustomViews */ = {
-			isa = PBXGroup;
-			children = (
-				3BF7A8E72A0EA82C00218AF8 /* BigButton.swift */,
-			);
-			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		3BF7A8EA2A0EA84100218AF8 /* Extensions */ = {
@@ -102,17 +136,6 @@
 				3BF7A2252A0E684500218AF8 /* UIColor+Style.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		3BF7A8EB2A0EA86700218AF8 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				3BB30C212A0D076B00BE57A3 /* FavoritesViewController.swift */,
-				3BB30BF12A0A37D100BE57A3 /* SearchViewController.swift */,
-				3BF7AFEE2A13F31D00218AF8 /* SearchResultViewController.swift */,
-				3BF7B6AE2A14F67300218AF8 /* NavigationViewController.swift */,
-			);
-			path = Screens;
 			sourceTree = "<group>";
 		};
 		3BF7AFCA2A1116ED00218AF8 /* Root */ = {
@@ -134,19 +157,12 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		3BF7AFCC2A1117CA00218AF8 /* Model */ = {
+		3BF7AFCC2A1117CA00218AF8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				3B56C37D2A1D1471002825D9 /* User.swift */,
 			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		3BF7AFCD2A11181800218AF8 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utility;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,7 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B56C37C2A1D1409002825D9 /* NetworkManager.swift in Sources */,
+				3B56C37C2A1D1409002825D9 /* NetworkService.swift in Sources */,
 				3BF7B6AF2A14F67300218AF8 /* NavigationViewController.swift in Sources */,
 				3BF7A2262A0E684500218AF8 /* UIColor+Style.swift in Sources */,
 				3BF7AFEF2A13F31D00218AF8 /* SearchResultViewController.swift in Sources */,

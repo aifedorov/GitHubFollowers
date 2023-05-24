@@ -1,5 +1,5 @@
 //
-//  NetworkManager.swift
+//  NetworkService.swift
 //  GitHubFollowers
 //
 //  Created by Aleksandr Fedorov on 23.05.23.
@@ -13,12 +13,17 @@ enum NetworkErrors: Error {
     case invalidateJSON(Error)
 }
 
-final class NetworkManager {
+final class NetworkService {
     
-    static let shared = NetworkManager()
-    private init() {}
+    private let session: URLSession
     
-    func fetchFollowers(for userLogin: String) async throws -> [User] {
+    init(_ session: URLSession = URLSession.shared) {
+        self.session = session
+    }
+    
+    func fetchFollowers(for userLogin: String,
+                        jsonDecoder: JSONDecoder = JSONDecoder()) async throws -> [User] {
+        
         guard let url = URL(string: "https://api.github.com/users/\(userLogin)/followers") else {
             throw NetworkErrors.invalidateURL
         }
@@ -26,12 +31,12 @@ final class NetworkManager {
         let request = URLRequest(url: url)
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, response) = try await session.data(for: request)
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 throw NetworkErrors.wrongResponse
             }
             
-            let users = try JSONDecoder().decode([User].self, from: data)
+            let users = try jsonDecoder.decode([User].self, from: data)
             return users
         } catch {
             throw NetworkErrors.invalidateJSON(error)
