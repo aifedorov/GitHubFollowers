@@ -41,9 +41,13 @@ final class SearchViewController: UIViewController {
         return imageView
     }()
 
+    var output: SearchPresenterOutput?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        
+        output?.viewDidLoad()
     }
     
     private func setupViews() {
@@ -70,7 +74,7 @@ final class SearchViewController: UIViewController {
         ])
         
         searchButton.addAction(.init(handler: { [weak self] _ in
-            self?.showSearchResult()
+            self?.output?.didTapSearchButton(username: self?.textField.text ?? "")
         }), for: .touchUpInside)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnView(_:)))
@@ -84,7 +88,7 @@ final class SearchViewController: UIViewController {
     }
     
     private func showSearchResult() {
-        let searchViewController = SearchResultViewController()
+        let searchViewController = SearchResultsViewController()
         navigationController?.pushViewController(searchViewController, animated: true)
     }
     

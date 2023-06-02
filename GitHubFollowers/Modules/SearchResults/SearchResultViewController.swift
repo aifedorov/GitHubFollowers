@@ -7,8 +7,8 @@
 
 import UIKit
 
-final class SearchResultViewController: UIViewController {
-
+final class SearchResultsViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .primaryColor

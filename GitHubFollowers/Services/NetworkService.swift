@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NetworkErrors: Error {
+enum NetworkError: Error {
     case invalidateURL
     case wrongResponse
     case invalidateJSON(Error)
@@ -22,24 +22,24 @@ final class NetworkService {
     }
     
     func fetchFollowers(for userLogin: String,
-                        jsonDecoder: JSONDecoder = JSONDecoder()) async throws -> [User] {
+                        jsonDecoder: JSONDecoder = JSONDecoder()) async throws -> Result<[User], NetworkError> {
         
         guard let url = URL(string: "https://api.github.com/users/\(userLogin)/followers") else {
-            throw NetworkErrors.invalidateURL
+            return .failure(.invalidateURL)
         }
         
         let request = URLRequest(url: url)
         
+        let (data, response) = try await session.data(for: request)
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            return .failure(.wrongResponse)
+        }
+        
         do {
-            let (data, response) = try await session.data(for: request)
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                throw NetworkErrors.wrongResponse
-            }
-            
             let users = try jsonDecoder.decode([User].self, from: data)
-            return users
+            return .success(users)
         } catch {
-            throw NetworkErrors.invalidateJSON(error)
+            return .failure(.invalidateJSON(error))
         }
     }
 }
