@@ -7,14 +7,19 @@
 
 import UIKit
 
+protocol SearchViewOutput {
+    func didTapSearchButton(username: String)
+}
+
 final class SearchViewController: UIViewController {
+    
+    var output: SearchViewOutput?
     
     private lazy var searchButton: BigButton = {
         let button = BigButton(title: "Get Followers")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
     private lazy var textField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -33,21 +38,16 @@ final class SearchViewController: UIViewController {
         textField.delegate = self
         return textField
     }()
-    
     private lazy var imageView: UIImageView = {
         let image = UIImage(named: "title-image")
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
-    var output: SearchPresenterOutput?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        
-        output?.viewDidLoad()
     }
     
     private func setupViews() {
@@ -87,11 +87,6 @@ final class SearchViewController: UIViewController {
         textField.resignFirstResponder()
     }
     
-    private func showSearchResult() {
-        let searchViewController = SearchResultsViewController()
-        navigationController?.pushViewController(searchViewController, animated: true)
-    }
-    
     private func updateStateSearchButton(_ text: String?) {
         guard let text = text else {
             searchButton.isEnabled = false
@@ -117,5 +112,13 @@ extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension SearchViewController: SearchPresenterOutput {
+    
+    func showSearchResults() {
+        let searchResultsViewController = SearchResultsAssembly.makeModule()
+        navigationController?.pushViewController(searchResultsViewController, animated: true)
     }
 }

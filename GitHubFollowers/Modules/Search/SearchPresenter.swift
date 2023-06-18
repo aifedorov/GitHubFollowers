@@ -12,18 +12,15 @@ struct SearchPresenterState {
     var followers: [User]?
 }
 
-protocol SearchPresenterOutput {
-    func viewDidLoad()
-    func didTapSearchButton(username: String)
+protocol SearchPresenterOutput: AnyObject {
+    func showSearchResults()
 }
 
 final class SearchPresenter {
-    // TODO: Make service for this module certainly. Use specific protocol or class.
+    
+    weak var view: SearchPresenterOutput?
+    
     private let networkService: NetworkService
-    
-    weak var view: SearchViewController?
-    var router: SearchRouter?
-    
     private var state = SearchPresenterState()
     
     init(networkService: NetworkService) {
@@ -31,26 +28,9 @@ final class SearchPresenter {
     }
 }
 
-extension SearchPresenter: SearchPresenterOutput {
-    
-    func viewDidLoad() {
-
-    }
-    
+extension SearchPresenter: SearchViewOutput {
+        
     func didTapSearchButton(username: String) {
         self.state.inputUserName = username
-        
-        Task {
-            let result = try await self.networkService.fetchFollowers(for: self.state.inputUserName)
-            
-            switch result {
-            case .success(let users):
-                self.state.followers =  users
-            case .failure: break
-                // TODO: show alert
-            }
-            
-            debugPrint(self.state.followers ?? [])
-        }
     }
 }

@@ -1,16 +1,16 @@
 //
-//  SearchAssembly.swift
+//  SearchResultsAssembly.swift
 //  GitHubFollowers
 //
-//  Created by Aleksandr Fedorov on 24.05.23.
+//  Created by Aleksandr on 18.06.23.
 //
 
 import UIKit
 
-enum SearchAssembly {
+enum SearchResultsAssembly {
     static func makeModule() -> UIViewController {
-        let viewController = SearchViewController()
-        let presenter = SearchPresenter(networkService: NetworkService())
+        let viewController = SearchResultsViewController()
+        let presenter = SearchResultsPresenter()
         
         viewController.output = presenter
         presenter.view = viewController
