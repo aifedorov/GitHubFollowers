@@ -32,7 +32,7 @@ final class SearchViewController: UIViewController {
         textField.backgroundColor = .secondarySystemBackground
         
         textField.clearButtonMode = .whileEditing
-        textField.returnKeyType = .done
+        textField.returnKeyType = .search
         textField.autocapitalizationType = .none
         
         textField.delegate = self
@@ -88,17 +88,12 @@ final class SearchViewController: UIViewController {
     }
     
     private func updateStateSearchButton(_ text: String?) {
-        guard let text = text else {
-            searchButton.isEnabled = false
-            return
-        }
-        
-        searchButton.isEnabled = !text.isEmpty
+        searchButton.isEnabled = (text ?? "").isValidGitHubUsername
     }
 }
 
 extension SearchViewController: UITextFieldDelegate {
-    
+        
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         updateStateSearchButton(textField.text)
         return true
@@ -110,15 +105,25 @@ extension SearchViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard (textField.text ?? "").isValidGitHubUsername else {
+            let alert = UIAlertController(title: "Username is not valid",
+                                          message: "Please, input a valid username. For more information see the official documentation.",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK",
+                                          style: .default) { _ in })
+            present(alert, animated: true)
+            return false
+        }
         textField.resignFirstResponder()
+        output?.didTapSearchButton(username: textField.text ?? "")
         return true
     }
 }
 
 extension SearchViewController: SearchPresenterOutput {
     
-    func showSearchResults() {
-        let searchResultsViewController = SearchResultsAssembly.makeModule()
+    func showSearchResults(searchedUsername: String) {
+        let searchResultsViewController = SearchResultsAssembly.makeModule(searchedUsername: searchedUsername)
         navigationController?.pushViewController(searchResultsViewController, animated: true)
     }
 }

@@ -8,9 +8,10 @@
 import UIKit
 
 enum SearchResultsAssembly {
-    static func makeModule() -> UIViewController {
+    static func makeModule(searchedUsername: String) -> UIViewController {
         let viewController = SearchResultsViewController()
-        let presenter = SearchResultsPresenter()
+        let presenter = SearchResultsPresenter(networkService: NetworkService(),
+                                               searchedUsername: searchedUsername)
         
         viewController.output = presenter
         presenter.view = viewController

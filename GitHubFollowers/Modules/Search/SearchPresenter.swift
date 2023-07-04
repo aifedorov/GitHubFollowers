@@ -7,21 +7,20 @@
 
 import Foundation
 
-struct SearchPresenterState {
-    var inputUserName: String = ""
-    var followers: [User]?
-}
-
 protocol SearchPresenterOutput: AnyObject {
-    func showSearchResults()
+    func showSearchResults(searchedUsername: String)
 }
 
 final class SearchPresenter {
     
+    struct State {
+        var inputUserName: String = ""
+    }
+    
     weak var view: SearchPresenterOutput?
     
     private let networkService: NetworkService
-    private var state = SearchPresenterState()
+    private var state = State()
     
     init(networkService: NetworkService) {
         self.networkService = networkService
@@ -31,6 +30,7 @@ final class SearchPresenter {
 extension SearchPresenter: SearchViewOutput {
         
     func didTapSearchButton(username: String) {
-        self.state.inputUserName = username
+        state.inputUserName = username
+        view?.showSearchResults(searchedUsername: state.inputUserName)
     }
 }

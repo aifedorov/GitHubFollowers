@@ -14,7 +14,6 @@ enum NetworkError: Error {
 }
 
 final class NetworkService {
-    
     private let session: URLSession
     
     init(_ session: URLSession = URLSession.shared) {

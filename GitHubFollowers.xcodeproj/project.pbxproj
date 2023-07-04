@@ -21,6 +21,7 @@
 		3BF7A8E82A0EA82C00218AF8 /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7A8E72A0EA82C00218AF8 /* BigButton.swift */; };
 		3BF7AFEF2A13F31D00218AF8 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7AFEE2A13F31D00218AF8 /* SearchResultsViewController.swift */; };
 		3BF7B6AF2A14F67300218AF8 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7B6AE2A14F67300218AF8 /* NavigationViewController.swift */; };
+		F8089C432A548A2E00BE0CDC /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8089C422A548A2E00BE0CDC /* String+Validation.swift */; };
 		F884213E2A3F5CCB008C4A9B /* SearchResultsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884213D2A3F5CCB008C4A9B /* SearchResultsAssembly.swift */; };
 		F88421402A3F5F31008C4A9B /* SearchResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884213F2A3F5F31008C4A9B /* SearchResultsPresenter.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		3BF7A8E72A0EA82C00218AF8 /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
 		3BF7AFEE2A13F31D00218AF8 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		3BF7B6AE2A14F67300218AF8 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		F8089C422A548A2E00BE0CDC /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
 		F884213D2A3F5CCB008C4A9B /* SearchResultsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsAssembly.swift; sourceTree = "<group>"; };
 		F884213F2A3F5F31008C4A9B /* SearchResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				3BF7A2252A0E684500218AF8 /* UIColor+Style.swift */,
+				F8089C422A548A2E00BE0CDC /* String+Validation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				3BF7B6AF2A14F67300218AF8 /* NavigationViewController.swift in Sources */,
 				3B56D1262A224C4C002825D9 /* SearchPresenter.swift in Sources */,
 				3BF7A2262A0E684500218AF8 /* UIColor+Style.swift in Sources */,
+				F8089C432A548A2E00BE0CDC /* String+Validation.swift in Sources */,
 				3B56CA462A1E3D88002825D9 /* SearchAssembly.swift in Sources */,
 				3BF7AFEF2A13F31D00218AF8 /* SearchResultsViewController.swift in Sources */,
 				3BB30C222A0D076B00BE57A3 /* FavoritesViewController.swift in Sources */,
