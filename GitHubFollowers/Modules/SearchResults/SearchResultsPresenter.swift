@@ -8,7 +8,8 @@
 import Foundation
 
 protocol SearchResultsPresenterOutput: AnyObject {
-    
+    func showLoadingView()
+    func hideLoadingView()
 }
 
 final class SearchResultsPresenter {
@@ -32,6 +33,21 @@ final class SearchResultsPresenter {
 extension SearchResultsPresenter: SearchResultsViewOutput {
     
     func viewDidLoad() {
-        // TODO: Show loding and request followers
+        view?.showLoadingView()
+        Task {
+            let result = try await networkService.fetchFollowers(for: state.searchedUsername)
+            switch result {
+            case .success(let users):
+                self.state.followers = users
+                debugPrint(users)
+                
+            case .failure(let error): break
+                // TODO: Show alert with error
+            }
+            
+            await MainActor.run {
+                view?.hideLoadingView()
+            }
+        }
     }
 }
