@@ -26,7 +26,7 @@ final class BigButton: UIButton {
         }
     }
     
-    init(title: String) {
+    init(title: String, isShowArrow: Bool = true) {
         super.init(frame: .zero)
         
         let attributedTitle = NSMutableAttributedString(string: title, attributes: [
@@ -34,10 +34,12 @@ final class BigButton: UIButton {
             .font : UIFont.systemFont(ofSize: 24, weight: .bold)
         ])
         
-        let imageAttachment = NSTextAttachment()
-        imageAttachment.image = UIImage(systemName: "arrow.right")?.withTintColor(.white)
-        attributedTitle.append(NSAttributedString(string: " "))
-        attributedTitle.append(NSAttributedString(attachment: imageAttachment))
+        if isShowArrow {
+            let imageAttachment = NSTextAttachment()
+            imageAttachment.image = UIImage(systemName: "arrow.right")?.withTintColor(.white)
+            attributedTitle.append(NSAttributedString(string: " "))
+            attributedTitle.append(NSAttributedString(attachment: imageAttachment))
+        }
         
         setAttributedTitle(attributedTitle, for: .normal)
         

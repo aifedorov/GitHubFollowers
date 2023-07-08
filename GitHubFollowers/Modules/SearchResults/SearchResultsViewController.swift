@@ -22,6 +22,15 @@ final class SearchResultsViewController: UIViewController {
         loadingView.color = .accentColor
         return loadingView
     }()
+    
+    private lazy var emptyStateView: EmptyStateView = {
+        let view = EmptyStateView(with: "This user doesn’t exits or doesn’t have any followers",
+                                  buttonAction: { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        })
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +48,24 @@ final class SearchResultsViewController: UIViewController {
 }
 
 extension SearchResultsViewController: SearchResultsPresenterOutput {
+        
+    func showErrorMessageView(with text: String) {
+        emptyStateView.removeFromSuperview()
+    }
+    
+    func showEmptyView() {
+        view.addSubview(emptyStateView)
+        
+        NSLayoutConstraint.activate([
+            emptyStateView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            emptyStateView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            emptyStateView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            emptyStateView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+        ])
+    }
     
     func showLoadingView() {
+        emptyStateView.removeFromSuperview()
         loadingView.startAnimating()
     }
     

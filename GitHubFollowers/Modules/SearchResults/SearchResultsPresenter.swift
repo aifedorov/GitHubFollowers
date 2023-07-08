@@ -10,6 +10,8 @@ import Foundation
 protocol SearchResultsPresenterOutput: AnyObject {
     func showLoadingView()
     func hideLoadingView()
+    func showErrorMessageView(with text: String)
+    func showEmptyView()
 }
 
 final class SearchResultsPresenter {
@@ -36,16 +38,21 @@ extension SearchResultsPresenter: SearchResultsViewOutput {
         view?.showLoadingView()
         Task {
             let result = try await networkService.fetchFollowers(for: state.searchedUsername)
-            switch result {
-            case .success(let users):
-                self.state.followers = users
-                debugPrint(users)
-                
-            case .failure(let error): break
-                // TODO: Show alert with error
-            }
-            
             await MainActor.run {
+                switch result {
+                case .success(let users):
+                    debugPrint(users)
+                    if users.isEmpty {
+                        view?.showEmptyView()
+                    }
+                    
+                    self.state.followers = users
+                    
+                case .failure(let error):
+                    debugPrint("Something wrong \(error.localizedDescription)")
+                    view?.showErrorMessageView(with: "Something wrong")
+                }
+                
                 view?.hideLoadingView()
             }
         }

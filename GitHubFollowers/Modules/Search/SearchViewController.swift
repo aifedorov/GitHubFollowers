@@ -50,6 +50,12 @@ final class SearchViewController: UIViewController {
         setupViews()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        textField.text = nil
+        updateStateSearchButton(nil)
+    }
+    
     private func setupViews() {
         view.backgroundColor = .systemBackground
         

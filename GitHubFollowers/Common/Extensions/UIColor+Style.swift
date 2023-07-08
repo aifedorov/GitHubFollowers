@@ -9,11 +9,11 @@ import UIKit
 
 extension UIColor {
     static var brandColor: UIColor {
-        return UIColor(named: "BrandColor")!
+        return UIColor(named: "brandColor")!
     }
     
     static var primaryColor: UIColor {
-        return UIColor(named: "PrimaryColor")!
+        return UIColor(named: "primaryColor")!
     }
     
     static var accentColor: UIColor {
@@ -22,5 +22,9 @@ extension UIColor {
     
     static var texFieldBackground: UIColor {
         return UIColor(named: "texFieldBackground")!
+    }
+    
+    static var placeholderTextColor: UIColor {
+        return UIColor(named: "placeholderTextColor")!
     }
 }
