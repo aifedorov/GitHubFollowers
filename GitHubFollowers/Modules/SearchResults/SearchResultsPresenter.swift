@@ -12,6 +12,7 @@ protocol SearchResultsPresenterOutput: AnyObject {
     func hideLoadingView()
     func showErrorMessageView(with text: String)
     func showEmptyView()
+    func showSearchResults(followers: [User])
 }
 
 final class SearchResultsPresenter {
@@ -24,7 +25,20 @@ final class SearchResultsPresenter {
     weak var view: SearchResultsPresenterOutput?
     
     private let networkService: NetworkService
-    private var state = State()
+    private var state = State() {
+        didSet {
+            guard let followers = state.followers else {
+                // TODO: Show fullscreen error
+                return
+            }
+            
+            if followers.isEmpty {
+                view?.showEmptyView()
+            } else {
+                view?.showSearchResults(followers: followers)
+            }
+        }
+    }
     
     init(networkService: NetworkService, searchedUsername: String) {
         self.networkService = networkService
@@ -40,13 +54,9 @@ extension SearchResultsPresenter: SearchResultsViewOutput {
             let result = try await networkService.fetchFollowers(for: state.searchedUsername)
             await MainActor.run {
                 switch result {
-                case .success(let users):
-                    debugPrint(users)
-                    if users.isEmpty {
-                        view?.showEmptyView()
-                    }
-                    
-                    self.state.followers = users
+                case .success(let followers):
+                    debugPrint(followers)
+                    self.state.followers = followers
                     
                 case .failure(let error):
                     debugPrint("Something wrong \(error.localizedDescription)")
