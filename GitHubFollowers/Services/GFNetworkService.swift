@@ -13,15 +13,19 @@ enum NetworkError: Error {
     case invalidateJSON(Error)
 }
 
-final class GFNetworkService {
+protocol GFNetworkServiceProtocol {
+    func fetchFollowers(for userLogin: String) async throws -> Result<[User], NetworkError>
+    func fetchIcon(for avatarUrl: String) async throws -> Data
+}
+
+final class GFNetworkService: GFNetworkServiceProtocol {
     private let session: URLSession
     
     init(_ session: URLSession = URLSession.shared) {
         self.session = session
     }
     
-    func fetchFollowers(for userLogin: String,
-                        jsonDecoder: JSONDecoder = JSONDecoder()) async throws -> Result<[User], NetworkError> {
+    func fetchFollowers(for userLogin: String) async throws -> Result<[User], NetworkError> {
         
         guard let url = URL(string: "https://api.github.com/users/\(userLogin)/followers") else {
             return .failure(.invalidateURL)
@@ -35,7 +39,7 @@ final class GFNetworkService {
         }
         
         do {
-            let users = try jsonDecoder.decode([User].self, from: data)
+            let users = try JSONDecoder().decode([User].self, from: data)
             return .success(users)
         } catch {
             return .failure(.invalidateJSON(error))

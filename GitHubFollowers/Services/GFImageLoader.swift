@@ -7,21 +7,14 @@
 
 import Foundation
 
-/// Manage for image loading
+
 final class GFImageLoader {
     
-    /// Shared instance
     static let shared = GFImageLoader()
     
-    /// In memory data cache
     private var imageDataCache = NSCache<NSString, NSData>()
-    
-    /// Constructor
     private init() {}
     
-    /// Get image content with URl
-    /// - Parameters:
-    ///   - url: Source url
     func downloadImage(_ url: URL) async throws -> Data {
         let key = url.absoluteString as NSString
         if let data = imageDataCache.object(forKey: key) {

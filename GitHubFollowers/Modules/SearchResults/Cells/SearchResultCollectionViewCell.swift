@@ -60,19 +60,23 @@ final class SearchResultCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupViews() {
+        
+        imageView.layer.cornerRadius = 12.0
+        imageView.layer.masksToBounds = true
+        
         addSubview(imageView)
         addSubview(textLabel)
-        
-        imageView.layer.cornerRadius = 12
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageView.bottomAnchor.constraint(equalTo: textLabel.topAnchor, constant: -4),
+            imageView.heightAnchor.constraint(equalToConstant: 100),
+            imageView.widthAnchor.constraint(equalToConstant: 100),
 
-            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             textLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }

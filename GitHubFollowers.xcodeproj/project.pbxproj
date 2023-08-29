@@ -23,6 +23,8 @@
 		3BF7B6AF2A14F67300218AF8 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7B6AE2A14F67300218AF8 /* NavigationViewController.swift */; };
 		F8089C432A548A2E00BE0CDC /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8089C422A548A2E00BE0CDC /* String+Validation.swift */; };
 		F8089C472A598C9400BE0CDC /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8089C462A598C9400BE0CDC /* StateView.swift */; };
+		F83D60472A9E1AF4009E15B3 /* followers.json in Resources */ = {isa = PBXBuildFile; fileRef = F83D60462A9E1AF4009E15B3 /* followers.json */; };
+		F83D60492A9E1B4A009E15B3 /* GFNetworkMockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D60482A9E1B4A009E15B3 /* GFNetworkMockService.swift */; };
 		F861F8812A5F1F01008B02E7 /* GFImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F861F8802A5F1F00008B02E7 /* GFImageLoader.swift */; };
 		F884213E2A3F5CCB008C4A9B /* SearchResultsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884213D2A3F5CCB008C4A9B /* SearchResultsAssembly.swift */; };
 		F88421402A3F5F31008C4A9B /* SearchResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884213F2A3F5F31008C4A9B /* SearchResultsPresenter.swift */; };
@@ -48,6 +50,8 @@
 		3BF7B6AE2A14F67300218AF8 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		F8089C422A548A2E00BE0CDC /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
 		F8089C462A598C9400BE0CDC /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
+		F83D60462A9E1AF4009E15B3 /* followers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = followers.json; sourceTree = "<group>"; };
+		F83D60482A9E1B4A009E15B3 /* GFNetworkMockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFNetworkMockService.swift; sourceTree = "<group>"; };
 		F861F8802A5F1F00008B02E7 /* GFImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFImageLoader.swift; sourceTree = "<group>"; };
 		F884213D2A3F5CCB008C4A9B /* SearchResultsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsAssembly.swift; sourceTree = "<group>"; };
 		F884213F2A3F5F31008C4A9B /* SearchResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsPresenter.swift; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 			children = (
 				3BF7AFCC2A1117CA00218AF8 /* Models */,
 				3B56C37B2A1D1409002825D9 /* GFNetworkService.swift */,
+				F83D60482A9E1B4A009E15B3 /* GFNetworkMockService.swift */,
 				F861F8802A5F1F00008B02E7 /* GFImageLoader.swift */,
 			);
 			path = Services;
@@ -198,6 +203,7 @@
 		3BF7AFCB2A11178B00218AF8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F83D60462A9E1AF4009E15B3 /* followers.json */,
 				3BB30BF62A0A37D200BE57A3 /* Assets.xcassets */,
 				3BB30BF82A0A37D200BE57A3 /* LaunchScreen.storyboard */,
 				3BB30BFB2A0A37D200BE57A3 /* Info.plist */,
@@ -288,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BB30BFA2A0A37D200BE57A3 /* LaunchScreen.storyboard in Resources */,
+				F83D60472A9E1AF4009E15B3 /* followers.json in Resources */,
 				3BB30BF72A0A37D200BE57A3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F83D60492A9E1B4A009E15B3 /* GFNetworkMockService.swift in Sources */,
 				F8C7D3D52A5D5991000B1FE0 /* SearchResultCollectionViewCell.swift in Sources */,
 				F884213E2A3F5CCB008C4A9B /* SearchResultsAssembly.swift in Sources */,
 				F88421402A3F5F31008C4A9B /* SearchResultsPresenter.swift in Sources */,

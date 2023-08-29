@@ -26,7 +26,7 @@ final class SearchResultsPresenter {
     
     weak var view: SearchResultsPresenterOutput?
     
-    private let networkService: GFNetworkService
+    private let networkService: GFNetworkServiceProtocol
     private var state = State() {
         didSet {
             guard let followers = state.followers else {
@@ -44,7 +44,7 @@ final class SearchResultsPresenter {
         }
     }
     
-    init(networkService: GFNetworkService, searchedUsername: String) {
+    init(networkService: GFNetworkServiceProtocol, searchedUsername: String) {
         self.networkService = networkService
         state.searchedUsername = searchedUsername
     }

@@ -31,7 +31,6 @@ final class SearchViewController: UIViewController {
         textField.font = UIFont.systemFont(ofSize: 24, weight: .medium)
         textField.backgroundColor = .secondarySystemBackground
         
-        textField.clearButtonMode = .whileEditing
         textField.returnKeyType = .search
         textField.autocapitalizationType = .none
         
@@ -101,7 +100,7 @@ final class SearchViewController: UIViewController {
 extension SearchViewController: UITextFieldDelegate {
         
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        updateStateSearchButton(textField.text)
+        updateStateSearchButton(string)
         return true
     }
     

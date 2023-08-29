@@ -64,9 +64,9 @@ final class SearchResultsViewController: UIViewController {
     
     private lazy var fullScreenErrorView: StateView = {
         let view = StateView(with: "Something wrong, please, try again late",
-                                  buttonTitle: "Try again",
+                                  buttonTitle: "Open search screen",
                                   buttonAction: { [weak self] in
-            // TODO: Repeat request
+            self?.navigationController?.popViewController(animated: true)
         })
         return view
     }()
@@ -132,7 +132,7 @@ final class SearchResultsViewController: UIViewController {
             }
             
             let desplayData = SearchResultCollectionViewCell.DisplayData(text: item.user.login)
-            cell.configure(with: desplayData)
+            cell.configure(with: desplayData)                    
             return cell
         })
     }
