@@ -10,7 +10,7 @@ import UIKit
 enum SearchResultsAssembly {
     static func makeModule(searchedUsername: String) -> UIViewController {
         let viewController = SearchResultsViewController()
-        let presenter = SearchResultsPresenter(networkService: NetworkService(),
+        let presenter = SearchResultsPresenter(networkService: GFNetworkService(),
                                                searchedUsername: searchedUsername)
         
         viewController.output = presenter

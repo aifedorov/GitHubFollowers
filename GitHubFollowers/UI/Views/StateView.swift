@@ -1,5 +1,5 @@
 //
-//  EmptyStateView.swift
+//  StateView.swift
 //  GitHubFollowers
 //
 //  Created by Aleksandr on 08.07.23.
@@ -7,9 +7,10 @@
 
 import UIKit
 
-final class EmptyStateView: UIView {
+final class StateView: UIView {
     
     private let text: String
+    private let buttonTitle: String
     private let buttonAction: () -> ()
     
     private lazy var textLabel: UILabel = {
@@ -24,13 +25,15 @@ final class EmptyStateView: UIView {
     }()
     
     private lazy var actionButton: BigButton = {
-        let button = BigButton(title: "Open search screen", isShowArrow: false)
+        let button = BigButton(title: self.buttonTitle,
+                               isShowArrow: false)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    init(with text: String, buttonAction: @escaping () -> ()) {
+    init(with text: String, buttonTitle: String, buttonAction: @escaping () -> ()) {
         self.text = text
+        self.buttonTitle = buttonTitle
         self.buttonAction = buttonAction
         
         super.init(frame: .zero)

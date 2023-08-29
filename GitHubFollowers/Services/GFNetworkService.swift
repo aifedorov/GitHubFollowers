@@ -1,5 +1,5 @@
 //
-//  NetworkService.swift
+//  GFNetworkService.swift
 //  GitHubFollowers
 //
 //  Created by Aleksandr Fedorov on 23.05.23.
@@ -13,7 +13,7 @@ enum NetworkError: Error {
     case invalidateJSON(Error)
 }
 
-final class NetworkService {
+final class GFNetworkService {
     private let session: URLSession
     
     init(_ session: URLSession = URLSession.shared) {
@@ -40,5 +40,13 @@ final class NetworkService {
         } catch {
             return .failure(.invalidateJSON(error))
         }
+    }
+    
+    func fetchIcon(for avatarUrl: String) async throws -> Data {
+        guard let url = URL(string: avatarUrl) else {
+            throw NetworkError.invalidateURL
+        }
+        
+        return try await GFImageLoader.shared.downloadImage(url)
     }
 }

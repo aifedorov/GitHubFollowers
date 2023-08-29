@@ -9,6 +9,7 @@ import UIKit
 
 protocol SearchResultsViewOutput {
     func viewDidLoad()
+    func loadImage(for userAvatarUrl: String) async -> Data?
 }
 
 final class SearchResultsViewController: UIViewController {
@@ -48,17 +49,25 @@ final class SearchResultsViewController: UIViewController {
     private lazy var loadingView: UIActivityIndicatorView = {
         let loadingView = UIActivityIndicatorView(style: .large)
         loadingView.translatesAutoresizingMaskIntoConstraints = false
-        loadingView.hidesWhenStopped = true
         loadingView.color = .accentColor
         return loadingView
     }()
     
-    private lazy var emptyStateView: EmptyStateView = {
-        let view = EmptyStateView(with: "This user doesn’t exits or doesn’t have any followers",
+    private lazy var emptyStateView: StateView = {
+        let view = StateView(with: "This user doesn’t exits or doesn’t have any followers",
+                                  buttonTitle: "Open search screen",
                                   buttonAction: { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         })
-        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var fullScreenErrorView: StateView = {
+        let view = StateView(with: "Something wrong, please, try again late",
+                                  buttonTitle: "Try again",
+                                  buttonAction: { [weak self] in
+            // TODO: Repeat request
+        })
         return view
     }()
         
@@ -68,8 +77,8 @@ final class SearchResultsViewController: UIViewController {
         
         setupCollectionView()
         
-        view.addSubview(loadingView)
         view.addSubview(collectionView)
+        view.addSubview(loadingView)
         
         NSLayoutConstraint.activate([
             loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -80,7 +89,6 @@ final class SearchResultsViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
         output?.viewDidLoad()
     }
     
@@ -102,11 +110,29 @@ final class SearchResultsViewController: UIViewController {
         collectionView.register(SearchResultCollectionViewCell.self,
                                 forCellWithReuseIdentifier: SearchResultCollectionViewCell.cellIdentifier)
         
-        dataSource = DataSource(collectionView: collectionView, cellProvider: {
-            (collectionView: UICollectionView, indexPath: IndexPath, identifier: Item) -> UICollectionViewCell? in
+        dataSource = DataSource(collectionView: collectionView, cellProvider: { [weak self]
+            (collectionView: UICollectionView, indexPath: IndexPath, item: Item) -> UICollectionViewCell? in
+            guard let self = self else { return nil }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCollectionViewCell.cellIdentifier,
                                                           for: indexPath) as! SearchResultCollectionViewCell
-            cell.configure(with: identifier.user)
+                        
+            Task {
+                if let data = await self.output?.loadImage(for: item.user.avatarUrl) {
+                    DispatchQueue.main.async {
+                        let image = UIImage(data: data)
+                        
+                        if let visibleCell = collectionView.cellForItem(at: indexPath) as? SearchResultCollectionViewCell,
+                           self.dataSource.itemIdentifier(for: indexPath) == item {
+                            let desplayData = SearchResultCollectionViewCell.DisplayData(text: item.user.login,
+                                                                                         image: image)
+                            visibleCell.configure(with: desplayData)
+                        }
+                    }
+                }
+            }
+            
+            let desplayData = SearchResultCollectionViewCell.DisplayData(text: item.user.login)
+            cell.configure(with: desplayData)
             return cell
         })
     }
@@ -128,23 +154,24 @@ extension SearchResultsViewController: SearchResultsPresenterOutput {
         self.followers = followers
     }
         
-    func showErrorMessageView(with text: String) {
-        emptyStateView.removeFromSuperview()
+    func showErrorMessageView() {
+        collectionView.backgroundView = fullScreenErrorView
+    }
+    
+    func hideErrorMessageView() {
+        collectionView.backgroundView = emptyStateView
     }
     
     func showEmptyView() {
-        view.addSubview(emptyStateView)
-        
-        NSLayoutConstraint.activate([
-            emptyStateView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            emptyStateView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            emptyStateView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            emptyStateView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-        ])
+        collectionView.backgroundView = emptyStateView
+    }
+    
+    func hideEmptyView() {
+        collectionView.backgroundView = nil
     }
     
     func showLoadingView() {
-        emptyStateView.removeFromSuperview()
+        loadingView.isHidden = false
         loadingView.startAnimating()
     }
     

@@ -10,8 +10,10 @@ import Foundation
 protocol SearchResultsPresenterOutput: AnyObject {
     func showLoadingView()
     func hideLoadingView()
-    func showErrorMessageView(with text: String)
+    func showErrorMessageView()
+    func hideErrorMessageView()
     func showEmptyView()
+    func hideEmptyView()
     func showSearchResults(followers: [User])
 }
 
@@ -24,29 +26,39 @@ final class SearchResultsPresenter {
     
     weak var view: SearchResultsPresenterOutput?
     
-    private let networkService: NetworkService
+    private let networkService: GFNetworkService
     private var state = State() {
         didSet {
             guard let followers = state.followers else {
-                // TODO: Show fullscreen error
+                self.view?.showErrorMessageView()
                 return
             }
+            self.view?.hideErrorMessageView()
             
             if followers.isEmpty {
                 view?.showEmptyView()
             } else {
+                view?.hideEmptyView()
                 view?.showSearchResults(followers: followers)
             }
         }
     }
     
-    init(networkService: NetworkService, searchedUsername: String) {
+    init(networkService: GFNetworkService, searchedUsername: String) {
         self.networkService = networkService
         state.searchedUsername = searchedUsername
     }
 }
 
 extension SearchResultsPresenter: SearchResultsViewOutput {
+    
+    func loadImage(for userAvatarUrl: String) async -> Data? {
+        do {
+            return try await networkService.fetchIcon(for: userAvatarUrl)
+        } catch {
+            return nil
+        }
+    }
     
     func viewDidLoad() {
         view?.showLoadingView()
@@ -60,9 +72,8 @@ extension SearchResultsPresenter: SearchResultsViewOutput {
                     
                 case .failure(let error):
                     debugPrint("Something wrong \(error.localizedDescription)")
-                    view?.showErrorMessageView(with: "Something wrong")
+                    view?.showErrorMessageView()
                 }
-                
                 view?.hideLoadingView()
             }
         }
