@@ -28,6 +28,9 @@
 		F861F8812A5F1F01008B02E7 /* GFImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F861F8802A5F1F00008B02E7 /* GFImageLoader.swift */; };
 		F884213E2A3F5CCB008C4A9B /* SearchResultsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884213D2A3F5CCB008C4A9B /* SearchResultsAssembly.swift */; };
 		F88421402A3F5F31008C4A9B /* SearchResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884213F2A3F5F31008C4A9B /* SearchResultsPresenter.swift */; };
+		F8C3F0E62A9F3F6100EC6590 /* ProfileAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C3F0E52A9F3F6100EC6590 /* ProfileAssembly.swift */; };
+		F8C3F0E82A9F3F9B00EC6590 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C3F0E72A9F3F9B00EC6590 /* ProfileViewController.swift */; };
+		F8C3F0EA2A9F403B00EC6590 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C3F0E92A9F403B00EC6590 /* ProfilePresenter.swift */; };
 		F8C7D3D52A5D5991000B1FE0 /* SearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7D3D42A5D5991000B1FE0 /* SearchResultCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +58,9 @@
 		F861F8802A5F1F00008B02E7 /* GFImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFImageLoader.swift; sourceTree = "<group>"; };
 		F884213D2A3F5CCB008C4A9B /* SearchResultsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsAssembly.swift; sourceTree = "<group>"; };
 		F884213F2A3F5F31008C4A9B /* SearchResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsPresenter.swift; sourceTree = "<group>"; };
+		F8C3F0E52A9F3F6100EC6590 /* ProfileAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAssembly.swift; sourceTree = "<group>"; };
+		F8C3F0E72A9F3F9B00EC6590 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F8C3F0E92A9F403B00EC6590 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		F8C7D3D42A5D5991000B1FE0 /* SearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +115,7 @@
 		3B56C3822A1E3AFB002825D9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F8C3F0E42A9F3F4C00EC6590 /* Profile */,
 				3B56CA412A1E3C08002825D9 /* Search */,
 				3B56CA432A1E3D37002825D9 /* SearchResults */,
 				3B56CA442A1E3D43002825D9 /* Favorites */,
@@ -227,6 +234,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F8C3F0E42A9F3F4C00EC6590 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F8C3F0E52A9F3F6100EC6590 /* ProfileAssembly.swift */,
+				F8C3F0E72A9F3F9B00EC6590 /* ProfileViewController.swift */,
+				F8C3F0E92A9F403B00EC6590 /* ProfilePresenter.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		F8C7D3D62A5D5D48000B1FE0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,11 +323,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8C3F0EA2A9F403B00EC6590 /* ProfilePresenter.swift in Sources */,
 				F83D60492A9E1B4A009E15B3 /* GFNetworkMockService.swift in Sources */,
 				F8C7D3D52A5D5991000B1FE0 /* SearchResultCollectionViewCell.swift in Sources */,
 				F884213E2A3F5CCB008C4A9B /* SearchResultsAssembly.swift in Sources */,
 				F88421402A3F5F31008C4A9B /* SearchResultsPresenter.swift in Sources */,
 				F861F8812A5F1F01008B02E7 /* GFImageLoader.swift in Sources */,
+				F8C3F0E62A9F3F6100EC6590 /* ProfileAssembly.swift in Sources */,
 				3B56C37C2A1D1409002825D9 /* GFNetworkService.swift in Sources */,
 				3BF7B6AF2A14F67300218AF8 /* NavigationViewController.swift in Sources */,
 				3B56D1262A224C4C002825D9 /* SearchPresenter.swift in Sources */,
@@ -323,6 +342,7 @@
 				3BB30BF22A0A37D100BE57A3 /* SearchViewController.swift in Sources */,
 				3BB30BEE2A0A37D100BE57A3 /* AppDelegate.swift in Sources */,
 				3BF7A8E82A0EA82C00218AF8 /* BigButton.swift in Sources */,
+				F8C3F0E82A9F3F9B00EC6590 /* ProfileViewController.swift in Sources */,
 				3B56C37E2A1D1471002825D9 /* User.swift in Sources */,
 				3BB30BF02A0A37D100BE57A3 /* SceneDelegate.swift in Sources */,
 			);

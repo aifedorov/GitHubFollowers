@@ -19,12 +19,7 @@ final class SearchPresenter {
     
     weak var view: SearchPresenterOutput?
     
-    private let networkService: GFNetworkService
     private var state = State()
-    
-    init(networkService: GFNetworkService) {
-        self.networkService = networkService
-    }
 }
 
 extension SearchPresenter: SearchViewOutput {

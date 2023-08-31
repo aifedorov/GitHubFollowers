@@ -27,4 +27,8 @@ extension UIColor {
     static var placeholderTextColor: UIColor {
         return UIColor(named: "placeholderTextColor")!
     }
+    
+    static var favoriteColor: UIColor {
+        return UIColor(named: "favoriteColor")!
+    }
 }

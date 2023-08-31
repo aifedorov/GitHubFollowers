@@ -9,6 +9,8 @@ import UIKit
 
 final class BigButton: UIButton {
     
+    private let _backgroundColor: UIColor
+    
     override var isHighlighted: Bool {
         didSet {
             UIView.animate(withDuration: 0.15,
@@ -26,8 +28,11 @@ final class BigButton: UIButton {
         }
     }
     
-    init(title: String, isShowArrow: Bool = true) {
+    init(title: String, isShowArrow: Bool = true, backgroundColor: UIColor = .accentColor) {
+        self._backgroundColor = backgroundColor
         super.init(frame: .zero)
+        
+        self.backgroundColor = _backgroundColor
         
         let attributedTitle = NSMutableAttributedString(string: title, attributes: [
             .foregroundColor : UIColor.primaryColor,
@@ -61,7 +66,7 @@ final class BigButton: UIButton {
             backgroundColor = .systemGray2
         } else {
             setTitleColor(.primaryColor, for: .normal)
-            backgroundColor = .accentColor
+            backgroundColor = _backgroundColor
         }
     }
 }

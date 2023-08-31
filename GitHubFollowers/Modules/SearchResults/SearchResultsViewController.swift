@@ -10,6 +10,7 @@ import UIKit
 protocol SearchResultsViewOutput {
     func viewDidLoad()
     func loadImage(for userAvatarUrl: String) async -> Data?
+    func didSelectItem(at indexPath: IndexPath)
 }
 
 final class SearchResultsViewController: UIViewController {
@@ -36,13 +37,13 @@ final class SearchResultsViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var dataSource: DataSource! {
         didSet {
-            updateStapshot()
+            updateSnapshot()
         }
     }
     
     private var followers: [User] = [] {
         didSet {
-            updateStapshot()
+            updateSnapshot()
         }
     }
     
@@ -106,6 +107,7 @@ final class SearchResultsViewController: UIViewController {
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: .zero,
                                           collectionViewLayout: makeCollectionViewLayout())
+        collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(SearchResultCollectionViewCell.self,
                                 forCellWithReuseIdentifier: SearchResultCollectionViewCell.cellIdentifier)
@@ -123,21 +125,21 @@ final class SearchResultsViewController: UIViewController {
                         
                         if let visibleCell = collectionView.cellForItem(at: indexPath) as? SearchResultCollectionViewCell,
                            self.dataSource.itemIdentifier(for: indexPath) == item {
-                            let desplayData = SearchResultCollectionViewCell.DisplayData(text: item.user.login,
+                            let displayData = SearchResultCollectionViewCell.DisplayData(text: item.user.login,
                                                                                          image: image)
-                            visibleCell.configure(with: desplayData)
+                            visibleCell.configure(with: displayData)
                         }
                     }
                 }
             }
             
-            let desplayData = SearchResultCollectionViewCell.DisplayData(text: item.user.login)
-            cell.configure(with: desplayData)                    
+            let displayData = SearchResultCollectionViewCell.DisplayData(text: item.user.login)
+            cell.configure(with: displayData)                    
             return cell
         })
     }
     
-    private func updateStapshot(with animatingDifferences: Bool = true) {
+    private func updateSnapshot(with animatingDifferences: Bool = true) {
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
         
@@ -145,6 +147,13 @@ final class SearchResultsViewController: UIViewController {
         snapshot.appendItems(items, toSection: .main)
         
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+    }
+}
+
+extension SearchResultsViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        output?.didSelectItem(at: indexPath)
     }
 }
 
@@ -177,5 +186,10 @@ extension SearchResultsViewController: SearchResultsPresenterOutput {
     
     func hideLoadingView() {
         loadingView.stopAnimating()
+    }
+    
+    func showProfile(for user: User) {
+        let profileViewController = ProfileAssembly.makeModule(with: user)
+        navigationController?.pushViewController(profileViewController, animated: true)
     }
 }

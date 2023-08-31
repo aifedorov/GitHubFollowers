@@ -15,6 +15,7 @@ protocol SearchResultsPresenterOutput: AnyObject {
     func showEmptyView()
     func hideEmptyView()
     func showSearchResults(followers: [User])
+    func showProfile(for user: User)
 }
 
 final class SearchResultsPresenter {
@@ -52,6 +53,11 @@ final class SearchResultsPresenter {
 
 extension SearchResultsPresenter: SearchResultsViewOutput {
     
+    func didSelectItem(at indexPath: IndexPath) {
+        guard let user = state.followers?[indexPath.row] else { return }
+        view?.showProfile(for: user)
+    }
+    
     func loadImage(for userAvatarUrl: String) async -> Data? {
         do {
             return try await networkService.fetchIcon(for: userAvatarUrl)
@@ -67,11 +73,9 @@ extension SearchResultsPresenter: SearchResultsViewOutput {
             await MainActor.run {
                 switch result {
                 case .success(let followers):
-                    debugPrint(followers)
                     self.state.followers = followers
                     
-                case .failure(let error):
-                    debugPrint("Something wrong \(error.localizedDescription)")
+                case .failure:
                     view?.showErrorMessageView()
                 }
                 view?.hideLoadingView()
