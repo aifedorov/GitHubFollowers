@@ -7,33 +7,35 @@
 
 import Foundation
 
-
-final class GFNetworkMockService: GFNetworkServiceProtocol {
-        
-    func fetchFollowers(for userLogin: String) async throws -> Result<[User], NetworkError> {
+final class GFUserNetworkMockService: GFUserNetworkServiceProtocol {
+    
+    func fetchCountFollowers(fromURL followersURLString: String) async throws -> Int {
+        return 12
+    }
+    
+    func fetchFollowers(for userLogin: String) async throws -> [User] {
         if userLogin == "empty" {
-            return .success([])
+            return []
         }
         
         if userLogin == "error" {
-            return .failure(.wrongResponse)
+            throw NetworkError.wrongResponse
         }
         
         guard let url = Bundle.main.url(forResource: "followers", withExtension: "json") else {
-            return .failure(.invalidateURL)
+            throw NetworkError.invalidateURL("followers.json")
         }
         
         let jsonData = try Data(contentsOf: url)
         
         do {
-            let users = try JSONDecoder().decode([User].self, from: jsonData)
-            return .success(users)
+            return try JSONDecoder().decode([User].self, from: jsonData)
         } catch {
-            return .failure(.invalidateJSON(error))
+            throw NetworkError.invalidateJSON(error)
         }
     }
     
-    func fetchIcon(for avatarUrl: String) async throws -> Data {
+    func fetchAvatarImage(fromURL avatarUrl: String) async throws -> Data {
         return Data()
     }
 }

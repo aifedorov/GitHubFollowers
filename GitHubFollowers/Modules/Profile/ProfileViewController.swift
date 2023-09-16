@@ -74,6 +74,12 @@ final class ProfileViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    private lazy var loadingView: UIActivityIndicatorView = {
+        let loadingView = UIActivityIndicatorView(style: .large)
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        loadingView.color = .accentColor
+        return loadingView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +106,8 @@ final class ProfileViewController: UIViewController {
         buttonsStackView.addArrangedSubview(addToFavoriteButton)
         view.addSubview(buttonsStackView)
         
+        view.addSubview(loadingView)
+        
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
             avatarImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -119,8 +127,19 @@ final class ProfileViewController: UIViewController {
             
             buttonsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24),
             buttonsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
-            buttonsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24)
+            buttonsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            
+            loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+        
+        openProfileButton.addAction(.init(handler: { [weak self] _ in
+            self?.output?.didTapOpenProfileButton()
+        }), for: .touchUpInside)
+        
+        addToFavoriteButton.addAction(.init(handler: { [weak self] _ in
+            self?.output?.didTapAddToFavoriteButton()
+        }), for: .touchUpInside)
     }
     
     func configure(with user: User) {
@@ -128,4 +147,14 @@ final class ProfileViewController: UIViewController {
     }
 }
 
-extension ProfileViewController: ProfilePresenterOutput {}
+extension ProfileViewController: ProfilePresenterOutput {
+    
+    func showLoadingView() {
+        loadingView.isHidden = false
+        loadingView.startAnimating()
+    }
+    
+    func hideLoadingView() {
+        loadingView.stopAnimating()
+    }
+}

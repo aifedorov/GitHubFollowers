@@ -27,7 +27,8 @@ final class SearchResultsPresenter {
     
     weak var view: SearchResultsPresenterOutput?
     
-    private let networkService: GFNetworkServiceProtocol
+    private let userNetworkService: GFUserNetworkServiceProtocol
+    
     private var state = State() {
         didSet {
             guard let followers = state.followers else {
@@ -45,9 +46,9 @@ final class SearchResultsPresenter {
         }
     }
     
-    init(networkService: GFNetworkServiceProtocol, searchedUsername: String) {
-        self.networkService = networkService
-        state.searchedUsername = searchedUsername
+    init(searchedUsername: String, _ userNetworkService: GFUserNetworkServiceProtocol) {
+        self.state.searchedUsername = searchedUsername
+        self.userNetworkService = userNetworkService
     }
 }
 
@@ -60,26 +61,23 @@ extension SearchResultsPresenter: SearchResultsViewOutput {
     
     func loadImage(for userAvatarUrl: String) async -> Data? {
         do {
-            return try await networkService.fetchIcon(for: userAvatarUrl)
+            return try await userNetworkService.fetchAvatarImage(fromURL: userAvatarUrl)
         } catch {
+            // TODO: Show alert
             return nil
         }
     }
     
     func viewDidLoad() {
         view?.showLoadingView()
-        Task {
-            let result = try await networkService.fetchFollowers(for: state.searchedUsername)
-            await MainActor.run {
-                switch result {
-                case .success(let followers):
-                    self.state.followers = followers
-                    
-                case .failure:
-                    view?.showErrorMessageView()
-                }
-                view?.hideLoadingView()
+        Task { @MainActor in
+            do {
+                let followers = try await userNetworkService.fetchFollowers(for: state.searchedUsername)
+                self.state.followers = followers
+            } catch {
+                view?.showErrorMessageView()
             }
+            view?.hideLoadingView()
         }
     }
 }

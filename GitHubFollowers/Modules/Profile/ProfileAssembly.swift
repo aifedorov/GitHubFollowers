@@ -10,7 +10,8 @@ import UIKit
 enum ProfileAssembly {
     static func makeModule(with user: User) -> UIViewController {
         let viewController = ProfileViewController()
-        let presenter = ProfilePresenter(user)
+        let presenter = ProfilePresenter(GFUserNetworkMockService(),
+                                         user)
         
         viewController.output = presenter
         presenter.view = viewController
