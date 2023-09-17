@@ -17,7 +17,7 @@ final class ProfileViewController: UIViewController {
     var output: ProfileViewOutput?
     
     private lazy var avatarImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "mockAvatar"))
+        let imageView = UIImageView(image: UIImage(named: "placeholder"))
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false

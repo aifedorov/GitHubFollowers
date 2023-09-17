@@ -11,7 +11,7 @@ enum SearchResultsAssembly {
     static func makeModule(searchedUsername: String) -> UIViewController {
         let viewController = SearchResultsViewController()
         let presenter = SearchResultsPresenter(searchedUsername: searchedUsername,
-                                               GFUserNetworkMockService())
+                                               GFUserNetworkService(GFImageLoader.shared))
         
         viewController.output = presenter
         presenter.view = viewController

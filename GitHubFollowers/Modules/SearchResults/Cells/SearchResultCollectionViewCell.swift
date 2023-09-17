@@ -30,7 +30,7 @@ final class SearchResultCollectionViewCell: UICollectionViewCell {
     }()
     
     private lazy var imageView: UIImageView = {
-        let image = UIImage(named: "mockAvatar")
+        let image = UIImage(named: "placeholder")
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .red

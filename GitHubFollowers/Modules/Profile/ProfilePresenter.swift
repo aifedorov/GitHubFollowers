@@ -27,10 +27,7 @@ final class ProfilePresenter {
 extension ProfilePresenter: ProfileViewOutput {
     
     func viewDidLoad() {
-        view?.showLoadingView()
-        Task {
-            
-        }
+        // TODO: Update profile screen with real data
     }
     
     func didTapOpenProfileButton() {
