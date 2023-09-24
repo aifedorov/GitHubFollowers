@@ -1,5 +1,5 @@
 //
-//  SearchResultCollectionViewCell.swift
+//  SearchResultCell.swift
 //  GitHubFollowers
 //
 //  Created by Aleksandr on 11.07.23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SearchResultCollectionViewCell: UICollectionViewCell {
+final class SearchResultCell: UICollectionViewCell {
     
     struct DisplayData {
         let text: String
@@ -19,7 +19,7 @@ final class SearchResultCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    static let cellIdentifier = String(describing: SearchResultCollectionViewCell.self)
+    static let cellIdentifier = String(describing: SearchResultCell.self)
     
     private lazy var textLabel: UILabel = {
         let label = UILabel()

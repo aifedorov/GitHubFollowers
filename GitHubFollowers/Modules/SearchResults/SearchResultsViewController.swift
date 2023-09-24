@@ -93,6 +93,11 @@ final class SearchResultsViewController: UIViewController {
         output?.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     private func makeCollectionViewLayout() -> UICollectionViewLayout {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.itemSize = CGSize(width: 100,
@@ -109,23 +114,23 @@ final class SearchResultsViewController: UIViewController {
                                           collectionViewLayout: makeCollectionViewLayout())
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(SearchResultCollectionViewCell.self,
-                                forCellWithReuseIdentifier: SearchResultCollectionViewCell.cellIdentifier)
+        collectionView.register(SearchResultCell.self,
+                                forCellWithReuseIdentifier: SearchResultCell.cellIdentifier)
         
         dataSource = DataSource(collectionView: collectionView, cellProvider: { [weak self]
             (collectionView: UICollectionView, indexPath: IndexPath, item: Item) -> UICollectionViewCell? in
             guard let self = self else { return nil }
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCollectionViewCell.cellIdentifier,
-                                                          for: indexPath) as! SearchResultCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCell.cellIdentifier,
+                                                          for: indexPath) as! SearchResultCell
                         
             Task {
                 if let data = await self.output?.loadImage(for: item.user.avatarUrl) {
                     DispatchQueue.main.async {
                         let image = UIImage(data: data)
                         
-                        if let visibleCell = collectionView.cellForItem(at: indexPath) as? SearchResultCollectionViewCell,
+                        if let visibleCell = collectionView.cellForItem(at: indexPath) as? SearchResultCell,
                            self.dataSource.itemIdentifier(for: indexPath) == item {
-                            let displayData = SearchResultCollectionViewCell.DisplayData(text: item.user.login,
+                            let displayData = SearchResultCell.DisplayData(text: item.user.login,
                                                                                          image: image)
                             visibleCell.configure(with: displayData)
                         }
@@ -133,7 +138,7 @@ final class SearchResultsViewController: UIViewController {
                 }
             }
             
-            let displayData = SearchResultCollectionViewCell.DisplayData(text: item.user.login)
+            let displayData = SearchResultCell.DisplayData(text: item.user.login)
             cell.configure(with: displayData)                    
             return cell
         })

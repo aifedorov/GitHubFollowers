@@ -23,7 +23,6 @@
 		F8089C432A548A2E00BE0CDC /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8089C422A548A2E00BE0CDC /* String+Validation.swift */; };
 		F8089C472A598C9400BE0CDC /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8089C462A598C9400BE0CDC /* StateView.swift */; };
 		F83D60472A9E1AF4009E15B3 /* followers.json in Resources */ = {isa = PBXBuildFile; fileRef = F83D60462A9E1AF4009E15B3 /* followers.json */; };
-		F83D60492A9E1B4A009E15B3 /* GFNetworkMockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D60482A9E1B4A009E15B3 /* GFNetworkMockService.swift */; };
 		F861F8812A5F1F01008B02E7 /* GFImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F861F8802A5F1F00008B02E7 /* GFImageLoader.swift */; };
 		F884213E2A3F5CCB008C4A9B /* SearchResultsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884213D2A3F5CCB008C4A9B /* SearchResultsAssembly.swift */; };
 		F88421402A3F5F31008C4A9B /* SearchResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884213F2A3F5F31008C4A9B /* SearchResultsPresenter.swift */; };
@@ -32,7 +31,7 @@
 		F8C3F0EA2A9F403B00EC6590 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C3F0E92A9F403B00EC6590 /* ProfilePresenter.swift */; };
 		F8C45EAA2AB363AE002332B7 /* GFUserNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C45EA92AB363AE002332B7 /* GFUserNetworkService.swift */; };
 		F8C45EB92AB581FD002332B7 /* BaseNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C45EB82AB581FD002332B7 /* BaseNetworkService.swift */; };
-		F8C7D3D52A5D5991000B1FE0 /* SearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7D3D42A5D5991000B1FE0 /* SearchResultCollectionViewCell.swift */; };
+		F8C7D3D52A5D5991000B1FE0 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7D3D42A5D5991000B1FE0 /* SearchResultCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +53,6 @@
 		F8089C422A548A2E00BE0CDC /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
 		F8089C462A598C9400BE0CDC /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		F83D60462A9E1AF4009E15B3 /* followers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = followers.json; sourceTree = "<group>"; };
-		F83D60482A9E1B4A009E15B3 /* GFNetworkMockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFNetworkMockService.swift; sourceTree = "<group>"; };
 		F861F8802A5F1F00008B02E7 /* GFImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFImageLoader.swift; sourceTree = "<group>"; };
 		F884213D2A3F5CCB008C4A9B /* SearchResultsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsAssembly.swift; sourceTree = "<group>"; };
 		F884213F2A3F5F31008C4A9B /* SearchResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsPresenter.swift; sourceTree = "<group>"; };
@@ -63,7 +61,7 @@
 		F8C3F0E92A9F403B00EC6590 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		F8C45EA92AB363AE002332B7 /* GFUserNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GFUserNetworkService.swift; sourceTree = "<group>"; };
 		F8C45EB82AB581FD002332B7 /* BaseNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkService.swift; sourceTree = "<group>"; };
-		F8C7D3D42A5D5991000B1FE0 /* SearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
+		F8C7D3D42A5D5991000B1FE0 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +82,6 @@
 				F8C45EB82AB581FD002332B7 /* BaseNetworkService.swift */,
 				F8C45EA92AB363AE002332B7 /* GFUserNetworkService.swift */,
 				F861F8802A5F1F00008B02E7 /* GFImageLoader.swift */,
-				F83D60482A9E1B4A009E15B3 /* GFNetworkMockService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -250,7 +247,7 @@
 		F8C7D3D62A5D5D48000B1FE0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F8C7D3D42A5D5991000B1FE0 /* SearchResultCollectionViewCell.swift */,
+				F8C7D3D42A5D5991000B1FE0 /* SearchResultCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -327,8 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8C3F0EA2A9F403B00EC6590 /* ProfilePresenter.swift in Sources */,
-				F83D60492A9E1B4A009E15B3 /* GFNetworkMockService.swift in Sources */,
-				F8C7D3D52A5D5991000B1FE0 /* SearchResultCollectionViewCell.swift in Sources */,
+				F8C7D3D52A5D5991000B1FE0 /* SearchResultCell.swift in Sources */,
 				F884213E2A3F5CCB008C4A9B /* SearchResultsAssembly.swift in Sources */,
 				F88421402A3F5F31008C4A9B /* SearchResultsPresenter.swift in Sources */,
 				F861F8812A5F1F01008B02E7 /* GFImageLoader.swift in Sources */,

@@ -38,8 +38,9 @@ final class SearchViewController: UIViewController {
         return textField
     }()
     private lazy var imageView: UIImageView = {
-        let image = UIImage(named: "title-image")
+        let image = UIImage(named: "main_logo")
         let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -49,15 +50,20 @@ final class SearchViewController: UIViewController {
         setupViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+            
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        textField.resignFirstResponder()
         textField.text = nil
         updateStateSearchButton(nil)
     }
     
     private func setupViews() {
         view.backgroundColor = .systemBackground
-        
         view.addSubview(imageView)
         view.addSubview(textField)
         view.addSubview(searchButton)
@@ -74,8 +80,10 @@ final class SearchViewController: UIViewController {
             textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             textField.heightAnchor.constraint(equalToConstant: 64),
             
-            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            imageView.bottomAnchor.constraint(equalTo: textField.topAnchor, constant: -40),
+            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: 180),
+            imageView.widthAnchor.constraint(equalToConstant: 220),
         ])
         
         searchButton.addAction(.init(handler: { [weak self] _ in
@@ -85,28 +93,22 @@ final class SearchViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnView(_:)))
         view.addGestureRecognizer(tapGesture)
         
-        updateStateSearchButton(nil)
+        updateStateSearchButton()
     }
     
     @objc private func didTapOnView(_ sender: UIView) {
         textField.resignFirstResponder()
     }
     
-    private func updateStateSearchButton(_ text: String?) {
+    private func updateStateSearchButton(_ text: String? = nil) {
         searchButton.isEnabled = (text ?? "").isValidGitHubUsername
     }
 }
 
 extension SearchViewController: UITextFieldDelegate {
-        
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        updateStateSearchButton(string)
-        return true
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+            
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         updateStateSearchButton(textField.text)
-        return true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
