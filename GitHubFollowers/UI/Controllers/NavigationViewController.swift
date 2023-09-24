@@ -8,10 +8,6 @@
 import UIKit
 
 final class NavigationViewController: UINavigationController {
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
