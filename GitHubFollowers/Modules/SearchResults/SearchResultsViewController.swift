@@ -78,18 +78,13 @@ final class SearchResultsViewController: UIViewController {
         
         setupCollectionView()
         
-        view.addSubview(collectionView)
-        view.addSubview(loadingView)
+        view.addSubviews([collectionView, loadingView])
         
-        NSLayoutConstraint.activate([
-            loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        collectionView.pinToEdgesSuperview(top: 0, leading: 0, trailing: 0)
+        collectionView.pinToEdgesSuperview(bottom: 0, withSafeArea: false)
+        
+        loadingView.pinToCenterSuperview(centerX: 0, centerY: 0)
+        
         output?.viewDidLoad()
     }
     

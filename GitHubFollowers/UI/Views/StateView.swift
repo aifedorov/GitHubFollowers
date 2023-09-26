@@ -25,8 +25,7 @@ final class StateView: UIView {
     }()
     
     private lazy var actionButton: BigButton = {
-        let button = BigButton(title: self.buttonTitle,
-                               isShowArrow: false)
+        let button = BigButton(title: self.buttonTitle)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

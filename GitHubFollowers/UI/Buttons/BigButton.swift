@@ -28,7 +28,7 @@ final class BigButton: UIButton {
         }
     }
     
-    init(title: String, isShowArrow: Bool = true, backgroundColor: UIColor = .accentColor) {
+    init(title: String, backgroundColor: UIColor = .accentColor) {
         self._backgroundColor = backgroundColor
         super.init(frame: .zero)
         
@@ -38,14 +38,7 @@ final class BigButton: UIButton {
             .foregroundColor : UIColor.primaryColor,
             .font : UIFont.systemFont(ofSize: 24, weight: .bold)
         ])
-        
-        if isShowArrow {
-            let imageAttachment = NSTextAttachment()
-            imageAttachment.image = UIImage(systemName: "arrow.right")?.withTintColor(.white)
-            attributedTitle.append(NSAttributedString(string: " "))
-            attributedTitle.append(NSAttributedString(attachment: imageAttachment))
-        }
-        
+                
         setAttributedTitle(attributedTitle, for: .normal)
         
         layer.cornerRadius = 8

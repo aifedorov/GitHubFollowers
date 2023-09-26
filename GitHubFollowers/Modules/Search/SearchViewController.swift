@@ -16,13 +16,10 @@ final class SearchViewController: UIViewController {
     var output: SearchViewOutput?
     
     private lazy var searchButton: BigButton = {
-        let button = BigButton(title: "Get Followers")
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+        BigButton(title: "Get Followers")
     }()
     private lazy var textField: UITextField = {
         let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.autocorrectionType = .no
         textField.borderStyle = .roundedRect
         textField.attributedPlaceholder = NSAttributedString(string: "Enter Username",
@@ -41,7 +38,6 @@ final class SearchViewController: UIViewController {
         let image = UIImage(named: "main_logo")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -64,26 +60,21 @@ final class SearchViewController: UIViewController {
     
     private func setupViews() {
         view.backgroundColor = .systemBackground
-        view.addSubview(imageView)
-        view.addSubview(textField)
-        view.addSubview(searchButton)
+        view.addSubviews([imageView, textField, searchButton])
+        
+        searchButton.pinToEdgesSuperview(bottom: 30)
+        searchButton.pinToCenterSuperview(centerX: 0)
+        searchButton.fixSize(width: 345, height: 58)
+        
+        textField.pinToCenterSuperview(centerX: 0, centerY: 0)
+        textField.pinToEdgesSuperview(leading: 24, trailing: 24)
+        textField.fixSize(height: 64)
+        
+        imageView.pinToCenterSuperview(centerX: 0)
+        imageView.fixSize(width: 220, height: 180)
         
         NSLayoutConstraint.activate([
-            searchButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
-            searchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            searchButton.heightAnchor.constraint(equalToConstant: 58),
-            searchButton.widthAnchor.constraint(equalToConstant: 345),
-            
-            textField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            textField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            textField.heightAnchor.constraint(equalToConstant: 64),
-            
             imageView.bottomAnchor.constraint(equalTo: textField.topAnchor, constant: -40),
-            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 180),
-            imageView.widthAnchor.constraint(equalToConstant: 220),
         ])
         
         searchButton.addAction(.init(handler: { [weak self] _ in
