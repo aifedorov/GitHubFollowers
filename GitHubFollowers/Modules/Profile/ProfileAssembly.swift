@@ -8,10 +8,9 @@
 import UIKit
 
 enum ProfileAssembly {
-    static func makeModule(with user: User) -> UIViewController {
+    static func makeModule(with follower: Follower) -> UIViewController {
         let viewController = ProfileViewController()
-        let presenter = ProfilePresenter(GFUserNetworkService(GFImageLoader.shared),
-                                         user)
+        let presenter = ProfilePresenter(GFUserNetworkService(GFImageLoader.shared), follower)
         
         viewController.output = presenter
         presenter.view = viewController

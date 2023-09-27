@@ -16,10 +16,10 @@ final class ProfilePresenter {
     
     weak var view: ProfilePresenterOutput?
     private let userNetworkService: GFUserNetworkServiceProtocol
-    private let user: User
+    private let follower: Follower
     
-    init(_ userNetworkService: GFUserNetworkServiceProtocol, _ user: User) {
-        self.user = user
+    init(_ userNetworkService: GFUserNetworkServiceProtocol, _ follower: Follower) {
+        self.follower = follower
         self.userNetworkService = userNetworkService
     }
 }

@@ -21,11 +21,11 @@ final class SearchResultsViewController: UIViewController {
     
     struct Item: Hashable {
         let id: UUID
-        let user: User
+        let follower: Follower
         
-        init(user: User) {
+        init(follower: Follower) {
             self.id = UUID()
-            self.user = user
+            self.follower = follower
         }
     }
     
@@ -41,7 +41,7 @@ final class SearchResultsViewController: UIViewController {
         }
     }
     
-    private var followers: [User] = [] {
+    private var followers: [Follower] = [] {
         didSet {
             updateSnapshot()
         }
@@ -119,13 +119,13 @@ final class SearchResultsViewController: UIViewController {
                                                           for: indexPath) as! SearchResultCell
                         
             Task {
-                if let data = await self.output?.loadImage(for: item.user.avatarUrl) {
+                if let data = await self.output?.loadImage(for: item.follower.avatarUrl) {
                     DispatchQueue.main.async {
                         let image = UIImage(data: data)
                         
                         if let visibleCell = collectionView.cellForItem(at: indexPath) as? SearchResultCell,
                            self.dataSource.itemIdentifier(for: indexPath) == item {
-                            let displayData = SearchResultCell.DisplayData(text: item.user.login,
+                            let displayData = SearchResultCell.DisplayData(text: item.follower.login,
                                                                                          image: image)
                             visibleCell.configure(with: displayData)
                         }
@@ -133,7 +133,7 @@ final class SearchResultsViewController: UIViewController {
                 }
             }
             
-            let displayData = SearchResultCell.DisplayData(text: item.user.login)
+            let displayData = SearchResultCell.DisplayData(text: item.follower.login)
             cell.configure(with: displayData)                    
             return cell
         })
@@ -143,7 +143,7 @@ final class SearchResultsViewController: UIViewController {
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
         
-        let items = followers.map { Item(user: $0) }
+        let items = followers.map { Item(follower: $0) }
         snapshot.appendItems(items, toSection: .main)
         
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
@@ -159,7 +159,7 @@ extension SearchResultsViewController: UICollectionViewDelegate {
 
 extension SearchResultsViewController: SearchResultsPresenterOutput {
     
-    func showSearchResults(followers: [User]) {
+    func showSearchResults(followers: [Follower]) {
         self.followers = followers
     }
         
@@ -188,8 +188,8 @@ extension SearchResultsViewController: SearchResultsPresenterOutput {
         loadingView.stopAnimating()
     }
     
-    func showProfile(for user: User) {
-        let profileViewController = ProfileAssembly.makeModule(with: user)
+    func showProfile(for follower: Follower) {
+        let profileViewController = ProfileAssembly.makeModule(with: follower)
         navigationController?.pushViewController(profileViewController, animated: true)
     }
 }

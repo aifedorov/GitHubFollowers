@@ -10,12 +10,12 @@ import Foundation
 enum NetworkError: Error {
     case invalidateURL(String)
     case wrongResponse
-    case invalidateJSON(Error)
+    case invalidateJSON(DecodingError)
+    case unknown(Error)
 }
 
 protocol GFUserNetworkServiceProtocol {
-    func fetchFollowers(for userLogin: String) async throws -> [User]
-    func fetchCountFollowers(fromURL followersURLString: String) async throws -> Int
+    func fetchFollowers(for username: String) async throws -> [Follower]
     func fetchAvatarImage(fromURL avatarUrlString: String) async throws -> Data
 }
 
@@ -24,16 +24,14 @@ final class GFUserNetworkService: BaseNetworkService, GFUserNetworkServiceProtoc
     
     init(_ imageLoader: GFImageLoader) {
         self.imageLoader = imageLoader
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        super.init(URLSession.shared, decoder)
     }
     
-    func fetchFollowers(for userLogin: String) async throws -> [User] {
-        let urlString = "https://api.github.com/users/\(userLogin)/followers"
+    func fetchFollowers(for username: String) async throws -> [Follower] {
+        let urlString = "https://api.github.com/users/\(username)/followers"
         return try await fetch(from: urlString)
-    }
-    
-    func fetchCountFollowers(fromURL followersURLString: String) async throws -> Int {
-        let users: [User] = try await fetch(from: followersURLString)
-        return users.count
     }
     
     func fetchAvatarImage(fromURL avatarUrlString: String) async throws -> Data {

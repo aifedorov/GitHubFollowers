@@ -14,15 +14,15 @@ protocol SearchResultsPresenterOutput: AnyObject {
     func hideErrorMessageView()
     func showEmptyView()
     func hideEmptyView()
-    func showSearchResults(followers: [User])
-    func showProfile(for user: User)
+    func showSearchResults(followers: [Follower])
+    func showProfile(for follower: Follower)
 }
 
 final class SearchResultsPresenter {
     
     struct State {
         var searchedUsername: String = ""
-        var followers: [User]?
+        var followers: [Follower]?
     }
     
     weak var view: SearchResultsPresenterOutput?
