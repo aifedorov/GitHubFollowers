@@ -14,7 +14,7 @@ protocol SearchResultsPresenterOutput: AnyObject {
     func hideErrorMessageView()
     func showEmptyView()
     func hideEmptyView()
-    func showSearchResults(followers: [Follower])
+    func showSearchResults(_ followers: [Follower])
     func showProfile(for follower: Follower)
 }
 
@@ -23,6 +23,11 @@ final class SearchResultsPresenter {
     struct State {
         var searchedUsername: String = ""
         var followers: [Follower]?
+        
+        func getFollower(at index: Int) -> Follower? {
+            guard let followers = followers else { return nil }
+            return followers[index]
+        }
     }
     
     weak var view: SearchResultsPresenterOutput?
@@ -41,7 +46,7 @@ final class SearchResultsPresenter {
                 view?.showEmptyView()
             } else {
                 view?.hideEmptyView()
-                view?.showSearchResults(followers: followers)
+                view?.showSearchResults(followers)
             }
         }
     }
@@ -55,17 +60,14 @@ final class SearchResultsPresenter {
 extension SearchResultsPresenter: SearchResultsViewOutput {
     
     func didSelectItem(at indexPath: IndexPath) {
-        guard let user = state.followers?[indexPath.row] else { return }
-        view?.showProfile(for: user)
+        guard let follower = state.getFollower(at: indexPath.row) else { return }
+        view?.showProfile(for: follower)
     }
     
-    func loadImage(for userAvatarUrl: String) async -> Data? {
-        do {
-            return try await userNetworkService.fetchAvatarImage(fromURL: userAvatarUrl)
-        } catch {
-            // TODO: Show alert
-            return nil
-        }
+    func fetchImage(at indexPath: IndexPath) async -> Data? {
+        guard let follower = state.getFollower(at: indexPath.row) else { return nil }
+        // Ignore this error because it doesn't matter to a user.
+        return try? await userNetworkService.fetchAvatarImage(fromURL: follower.avatarUrl)
     }
     
     func viewDidLoad() {

@@ -9,7 +9,7 @@ import UIKit
 
 protocol SearchResultsViewOutput {
     func viewDidLoad()
-    func loadImage(for userAvatarUrl: String) async -> Data?
+    func fetchImage(at indexPath: IndexPath) async -> Data?
     func didSelectItem(at indexPath: IndexPath)
 }
 
@@ -21,11 +21,11 @@ final class SearchResultsViewController: UIViewController {
     
     struct Item: Hashable {
         let id: UUID
-        let follower: Follower
+        let username: String
         
-        init(follower: Follower) {
+        init(username: String) {
             self.id = UUID()
-            self.follower = follower
+            self.username = username
         }
     }
     
@@ -35,17 +35,7 @@ final class SearchResultsViewController: UIViewController {
     var output: SearchResultsViewOutput?
     
     private var collectionView: UICollectionView!
-    private var dataSource: DataSource! {
-        didSet {
-            updateSnapshot()
-        }
-    }
-    
-    private var followers: [Follower] = [] {
-        didSet {
-            updateSnapshot()
-        }
-    }
+    private var dataSource: DataSource!
     
     private lazy var loadingView: UIActivityIndicatorView = {
         let loadingView = UIActivityIndicatorView(style: .large)
@@ -119,33 +109,29 @@ final class SearchResultsViewController: UIViewController {
                                                           for: indexPath) as! SearchResultCell
                         
             Task {
-                if let data = await self.output?.loadImage(for: item.follower.avatarUrl) {
+                if let data = await self.output?.fetchImage(at: indexPath) {
                     DispatchQueue.main.async {
                         let image = UIImage(data: data)
                         
                         if let visibleCell = collectionView.cellForItem(at: indexPath) as? SearchResultCell,
                            self.dataSource.itemIdentifier(for: indexPath) == item {
-                            let displayData = SearchResultCell.DisplayData(text: item.follower.login,
-                                                                                         image: image)
+                            let displayData = SearchResultCell.DisplayData(text: item.username, image: image)
                             visibleCell.configure(with: displayData)
                         }
                     }
                 }
             }
             
-            let displayData = SearchResultCell.DisplayData(text: item.follower.login)
+            let displayData = SearchResultCell.DisplayData(text: item.username)
             cell.configure(with: displayData)                    
             return cell
         })
     }
     
-    private func updateSnapshot(with animatingDifferences: Bool = true) {
+    private func updateSnapshot(_ items: [Item], with animatingDifferences: Bool = true) {
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
-        
-        let items = followers.map { Item(follower: $0) }
         snapshot.appendItems(items, toSection: .main)
-        
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
 }
@@ -159,8 +145,8 @@ extension SearchResultsViewController: UICollectionViewDelegate {
 
 extension SearchResultsViewController: SearchResultsPresenterOutput {
     
-    func showSearchResults(followers: [Follower]) {
-        self.followers = followers
+    func showSearchResults(_ followers: [Follower]) {
+        updateSnapshot(followers.map { Item(username: $0.login) })
     }
         
     func showErrorMessageView() {
