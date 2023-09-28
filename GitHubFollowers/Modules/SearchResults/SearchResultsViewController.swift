@@ -11,21 +11,22 @@ protocol SearchResultsViewOutput {
     func viewDidLoad()
     func fetchImage(at indexPath: IndexPath) async -> Data?
     func didSelectItem(at indexPath: IndexPath)
+    func searchQueryDidChange(query: String)
 }
 
 final class SearchResultsViewController: UIViewController {
-
+    
     enum Section {
         case main
     }
     
     struct Item: Hashable {
-        let id: UUID
+        let id: Int
         let username: String
-        
-        init(username: String) {
-            self.id = UUID()
-            self.username = username
+                
+        init(_ follower: Follower) {
+            self.id = follower.id
+            self.username = follower.login
         }
     }
     
@@ -36,6 +37,11 @@ final class SearchResultsViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     private var dataSource: DataSource!
+    private var displayItems: [Item] = [] {
+        didSet {
+            updateSnapshot()
+        }
+    }
     
     private lazy var loadingView: UIActivityIndicatorView = {
         let loadingView = UIActivityIndicatorView(style: .large)
@@ -43,36 +49,37 @@ final class SearchResultsViewController: UIViewController {
         loadingView.color = .accentColor
         return loadingView
     }()
-    
-    private lazy var emptyStateView: StateView = {
-        let view = StateView(with: "This user doesn’t exits or doesn’t have any followers",
-                                  buttonTitle: "Open search screen",
-                                  buttonAction: { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        })
-        return view
-    }()
-    
-    private lazy var fullScreenErrorView: StateView = {
-        let view = StateView(with: "Something wrong, please, try again late",
-                                  buttonTitle: "Open search screen",
-                                  buttonAction: { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        })
-        return view
-    }()
         
+    private lazy var fullScreenErrorView: FullsScreenMessageView = {
+        let view = FullsScreenMessageView(with: "Something wrong, please try again",
+                             buttonTitle: "Open search screen",
+                             buttonAction: { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        })
+        return view
+    }()
+    
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController()
+        searchController.searchBar.placeholder = "Enter username"
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.searchBar.returnKeyType = .search
+        searchController.searchResultsUpdater = self
+        return searchController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .primaryColor
+        navigationItem.searchController = searchController
         
         setupCollectionView()
+        setupDataSource()
         
         view.addSubviews([collectionView, loadingView])
         
         collectionView.pinToEdgesSuperview(top: 0, leading: 0, trailing: 0)
         collectionView.pinToEdgesSuperview(bottom: 0, withSafeArea: false)
-        
         loadingView.pinToCenterSuperview(centerX: 0, centerY: 0)
         
         output?.viewDidLoad()
@@ -101,38 +108,36 @@ final class SearchResultsViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(SearchResultCell.self,
                                 forCellWithReuseIdentifier: SearchResultCell.cellIdentifier)
-        
+    }
+    
+    private func setupDataSource() {
         dataSource = DataSource(collectionView: collectionView, cellProvider: { [weak self]
             (collectionView: UICollectionView, indexPath: IndexPath, item: Item) -> UICollectionViewCell? in
-            guard let self = self else { return nil }
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCell.cellIdentifier,
-                                                          for: indexPath) as! SearchResultCell
-                        
+            guard let self else { return nil }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCell.cellIdentifier, for: indexPath) as! SearchResultCell
+            
             Task {
                 if let data = await self.output?.fetchImage(at: indexPath) {
+                    let image = UIImage(data: data)
+                    let displayData = SearchResultCell.DisplayData(text: item.username, image: image)
+                    
                     DispatchQueue.main.async {
-                        let image = UIImage(data: data)
-                        
-                        if let visibleCell = collectionView.cellForItem(at: indexPath) as? SearchResultCell,
-                           self.dataSource.itemIdentifier(for: indexPath) == item {
-                            let displayData = SearchResultCell.DisplayData(text: item.username, image: image)
-                            visibleCell.configure(with: displayData)
-                        }
+                        cell.configure(with: displayData)
                     }
                 }
             }
             
             let displayData = SearchResultCell.DisplayData(text: item.username)
-            cell.configure(with: displayData)                    
+            cell.configure(with: displayData)
             return cell
         })
     }
     
-    private func updateSnapshot(_ items: [Item], with animatingDifferences: Bool = true) {
+    private func updateSnapshot() {
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
-        snapshot.appendItems(items, toSection: .main)
-        dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+        snapshot.appendItems(displayItems, toSection: .main)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
 
@@ -145,23 +150,16 @@ extension SearchResultsViewController: UICollectionViewDelegate {
 
 extension SearchResultsViewController: SearchResultsPresenterOutput {
     
-    func showSearchResults(_ followers: [Follower]) {
-        updateSnapshot(followers.map { Item(username: $0.login) })
+    func showFollowers(_ followers: [Follower]) {
+        displayItems = followers.map(Item.init)
     }
-        
-    func showErrorMessageView() {
+    
+    func showFullScreenErrorMessageView(with message: String) {
+        fullScreenErrorView.setup(text: message)
         collectionView.backgroundView = fullScreenErrorView
     }
-    
-    func hideErrorMessageView() {
-        collectionView.backgroundView = emptyStateView
-    }
-    
-    func showEmptyView() {
-        collectionView.backgroundView = emptyStateView
-    }
-    
-    func hideEmptyView() {
+        
+    func hideFullScreenErrorMessageView() {
         collectionView.backgroundView = nil
     }
     
@@ -177,5 +175,13 @@ extension SearchResultsViewController: SearchResultsPresenterOutput {
     func showProfile(for follower: Follower) {
         let profileViewController = ProfileAssembly.makeModule(with: follower)
         navigationController?.pushViewController(profileViewController, animated: true)
+    }
+}
+
+extension SearchResultsViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let query = searchController.searchBar.text else { return }
+        output?.searchQueryDidChange(query: query)
     }
 }

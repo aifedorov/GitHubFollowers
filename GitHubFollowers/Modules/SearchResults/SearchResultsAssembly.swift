@@ -10,6 +10,7 @@ import UIKit
 enum SearchResultsAssembly {
     static func makeModule(searchedUsername: String) -> UIViewController {
         let viewController = SearchResultsViewController()
+        viewController.title = searchedUsername
         let presenter = SearchResultsPresenter(searchedUsername: searchedUsername,
                                                GFUserNetworkService(GFImageLoader.shared))
         

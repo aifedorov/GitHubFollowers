@@ -24,7 +24,7 @@ final class GFImageLoader {
     
     func downloadImage(from urlString: String) async throws -> Data {
         guard let url = URL(string: urlString) else {
-            throw NetworkError.invalidateURL(urlString)
+            throw GFNetworkError.invalidateURL(urlString)
         }
         
         let key = urlString as NSString
@@ -37,7 +37,7 @@ final class GFImageLoader {
         guard
             let response = response as? HTTPURLResponse,
             (200..<300).contains(response.statusCode) else {
-            throw NetworkError.wrongResponse
+            throw GFNetworkError.wrongResponse
         }
         
         let value = data as NSData

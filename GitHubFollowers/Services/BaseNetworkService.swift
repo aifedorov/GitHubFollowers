@@ -18,23 +18,30 @@ class BaseNetworkService {
     
     func fetch<Resource: Decodable>(from urlString: String) async throws -> Resource {
         guard let url = URL(string: urlString) else {
-           throw NetworkError.invalidateURL(urlString)
+           throw GFNetworkError.invalidateURL(urlString)
         }
         
         let request = URLRequest(url: url)
         let (data, response) = try await session.data(for: request)
         
-        guard let httpResponse = response as? HTTPURLResponse,
-              (200...299).contains(httpResponse.statusCode) else {
-            throw NetworkError.wrongResponse
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw GFNetworkError.wrongResponse
+        }
+        
+        guard httpResponse.statusCode != 404 else {
+            throw GFNetworkError.resourceNotFound
+        }
+        
+        guard (200...299).contains(httpResponse.statusCode) else {
+            throw GFNetworkError.wrongResponse
         }
         
         do {
             return try decoder.decode(Resource.self, from: data)
         } catch let error as DecodingError {
-            throw NetworkError.invalidateJSON(error)
+            throw GFNetworkError.invalidateJSON(error)
         } catch {
-            throw NetworkError.unknown(error)
+            throw GFNetworkError.unknown(error)
         }
     }
 }

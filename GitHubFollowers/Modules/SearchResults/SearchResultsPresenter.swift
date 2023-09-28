@@ -7,14 +7,18 @@
 
 import Foundation
 
+enum CGSearchResultError {
+    case userNotFound
+    case userHaveNoFollowers
+    case networkError
+}
+
 protocol SearchResultsPresenterOutput: AnyObject {
     func showLoadingView()
     func hideLoadingView()
-    func showErrorMessageView()
-    func hideErrorMessageView()
-    func showEmptyView()
-    func hideEmptyView()
-    func showSearchResults(_ followers: [Follower])
+    func showFullScreenErrorMessageView(with message: String)
+    func hideFullScreenErrorMessageView()
+    func showFollowers(_ followers: [Follower])
     func showProfile(for follower: Follower)
 }
 
@@ -22,31 +26,50 @@ final class SearchResultsPresenter {
     
     struct State {
         var searchedUsername: String = ""
-        var followers: [Follower]?
         
-        func getFollower(at index: Int) -> Follower? {
-            guard let followers = followers else { return nil }
+        private var followers: [Follower] = []
+        private var filteredFollowers: [Follower] = []
+        private var isFiltering = false
+        
+        func getFollower(at index: Int) -> Follower {
+            let followers = getAllFollowers()
             return followers[index]
+        }
+        
+        func getAllFollowers() -> [Follower] {
+            guard !isFiltering else {
+                return filteredFollowers
+            }
+            return followers
+        }
+        
+        mutating func updateFollowers(_ followers: [Follower]) {
+            self.followers = followers
+        }
+                
+        mutating func updateSearchResult(for query: String) {
+            isFiltering = !query.isEmpty
+            guard isFiltering else {
+                filteredFollowers = []
+                return
+            }
+            let filter = query.lowercased()
+            filteredFollowers = followers.filter { $0.login.lowercased().contains(filter) }
         }
     }
     
     weak var view: SearchResultsPresenterOutput?
     
     private let userNetworkService: GFUserNetworkServiceProtocol
-    
     private var state = State() {
         didSet {
-            guard let followers = state.followers else {
-                self.view?.showErrorMessageView()
-                return
-            }
-            self.view?.hideErrorMessageView()
+            view?.hideFullScreenErrorMessageView()
             
+            let followers = state.getAllFollowers()
             if followers.isEmpty {
-                view?.showEmptyView()
+                view?.showFullScreenErrorMessageView(with: makeErrorMessage(.userHaveNoFollowers))
             } else {
-                view?.hideEmptyView()
-                view?.showSearchResults(followers)
+                view?.showFollowers(followers)
             }
         }
     }
@@ -55,17 +78,28 @@ final class SearchResultsPresenter {
         self.state.searchedUsername = searchedUsername
         self.userNetworkService = userNetworkService
     }
+    
+    private func makeErrorMessage(_ error: CGSearchResultError) -> String {
+        switch error {
+        case .userNotFound:
+            return "User not found."
+        case .userHaveNoFollowers:
+            return "This user doesn’t have any followers."
+        case .networkError:
+            return "Network error. Please check the internet connection and try again."
+        }
+    }
 }
 
 extension SearchResultsPresenter: SearchResultsViewOutput {
     
     func didSelectItem(at indexPath: IndexPath) {
-        guard let follower = state.getFollower(at: indexPath.row) else { return }
+        let follower = state.getFollower(at: indexPath.row)
         view?.showProfile(for: follower)
     }
     
     func fetchImage(at indexPath: IndexPath) async -> Data? {
-        guard let follower = state.getFollower(at: indexPath.row) else { return nil }
+        let follower = state.getFollower(at: indexPath.row)
         // Ignore this error because it doesn't matter to a user.
         return try? await userNetworkService.fetchAvatarImage(fromURL: follower.avatarUrl)
     }
@@ -75,11 +109,17 @@ extension SearchResultsPresenter: SearchResultsViewOutput {
         Task { @MainActor in
             do {
                 let followers = try await userNetworkService.fetchFollowers(for: state.searchedUsername)
-                self.state.followers = followers
+                self.state.updateFollowers(followers)
+            } catch GFNetworkError.resourceNotFound {
+                view?.showFullScreenErrorMessageView(with: makeErrorMessage(.userNotFound))
             } catch {
-                view?.showErrorMessageView()
+                view?.showFullScreenErrorMessageView(with: makeErrorMessage(.networkError))
             }
             view?.hideLoadingView()
         }
+    }
+    
+    func searchQueryDidChange(query: String) {
+        state.updateSearchResult(for: query)
     }
 }

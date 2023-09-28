@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct User: Decodable, Hashable {
+struct User: Decodable {
+    let id: Int
     let name: String
     let login: String
     let bio: String
