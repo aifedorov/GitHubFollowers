@@ -15,8 +15,8 @@ final class SearchViewController: UIViewController {
     
     var output: SearchViewOutput?
     
-    private lazy var searchButton: BigButton = {
-        BigButton(title: "Get Followers")
+    private lazy var searchButton: GFButton = {
+        GFButton(title: "Get Followers")
     }()
     private lazy var textField: UITextField = {
         let textField = UITextField()
@@ -78,7 +78,8 @@ final class SearchViewController: UIViewController {
         ])
         
         searchButton.addAction(.init(handler: { [weak self] _ in
-            self?.output?.didTapSearchButton(username: self?.textField.text ?? "")
+            self?.presentAlert(title: "Test", message: " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", buttonTitle: "ok")
+//            self?.output?.didTapSearchButton(username: self?.textField.text ?? "")
         }), for: .touchUpInside)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnView(_:)))

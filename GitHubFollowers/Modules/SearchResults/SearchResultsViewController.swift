@@ -50,8 +50,8 @@ final class SearchResultsViewController: UIViewController {
         return loadingView
     }()
         
-    private lazy var fullScreenErrorView: FullsScreenMessageView = {
-        let view = FullsScreenMessageView(with: "Something wrong, please try again",
+    private lazy var fullScreenErrorView: FullScreenMessageView = {
+        let view = FullScreenMessageView(with: "Something wrong, please try again",
                              buttonTitle: "Open search screen",
                              buttonAction: { [weak self] in
             self?.navigationController?.popViewController(animated: true)
@@ -106,20 +106,20 @@ final class SearchResultsViewController: UIViewController {
                                           collectionViewLayout: makeCollectionViewLayout())
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(SearchResultCell.self,
-                                forCellWithReuseIdentifier: SearchResultCell.cellIdentifier)
+        collectionView.register(FollowerCell.self,
+                                forCellWithReuseIdentifier: FollowerCell.cellId)
     }
     
     private func setupDataSource() {
         dataSource = DataSource(collectionView: collectionView, cellProvider: { [weak self]
             (collectionView: UICollectionView, indexPath: IndexPath, item: Item) -> UICollectionViewCell? in
             guard let self else { return nil }
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCell.cellIdentifier, for: indexPath) as! SearchResultCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.cellId, for: indexPath) as! FollowerCell
             
             Task {
                 if let data = await self.output?.fetchImage(at: indexPath) {
                     let image = UIImage(data: data)
-                    let displayData = SearchResultCell.DisplayData(text: item.username, image: image)
+                    let displayData = FollowerCell.DisplayData(text: item.username, image: image)
                     
                     DispatchQueue.main.async {
                         cell.configure(with: displayData)
@@ -127,7 +127,7 @@ final class SearchResultsViewController: UIViewController {
                 }
             }
             
-            let displayData = SearchResultCell.DisplayData(text: item.username)
+            let displayData = FollowerCell.DisplayData(text: item.username)
             cell.configure(with: displayData)
             return cell
         })
@@ -152,6 +152,14 @@ extension SearchResultsViewController: SearchResultsPresenterOutput {
     
     func showFollowers(_ followers: [Follower]) {
         displayItems = followers.map(Item.init)
+    }
+    
+    func showSuccessAlert(title: String, message: String) {
+        presentAlert(title: title, message: message, type: .success)
+    }
+    
+    func showErrorAlert(title: String, message: String) {
+        presentAlert(title: title, message: message, type: .error)
     }
     
     func showFullScreenErrorMessageView(with message: String) {

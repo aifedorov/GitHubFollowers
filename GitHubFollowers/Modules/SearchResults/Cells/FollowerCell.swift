@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SearchResultCell: UICollectionViewCell {
+final class FollowerCell: UICollectionViewCell {
     
     struct DisplayData {
         let text: String
@@ -19,7 +19,7 @@ final class SearchResultCell: UICollectionViewCell {
         }
     }
     
-    static let cellIdentifier = String(describing: SearchResultCell.self)
+    static let cellId = String(describing: FollowerCell.self)
     
     private lazy var textLabel: UILabel = {
         let label = UILabel()
@@ -33,7 +33,6 @@ final class SearchResultCell: UICollectionViewCell {
         let image = UIImage(named: "avatar_placeholder")
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .secondarySystemBackground
         return imageView
     }()
     
@@ -64,20 +63,15 @@ final class SearchResultCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 12.0
         imageView.layer.masksToBounds = true
         
-        addSubview(imageView)
-        addSubview(textLabel)
+        addSubviews([imageView, textLabel])
+        
+        imageView.pinToEdgesSuperview(top: 0, leading: 0, trailing: 0, withSafeArea: false)
+        imageView.fixSize(width: 100, height: 100)
+        
+        textLabel.pinToEdgesSuperview(leading: 8, trailing: 8, bottom: 0, withSafeArea: false)
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageView.bottomAnchor.constraint(equalTo: textLabel.topAnchor, constant: -4),
-            imageView.heightAnchor.constraint(equalToConstant: 100),
-            imageView.widthAnchor.constraint(equalToConstant: 100),
-
-            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            textLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

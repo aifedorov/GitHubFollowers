@@ -31,4 +31,8 @@ extension UIColor {
     static var favoriteColor: UIColor {
         return UIColor(named: "favoriteColor")!
     }
+    
+    static var shadowColor: UIColor {
+        return UIColor(named: "shadowColor")!
+    }
 }

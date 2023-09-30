@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class FullsScreenMessageView: UIView {
+final class FullScreenMessageView: UIView {
     
     private let text: String
     private let buttonTitle: String
@@ -24,8 +24,8 @@ final class FullsScreenMessageView: UIView {
         return label
     }()
     
-    private lazy var actionButton: BigButton = {
-        let button = BigButton(title: self.buttonTitle)
+    private lazy var actionButton: GFButton = {
+        let button = GFButton(title: self.buttonTitle)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

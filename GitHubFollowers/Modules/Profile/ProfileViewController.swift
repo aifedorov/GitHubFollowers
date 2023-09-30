@@ -64,13 +64,13 @@ final class ProfileViewController: UIViewController {
         stackView.spacing = 16
         return stackView
     }()
-    private lazy var openProfileButton: BigButton = {
-        let button = BigButton(title: "Open Profile")
+    private lazy var openProfileButton: GFButton = {
+        let button = GFButton(title: "Open Profile")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    private lazy var addToFavoriteButton: BigButton = {
-        let button = BigButton(title: "Add to Favorites", backgroundColor: .favoriteColor)
+    private lazy var addToFavoriteButton: GFButton = {
+        let button = GFButton(title: "Add to Favorites", backgroundColor: .favoriteColor)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

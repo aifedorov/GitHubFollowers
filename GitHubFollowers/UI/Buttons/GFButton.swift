@@ -1,5 +1,5 @@
 //
-//  BigButton.swift
+//  GFButton.swift
 //  GithubFollowers
 //
 //  Created by Aleksandr Fedorov on 12.05.23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class BigButton: UIButton {
+final class GFButton: UIButton {
     
     private let _backgroundColor: UIColor
     

@@ -20,6 +20,8 @@ protocol SearchResultsPresenterOutput: AnyObject {
     func hideFullScreenErrorMessageView()
     func showFollowers(_ followers: [Follower])
     func showProfile(for follower: Follower)
+    func showSuccessAlert(title: String, message: String)
+    func showErrorAlert(title: String, message: String)
 }
 
 final class SearchResultsPresenter {
