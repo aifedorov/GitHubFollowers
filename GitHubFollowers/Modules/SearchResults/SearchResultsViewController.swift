@@ -46,12 +46,12 @@ final class SearchResultsViewController: UIViewController {
     private lazy var loadingView: UIActivityIndicatorView = {
         let loadingView = UIActivityIndicatorView(style: .large)
         loadingView.translatesAutoresizingMaskIntoConstraints = false
-        loadingView.color = .accentColor
+        loadingView.color = .accent
         return loadingView
     }()
         
-    private lazy var fullScreenErrorView: FullScreenMessageView = {
-        let view = FullScreenMessageView(with: "Something wrong, please try again",
+    private lazy var fullScreenErrorView: GFFullScreenMessageView = {
+        let view = GFFullScreenMessageView(with: "Something wrong, please try again",
                              buttonTitle: "Open search screen",
                              buttonAction: { [weak self] in
             self?.navigationController?.popViewController(animated: true)
@@ -70,7 +70,7 @@ final class SearchResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .primaryColor
+        view.backgroundColor = .brand
         navigationItem.searchController = searchController
         
         setupCollectionView()

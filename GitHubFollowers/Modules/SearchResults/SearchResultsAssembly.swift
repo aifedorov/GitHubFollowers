@@ -12,7 +12,7 @@ enum SearchResultsAssembly {
         let viewController = SearchResultsViewController()
         viewController.title = searchedUsername
         let presenter = SearchResultsPresenter(searchedUsername: searchedUsername,
-                                               GFUserNetworkService(GFImageLoader.shared))
+                                               UserNetworkService(ImageLoader.shared))
         
         viewController.output = presenter
         presenter.view = viewController

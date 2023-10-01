@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol GFImageLoaderProtocol {
+protocol ImageLoaderProtocol {
     func downloadImage(from urlString: String) async throws -> Data
 }
 
-final class GFImageLoader {
+final class ImageLoader {
     
-    static let shared = GFImageLoader()
+    static let shared = ImageLoader()
     
     private let session: URLSession
     private let imageDataCache = NSCache<NSString, NSData>()
@@ -24,7 +24,7 @@ final class GFImageLoader {
     
     func downloadImage(from urlString: String) async throws -> Data {
         guard let url = URL(string: urlString) else {
-            throw GFNetworkError.invalidateURL(urlString)
+            throw NetworkError.invalidateURL(urlString)
         }
         
         let key = urlString as NSString
@@ -37,7 +37,7 @@ final class GFImageLoader {
         guard
             let response = response as? HTTPURLResponse,
             (200..<300).contains(response.statusCode) else {
-            throw GFNetworkError.wrongResponse
+            throw NetworkError.wrongResponse
         }
         
         let value = data as NSData

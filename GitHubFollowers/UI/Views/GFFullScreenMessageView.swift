@@ -7,27 +7,15 @@
 
 import UIKit
 
-final class FullScreenMessageView: UIView {
+final class GFFullScreenMessageView: UIView {
     
     private let text: String
     private let buttonTitle: String
     private let buttonAction: () -> ()
     
-    private lazy var textLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = text
-        label.font = .systemFont(ofSize: 24)
-        label.textColor = .placeholderText
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        return label
-    }()
-    
+    private let textLabel: UILabel = CGTitleLabel()
     private lazy var actionButton: GFButton = {
-        let button = GFButton(title: self.buttonTitle)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+        GFButton(title: self.buttonTitle)
     }()
     
     init(with text: String, buttonTitle: String, buttonAction: @escaping () -> ()) {

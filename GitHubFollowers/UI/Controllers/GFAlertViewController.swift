@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CGAlertViewController: UIViewController {
+final class GFAlertViewController: UIViewController {
     
     enum AlertType {
         case success
@@ -18,30 +18,16 @@ final class CGAlertViewController: UIViewController {
     private let message: String
     private let buttonTitle: String
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .heavy)
-        label.textColor = UIColor.label
-        label.textAlignment = .center
-        label.text = alertTitle
-        return label
+    private lazy var titleLabel: CGTitleLabel = {
+        CGTitleLabel(text: alertTitle)
     }()
         
-    private lazy var messageLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 14)
-        label.numberOfLines = 0
-        label.textColor = UIColor.secondaryLabel
-        label.text = message
-        return label
+    private lazy var messageLabel: CGBodyLabel = {
+        CGBodyLabel(text: message)
     }()
     
     private lazy var actionButton: GFButton = {
-        let button = GFButton(title: buttonTitle)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+        GFButton(title: buttonTitle)
     }()
     
     private lazy var alertContainerView: UIView = {
@@ -101,8 +87,7 @@ final class CGAlertViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.addSubview(visualEffectView)
-        view.addSubview(alertContainerView)
+        view.addSubviews([visualEffectView, alertContainerView])
         alertContainerView.addSubviews([titleLabel, messageLabel, actionButton])
         
         alertContainerView.pinToCenterSuperview(centerX: 0, centerY: 0)

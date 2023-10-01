@@ -15,10 +15,10 @@ protocol ProfilePresenterOutput: AnyObject {
 final class ProfilePresenter {
     
     weak var view: ProfilePresenterOutput?
-    private let userNetworkService: GFUserNetworkServiceProtocol
+    private let userNetworkService: UserNetworkServiceProtocol
     private let follower: Follower
     
-    init(_ userNetworkService: GFUserNetworkServiceProtocol, _ follower: Follower) {
+    init(_ userNetworkService: UserNetworkServiceProtocol, _ follower: Follower) {
         self.follower = follower
         self.userNetworkService = userNetworkService
     }

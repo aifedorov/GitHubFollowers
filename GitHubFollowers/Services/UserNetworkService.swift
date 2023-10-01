@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GFNetworkError: Error {
+enum NetworkError: Error {
     case invalidateURL(String)
     case wrongResponse
     case invalidateJSON(DecodingError)
@@ -15,7 +15,7 @@ enum GFNetworkError: Error {
     case unknown(Error)
 }
 
-extension GFNetworkError {
+extension NetworkError {
     var description: String {
         switch self {
         case .invalidateJSON(let decodingError):
@@ -32,15 +32,15 @@ extension GFNetworkError {
     }
 }
 
-protocol GFUserNetworkServiceProtocol {
+protocol UserNetworkServiceProtocol {
     func fetchFollowers(for username: String) async throws -> [Follower]
     func fetchAvatarImage(fromURL avatarUrlString: String) async throws -> Data
 }
 
-final class GFUserNetworkService: BaseNetworkService, GFUserNetworkServiceProtocol {
-    private let imageLoader: GFImageLoader
+final class UserNetworkService: BaseNetworkService, UserNetworkServiceProtocol {
+    private let imageLoader: ImageLoader
     
-    init(_ imageLoader: GFImageLoader) {
+    init(_ imageLoader: ImageLoader) {
         self.imageLoader = imageLoader
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase

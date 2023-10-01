@@ -10,7 +10,7 @@ import UIKit
 final class FavoritesViewController: UIViewController {
     
     private lazy var favoritesIsEmptyImageView: UIImageView = {
-        let image = UIImage(named: "favorites_is_empty")
+        let image = UIImage.favoritesEmpty
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         return imageView

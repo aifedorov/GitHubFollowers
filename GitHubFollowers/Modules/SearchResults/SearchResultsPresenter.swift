@@ -62,7 +62,7 @@ final class SearchResultsPresenter {
     
     weak var view: SearchResultsPresenterOutput?
     
-    private let userNetworkService: GFUserNetworkServiceProtocol
+    private let userNetworkService: UserNetworkServiceProtocol
     private var state = State() {
         didSet {
             view?.hideFullScreenErrorMessageView()
@@ -76,7 +76,7 @@ final class SearchResultsPresenter {
         }
     }
     
-    init(searchedUsername: String, _ userNetworkService: GFUserNetworkServiceProtocol) {
+    init(searchedUsername: String, _ userNetworkService: UserNetworkServiceProtocol) {
         self.state.searchedUsername = searchedUsername
         self.userNetworkService = userNetworkService
     }
@@ -112,7 +112,7 @@ extension SearchResultsPresenter: SearchResultsViewOutput {
             do {
                 let followers = try await userNetworkService.fetchFollowers(for: state.searchedUsername)
                 self.state.updateFollowers(followers)
-            } catch GFNetworkError.resourceNotFound {
+            } catch NetworkError.resourceNotFound {
                 view?.showFullScreenErrorMessageView(with: makeErrorMessage(.userNotFound))
             } catch {
                 view?.showFullScreenErrorMessageView(with: makeErrorMessage(.networkError))

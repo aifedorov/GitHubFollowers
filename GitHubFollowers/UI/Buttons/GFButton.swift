@@ -9,7 +9,14 @@ import UIKit
 
 final class GFButton: UIButton {
     
+    enum ControlSize {
+        case big
+        case small
+    }
+    
     private let _backgroundColor: UIColor
+    private let controlSize: ControlSize
+    private let title: String
     
     override var isHighlighted: Bool {
         didSet {
@@ -28,23 +35,38 @@ final class GFButton: UIButton {
         }
     }
     
-    init(title: String, backgroundColor: UIColor = .accentColor) {
+    init(title: String, backgroundColor: UIColor = .accent, controlSize: ControlSize = .small) {
         self._backgroundColor = backgroundColor
+        self.controlSize = controlSize
+        self.title = title
+        
         super.init(frame: .zero)
         
-        self.backgroundColor = _backgroundColor
+        self.backgroundColor = backgroundColor
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        setupView()
+        tintColorDidChange()
+    }
+    
+    private func setupView() {
+        let fontSize: CGFloat
+        switch controlSize {
+        case .big:
+            fontSize = 20
+        case .small:
+            fontSize = 16
+        }
         
         let attributedTitle = NSMutableAttributedString(string: title, attributes: [
-            .foregroundColor : UIColor.primaryColor,
-            .font : UIFont.systemFont(ofSize: 24, weight: .bold)
+            .foregroundColor : UIColor.brand,
+            .font : UIFont.systemFont(ofSize: fontSize, weight: .bold)
         ])
                 
         setAttributedTitle(attributedTitle, for: .normal)
         
         layer.cornerRadius = 8
         layer.cornerCurve = .continuous
-        
-        tintColorDidChange()
     }
         
     required init?(coder: NSCoder) {
@@ -58,7 +80,7 @@ final class GFButton: UIButton {
             setTitleColor(.systemGray3, for: .normal)
             backgroundColor = .systemGray2
         } else {
-            setTitleColor(.primaryColor, for: .normal)
+            setTitleColor(.brand, for: .normal)
             backgroundColor = _backgroundColor
         }
     }

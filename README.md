@@ -19,12 +19,13 @@ A GitHubFollowers iOS app written in `Swift` using `MVP` architectural pattern.
 - [ ] Caching `JSON` data on disk
 - [ ] Support Dark Mode
 - [ ] Observing internet connection
+- [ ] Unit tests
 
 ## Getting Started
 
 1. `git clone https://github.com/aifedorov/GitHubFollowers.git`
 2. `cd GitHubFollowers`
-3. Open `GitHubFollowers.xcodeproj` in Xcode 14.0 or higher
+3. Open `GitHubFollowers.xcodeproj` in Xcode 15.0 or higher
 
 ## Screenshots
 ![Search Screen](Resources/search_screenshot.png)

@@ -34,15 +34,15 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                            image: UIImage(systemName: "star"),
                                            selectedImage: UIImage(systemName: "star.fill"))
         
-        rootViewController.viewControllers = [NavigationViewController(rootViewController: searchViewController),
-                                              NavigationViewController(rootViewController: favoritesViewController)]
+        rootViewController.viewControllers = [GFNavigationViewController(rootViewController: searchViewController),
+                                              GFNavigationViewController(rootViewController: favoritesViewController)]
         rootViewController.selectedIndex = 0
         
         return rootViewController
     }
     
     private func setupAppearance() {
-        UITabBar.appearance().backgroundColor = .brandColor
-        UITabBar.appearance().barTintColor = .primaryColor
+        UITabBar.appearance().backgroundColor = .brand
+        UITabBar.appearance().barTintColor = .brand
     }
 }

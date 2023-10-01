@@ -16,26 +16,15 @@ final class SearchViewController: UIViewController {
     var output: SearchViewOutput?
     
     private lazy var searchButton: GFButton = {
-        GFButton(title: "Get Followers")
+        GFButton(title: "Get Followers", controlSize: .big)
     }()
-    private lazy var textField: UITextField = {
-        let textField = UITextField()
-        textField.autocorrectionType = .no
-        textField.borderStyle = .roundedRect
-        textField.attributedPlaceholder = NSAttributedString(string: "Enter Username",
-                                                             attributes: [.foregroundColor : UIColor.placeholderText])
-        textField.textAlignment = .center
-        textField.font = UIFont.systemFont(ofSize: 24, weight: .medium)
-        textField.backgroundColor = .secondarySystemBackground
-        
-        textField.returnKeyType = .search
-        textField.autocapitalizationType = .none
-        
+    private lazy var textField: GFUsernameTextField = {
+        let textField = GFUsernameTextField(placeholder: "Enter username")
         textField.delegate = self
         return textField
     }()
     private lazy var imageView: UIImageView = {
-        let image = UIImage(named: "main_logo")
+        let image = UIImage.mainLogo
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -78,8 +67,7 @@ final class SearchViewController: UIViewController {
         ])
         
         searchButton.addAction(.init(handler: { [weak self] _ in
-            self?.presentAlert(title: "Test", message: " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", buttonTitle: "ok")
-//            self?.output?.didTapSearchButton(username: self?.textField.text ?? "")
+            self?.output?.didTapSearchButton(username: self?.textField.text ?? "")
         }), for: .touchUpInside)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnView(_:)))

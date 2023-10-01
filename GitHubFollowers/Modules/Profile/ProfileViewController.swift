@@ -17,36 +17,20 @@ final class ProfileViewController: UIViewController {
     var output: ProfileViewOutput?
     
     private lazy var avatarImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "placeholder"))
+        let imageView = UIImageView(image: .avatarPlaceholder)
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    private lazy var nameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Aleksandr Fedorov"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 32, weight: .heavy)
-        label.textColor = .brandColor
-        label.textAlignment = .left
-        return label
-    }()
-    private lazy var usernameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "aifedorov"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20)
-        label.textColor = .placeholderText
-        label.textAlignment = .left
-        return label
-    }()
+    private let nameLabel = GFHeadLineTitleLabel(text: "Aleksandr Fedorov")
+    private let usernameLabel = GFUsernameLabel(text: "aifedorov")
     private lazy var followersLabel: UILabel = {
         let label = UILabel()
         label.text = "5 followers · 5 following"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 20)
-        label.textColor = .brandColor
+        label.textColor = .brand
         label.textAlignment = .left
         return label
     }()
@@ -66,18 +50,16 @@ final class ProfileViewController: UIViewController {
     }()
     private lazy var openProfileButton: GFButton = {
         let button = GFButton(title: "Open Profile")
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     private lazy var addToFavoriteButton: GFButton = {
-        let button = GFButton(title: "Add to Favorites", backgroundColor: .favoriteColor)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = GFButton(title: "Add to Favorites", backgroundColor: .favorite)
         return button
     }()
     private lazy var loadingView: UIActivityIndicatorView = {
         let loadingView = UIActivityIndicatorView(style: .large)
         loadingView.translatesAutoresizingMaskIntoConstraints = false
-        loadingView.color = .accentColor
+        loadingView.color = .accent
         return loadingView
     }()
     

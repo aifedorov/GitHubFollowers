@@ -8,8 +8,8 @@
 import UIKit
 
 extension UIViewController {
-    func presentAlert(title: String, message: String, type: CGAlertViewController.AlertType) {
-        let alertViewController = CGAlertViewController(alertTitle: title, message: message, type: type)
+    func presentAlert(title: String, message: String, type: GFAlertViewController.AlertType) {
+        let alertViewController = GFAlertViewController(alertTitle: title, message: message, type: type)
         alertViewController.modalPresentationStyle = .overFullScreen
         alertViewController.modalTransitionStyle = .crossDissolve
         

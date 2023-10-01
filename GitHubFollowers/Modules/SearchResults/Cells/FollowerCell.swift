@@ -21,16 +21,12 @@ final class FollowerCell: UICollectionViewCell {
     
     static let cellId = String(describing: FollowerCell.self)
     
-    private lazy var textLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16)
-        label.textAlignment = .center
-        return label
+    private lazy var textLabel: GFUsernameLabel = {
+        GFUsernameLabel()
     }()
     
     private lazy var imageView: UIImageView = {
-        let image = UIImage(named: "avatar_placeholder")
+        let image = UIImage.avatarPlaceholder
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -55,7 +51,7 @@ final class FollowerCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         textLabel.text = nil
-        imageView.image = UIImage(named: "placeholder")
+        imageView.image = .avatarPlaceholder
     }
     
     private func setupViews() {
