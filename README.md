@@ -1,7 +1,7 @@
 # GitHubFollowers
 
 Example take-home project job interview for my mentee or self-study.
-I published the design on [Figma Community](figma.com/@aifedorov).
+I published the design on [Figma Community](https://figma.com/@aifedorov).
 A GitHubFollowers iOS app written in `Swift` using `MVP` architectural pattern.
 
 ## Frameworks/Technologies
