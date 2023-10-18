@@ -9,17 +9,26 @@ import UIKit
 
 final class GFFullScreenMessageView: UIView {
     
-    private let text: String
+    private let title: String
+    private let message: String
     private let buttonTitle: String
     private let buttonAction: () -> ()
     
-    private let textLabel: UILabel = CGTitleLabel()
+    private lazy var titleLabel: CGTitleLabel = {
+        CGTitleLabel(text: self.title)
+    }()
+    
+    private lazy var messageLabel: GFBodyLabel = {
+        GFBodyLabel(text: self.message)
+    }()
+    
     private lazy var actionButton: GFButton = {
         GFButton(title: self.buttonTitle)
     }()
     
-    init(with text: String, buttonTitle: String, buttonAction: @escaping () -> ()) {
-        self.text = text
+    init(withTitle title: String, message: String, buttonTitle: String, buttonAction: @escaping () -> ()) {
+        self.title = title
+        self.message = message
         self.buttonTitle = buttonTitle
         self.buttonAction = buttonAction
         
@@ -32,21 +41,27 @@ final class GFFullScreenMessageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(text: String) {
-        textLabel.text = text
+    func update(title: String, message: String) {
+        titleLabel.text = title
+        messageLabel.text = message
     }
     
     private func setupView() {
-        addSubviews([textLabel, actionButton])
+        addSubviews([titleLabel, messageLabel, actionButton])
         
         actionButton.fixSize(width: 240, height: 52)
         actionButton.pinToCenterSuperview(centerX: 0)
         
         NSLayoutConstraint.activate([
-            textLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 170),
-            textLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            textLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            actionButton.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 32),
+            titleLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 170),
+            titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            
+            messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
+            messageLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            messageLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            
+            actionButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 30)
         ])
         
         actionButton.addTarget(self, action: #selector(didTapActionButton(_:)), for: .touchUpInside)

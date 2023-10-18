@@ -1,5 +1,5 @@
 //
-//  CGBodyLabel.swift
+//  CGTitleLabel.swift
 //  GitHubFollowers
 //
 //  Created by Aleksandr Fedorov on 01.10.23.
@@ -7,7 +7,8 @@
 
 import UIKit
 
-final class CGBodyLabel: UILabel {
+final class CGTitleLabel: UILabel {
+    
     init(text: String) {
         super.init(frame: .zero)
         self.text = text
@@ -25,8 +26,8 @@ final class CGBodyLabel: UILabel {
     
     private func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
-        font = .systemFont(ofSize: 14)
-        textColor = .secondaryLabel
+        font = .systemFont(ofSize: 20, weight: .heavy)
+        textColor = .label
         textAlignment = .center
         numberOfLines = 0
     }

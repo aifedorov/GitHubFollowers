@@ -22,8 +22,8 @@ final class GFAlertViewController: UIViewController {
         CGTitleLabel(text: alertTitle)
     }()
         
-    private lazy var messageLabel: CGBodyLabel = {
-        CGBodyLabel(text: message)
+    private lazy var messageLabel: GFBodyLabel = {
+        GFBodyLabel(text: message)
     }()
     
     private lazy var actionButton: GFButton = {

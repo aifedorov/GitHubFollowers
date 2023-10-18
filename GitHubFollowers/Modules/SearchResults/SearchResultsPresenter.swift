@@ -16,7 +16,7 @@ enum CGSearchResultError {
 protocol SearchResultsPresenterOutput: AnyObject {
     func showLoadingView()
     func hideLoadingView()
-    func showFullScreenErrorMessageView(with message: String)
+    func showFullScreenErrorMessageView(withTile title: String, message: String)
     func hideFullScreenErrorMessageView()
     func showFollowers(_ followers: [Follower])
     func showProfile(for follower: Follower)
@@ -31,7 +31,7 @@ final class SearchResultsPresenter {
         
         private var followers: [Follower] = []
         private var filteredFollowers: [Follower] = []
-        private var isFiltering = false
+        private(set) var isSearching = false
         
         func getFollower(at index: Int) -> Follower {
             let followers = getAllFollowers()
@@ -39,7 +39,7 @@ final class SearchResultsPresenter {
         }
         
         func getAllFollowers() -> [Follower] {
-            guard !isFiltering else {
+            guard !isSearching else {
                 return filteredFollowers
             }
             return followers
@@ -50,11 +50,8 @@ final class SearchResultsPresenter {
         }
                 
         mutating func updateSearchResult(for query: String) {
-            isFiltering = !query.isEmpty
-            guard isFiltering else {
-                filteredFollowers = []
-                return
-            }
+            isSearching = !query.isEmpty
+            guard isSearching else { return }
             let filter = query.lowercased()
             filteredFollowers = followers.filter { $0.login.lowercased().contains(filter) }
         }
@@ -65,14 +62,18 @@ final class SearchResultsPresenter {
     private let userNetworkService: UserNetworkServiceProtocol
     private var state = State() {
         didSet {
-            view?.hideFullScreenErrorMessageView()
-            
-            let followers = state.getAllFollowers()
-            if followers.isEmpty {
-                view?.showFullScreenErrorMessageView(with: makeErrorMessage(.userHaveNoFollowers))
-            } else {
-                view?.showFollowers(followers)
-            }
+            updateView()
+        }
+    }
+    
+    private func updateView() {
+        view?.hideFullScreenErrorMessageView()
+        
+        let followers = state.getAllFollowers()
+        if followers.isEmpty && !state.isSearching {
+            view?.showFullScreenErrorMessageView(withTile: makeErrorTitle(.userHaveNoFollowers), message: makeErrorMessage(.userHaveNoFollowers))
+        } else {
+            view?.showFollowers(followers)
         }
     }
     
@@ -81,14 +82,25 @@ final class SearchResultsPresenter {
         self.userNetworkService = userNetworkService
     }
     
+    private func makeErrorTitle(_ error: CGSearchResultError) -> String {
+        switch error {
+        case .userNotFound:
+            return "User not found"
+        case .userHaveNoFollowers:
+            return "No followers"
+        case .networkError:
+            return "Network error"
+        }
+    }
+    
     private func makeErrorMessage(_ error: CGSearchResultError) -> String {
         switch error {
         case .userNotFound:
-            return "User not found."
+            return "Sorry, the user not found."
         case .userHaveNoFollowers:
-            return "This user doesn’t have any followers."
+            return "This user doesn't have any followers."
         case .networkError:
-            return "Network error. Please check the internet connection and try again."
+            return "Please check the internet connection and try again."
         }
     }
 }
@@ -113,9 +125,9 @@ extension SearchResultsPresenter: SearchResultsViewOutput {
                 let followers = try await userNetworkService.fetchFollowers(for: state.searchedUsername)
                 self.state.updateFollowers(followers)
             } catch NetworkError.resourceNotFound {
-                view?.showFullScreenErrorMessageView(with: makeErrorMessage(.userNotFound))
+                view?.showFullScreenErrorMessageView(withTile: makeErrorTitle(.userNotFound), message: makeErrorMessage(.userNotFound))
             } catch {
-                view?.showFullScreenErrorMessageView(with: makeErrorMessage(.networkError))
+                view?.showFullScreenErrorMessageView(withTile: makeErrorTitle(.networkError), message: makeErrorMessage(.networkError))
             }
             view?.hideLoadingView()
         }

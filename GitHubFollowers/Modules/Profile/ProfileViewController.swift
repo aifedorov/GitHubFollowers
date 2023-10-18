@@ -18,13 +18,16 @@ final class ProfileViewController: UIViewController {
     
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView(image: .avatarPlaceholder)
-        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    private let nameLabel = GFHeadLineTitleLabel(text: "Aleksandr Fedorov")
-    private let usernameLabel = GFUsernameLabel(text: "aifedorov")
+    
+    private let nameLabel = GFHeadLineTitleLabel()
+    private let usernameLabel = GFUsernameLabel()
+    private let bioLabel = GFBodyLabel()
+    
     private lazy var followersLabel: UILabel = {
         let label = UILabel()
         label.text = "5 followers · 5 following"
@@ -34,34 +37,16 @@ final class ProfileViewController: UIViewController {
         label.textAlignment = .left
         return label
     }()
-    private lazy var nameStackView: UIStackView = {
+    
+    private lazy var userInfoStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 4
+        stackView.spacing = 5
         return stackView
     }()
-    private lazy var buttonsStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 16
-        return stackView
-    }()
-    private lazy var openProfileButton: GFButton = {
-        let button = GFButton(title: "Open Profile")
-        return button
-    }()
-    private lazy var addToFavoriteButton: GFButton = {
-        let button = GFButton(title: "Add to Favorites", backgroundColor: .favorite)
-        return button
-    }()
-    private lazy var loadingView: UIActivityIndicatorView = {
-        let loadingView = UIActivityIndicatorView(style: .large)
-        loadingView.translatesAutoresizingMaskIntoConstraints = false
-        loadingView.color = .accent
-        return loadingView
-    }()
+    
+    private let loadingView = GFLoadingView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,44 +62,27 @@ final class ProfileViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .systemBackground
         
-        nameStackView.addArrangedSubview(nameLabel)
-        nameStackView.addArrangedSubview(usernameLabel)
-        view.addSubview(followersLabel)
+        userInfoStackView.addArrangedSubview(nameLabel)
+        userInfoStackView.addArrangedSubview(usernameLabel)
+        view.addSubviews([avatarImageView, userInfoStackView, loadingView])
         
-        buttonsStackView.addArrangedSubview(openProfileButton)
-        buttonsStackView.addArrangedSubview(addToFavoriteButton)
-        
-        view.addSubviews([avatarImageView, nameStackView, buttonsStackView, loadingView])
-        
-        avatarImageView.pinToEdgesSuperview(top: 60)
+        avatarImageView.pinToEdgesSuperview(top: 16, withSafeArea: true)
         avatarImageView.pinToCenterSuperview(centerX: 0)
-        avatarImageView.fixSize(width: 180, height: 180)
+        avatarImageView.fixSize(width: 120, height: 120)
         
-        nameStackView.pinToEdgesSuperview(leading: 30, trailing: 30)
-        followersLabel.pinToEdgesSuperview(leading: 30, trailing: 30)
-        openProfileButton.fixSize(height: 52)
-        addToFavoriteButton.fixSize(height: 52)
-        
-        buttonsStackView.pinToEdgesSuperview(leading: 24, trailing: 24, bottom: 24)
+        userInfoStackView.pinToEdgesSuperview(leading: 30, trailing: 30)
         
         loadingView.pinToCenterSuperview(centerX: 0, centerY: 0)
         
         NSLayoutConstraint.activate([
-            nameStackView.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 30),
-            followersLabel.topAnchor.constraint(equalTo: nameStackView.bottomAnchor, constant: 10),
+            userInfoStackView.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 24)
         ])
-        
-        openProfileButton.addAction(.init(handler: { [weak self] _ in
-            self?.output?.didTapOpenProfileButton()
-        }), for: .touchUpInside)
-        
-        addToFavoriteButton.addAction(.init(handler: { [weak self] _ in
-            self?.output?.didTapAddToFavoriteButton()
-        }), for: .touchUpInside)
     }
     
     func configure(with user: User) {
+        nameLabel.text = user.name
         usernameLabel.text = user.login
+        bioLabel.text = user.bio
     }
 }
 
@@ -122,10 +90,11 @@ extension ProfileViewController: ProfilePresenterOutput {
     
     func showLoadingView() {
         loadingView.isHidden = false
-        loadingView.startAnimating()
+        loadingView.startLoading()
     }
     
     func hideLoadingView() {
-        loadingView.stopAnimating()
+        loadingView.isHidden = true
+        loadingView.stopLoading()
     }
 }

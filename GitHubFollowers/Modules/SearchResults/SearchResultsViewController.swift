@@ -23,7 +23,7 @@ final class SearchResultsViewController: UIViewController {
     struct Item: Hashable {
         let id: Int
         let username: String
-                
+        
         init(_ follower: Follower) {
             self.id = follower.id
             self.username = follower.login
@@ -43,19 +43,15 @@ final class SearchResultsViewController: UIViewController {
         }
     }
     
-    private lazy var loadingView: UIActivityIndicatorView = {
-        let loadingView = UIActivityIndicatorView(style: .large)
-        loadingView.translatesAutoresizingMaskIntoConstraints = false
-        loadingView.color = .accent
-        return loadingView
-    }()
-        
+    private let loadingView = GFLoadingView()
+    
     private lazy var fullScreenErrorView: GFFullScreenMessageView = {
-        let view = GFFullScreenMessageView(with: "Something wrong, please try again",
-                             buttonTitle: "Open search screen",
-                             buttonAction: { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        })
+        let view = GFFullScreenMessageView(withTitle: "Something wrong",
+                                           message: "Something wrong, please try again",
+                                           buttonTitle: "Go back") { [weak self] in
+            guard let self else { return }
+            self.navigationController?.popViewController(animated: true)
+        }
         return view
     }()
     
@@ -106,8 +102,7 @@ final class SearchResultsViewController: UIViewController {
                                           collectionViewLayout: makeCollectionViewLayout())
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(FollowerCell.self,
-                                forCellWithReuseIdentifier: FollowerCell.cellId)
+        collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.cellId)
     }
     
     private func setupDataSource() {
@@ -162,27 +157,28 @@ extension SearchResultsViewController: SearchResultsPresenterOutput {
         presentAlert(title: title, message: message, type: .error)
     }
     
-    func showFullScreenErrorMessageView(with message: String) {
-        fullScreenErrorView.setup(text: message)
+    func showFullScreenErrorMessageView(withTile title: String, message: String) {
+        fullScreenErrorView.update(title: title, message: message)
         collectionView.backgroundView = fullScreenErrorView
     }
-        
+    
     func hideFullScreenErrorMessageView() {
         collectionView.backgroundView = nil
     }
     
     func showLoadingView() {
         loadingView.isHidden = false
-        loadingView.startAnimating()
+        loadingView.startLoading()
     }
     
     func hideLoadingView() {
-        loadingView.stopAnimating()
+        loadingView.isHidden = true
+        loadingView.stopLoading()
     }
     
     func showProfile(for follower: Follower) {
         let profileViewController = ProfileAssembly.makeModule(with: follower)
-        navigationController?.pushViewController(profileViewController, animated: true)
+        present(profileViewController, animated: true)
     }
 }
 
