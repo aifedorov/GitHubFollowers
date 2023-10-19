@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,7 +23,7 @@
 		F8089C472A598C9400BE0CDC /* GFFullScreenMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8089C462A598C9400BE0CDC /* GFFullScreenMessageView.swift */; };
 		F808D1A62AD820270036739A /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F808D1A42AD820270036739A /* GFBodyLabel.swift */; };
 		F808D1A72AD820270036739A /* GFTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F808D1A52AD820270036739A /* GFTitleLabel.swift */; };
-		F8332EF32ADFDC5E00DF2A15 /* TinyDI in Frameworks */ = {isa = PBXBuildFile; productRef = F8332EF22ADFDC5E00DF2A15 /* TinyDI */; };
+		F8332EFC2AE1252000DF2A15 /* TinyDI in Frameworks */ = {isa = PBXBuildFile; productRef = F8332EFB2AE1252000DF2A15 /* TinyDI */; };
 		F83D60472A9E1AF4009E15B3 /* followers.json in Resources */ = {isa = PBXBuildFile; fileRef = F83D60462A9E1AF4009E15B3 /* followers.json */; };
 		F8443A222AC080B9007418F2 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8443A212AC080B9007418F2 /* UIView+Extensions.swift */; };
 		F84FD72E2AC9E73F005C4B71 /* GFUsernameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84FD72D2AC9E73F005C4B71 /* GFUsernameTextField.swift */; };
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8332EF32ADFDC5E00DF2A15 /* TinyDI in Frameworks */,
+				F8332EFC2AE1252000DF2A15 /* TinyDI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,7 +317,7 @@
 			);
 			name = GitHubFollowers;
 			packageProductDependencies = (
-				F8332EF22ADFDC5E00DF2A15 /* TinyDI */,
+				F8332EFB2AE1252000DF2A15 /* TinyDI */,
 			);
 			productName = GithubFollowers;
 			productReference = 3BB30BEA2A0A37D100BE57A3 /* GitHubFollowers.app */;
@@ -348,6 +348,7 @@
 			);
 			mainGroup = 3BB30BE12A0A37D000BE57A3;
 			packageReferences = (
+				F8332EFA2AE1252000DF2A15 /* XCLocalSwiftPackageReference "TinyDI" */,
 			);
 			productRefGroup = 3BB30BEB2A0A37D100BE57A3 /* Products */;
 			projectDirPath = "";
@@ -620,8 +621,15 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		F8332EFA2AE1252000DF2A15 /* XCLocalSwiftPackageReference "TinyDI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = TinyDI;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		F8332EF22ADFDC5E00DF2A15 /* TinyDI */ = {
+		F8332EFB2AE1252000DF2A15 /* TinyDI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = TinyDI;
 		};

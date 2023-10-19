@@ -23,6 +23,7 @@ A GitHubFollowers iOS app written in `Swift` using `MVP` architectural pattern.
 - [ ] Observing internet connection status.
 - [ ] Unit tests.
 - [ ] UI/UISnapshot tests.
+- [ ] Dependecy Injection Container (TinyDI) for demonstation how work simple DI container whithout scopse, dependecies graph resoulution and other features. See more [Swinject](https://github.com/Swinject/Swinject/tree/master).
 
 ## Getting Started
 
