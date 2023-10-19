@@ -17,13 +17,14 @@ A GitHubFollowers iOS app written in `Swift` using `MVP` architectural pattern.
 - [x] Using `Codable` for encoding and decoding `JSON`.
 - [x] Error handling and displaying user fullscreen or alert.
 - [x] Caching image using `NSCache`.
-- [ ] Caching favorites on disk.
 - [ ] Caching favorites in `Core Data`.
 - [ ] Supporting Dark Mode.
 - [ ] Observing internet connection status.
 - [ ] Unit tests.
 - [ ] UI/UISnapshot tests.
-- [ ] Dependecy Injection Container (TinyDI) for demonstation how work simple DI container whithout scopse, dependecies graph resoulution and other features. See more [Swinject](https://github.com/Swinject/Swinject/tree/master).
+- [ ] A dependency injection container (TinyDI) shows how a simple DI container works without scopes, resolution graph dependencies, and other features. See more [Swinject](https://github.com/Swinject/Swinject/tree/master).
+
+**Disclaimer:** `Core Data` for this project is overwhelming, using cache on disk is enough. Also, TinyDI is not production-ready. This project exists only for studying iOS development.
 
 ## Getting Started
 
