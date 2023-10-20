@@ -27,7 +27,6 @@ final class GFUsernameLabel: UILabel {
     private func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
         font = .systemFont(ofSize: 16, weight: .semibold)
-        textColor = .brand
-        textAlignment = .center
+        textColor = .label
     }
 }

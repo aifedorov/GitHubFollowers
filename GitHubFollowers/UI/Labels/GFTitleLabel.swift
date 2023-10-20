@@ -28,7 +28,6 @@ final class CGTitleLabel: UILabel {
         translatesAutoresizingMaskIntoConstraints = false
         font = .systemFont(ofSize: 20, weight: .heavy)
         textColor = .label
-        textAlignment = .center
         numberOfLines = 0
     }
 }

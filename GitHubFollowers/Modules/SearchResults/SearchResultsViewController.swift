@@ -89,7 +89,7 @@ final class SearchResultsViewController: UIViewController {
     private func makeCollectionViewLayout() -> UICollectionViewLayout {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.itemSize = CGSize(width: 100,
-                                               height: 120)
+                                               height: 130)
         collectionViewLayout.sectionInset = UIEdgeInsets(top: 16,
                                                          left: 30,
                                                          bottom: 16,

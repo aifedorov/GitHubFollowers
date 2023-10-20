@@ -120,16 +120,17 @@ extension SearchResultsPresenter: SearchResultsViewOutput {
     
     func viewDidLoad() {
         view?.showLoadingView()
-        Task { @MainActor in
+        Task { @MainActor [weak self] in
+            guard let self else { return }
             do {
-                let followers = try await userNetworkService.fetchFollowers(for: state.searchedUsername)
+                let followers = try await self.userNetworkService.fetchFollowers(for: self.state.searchedUsername)
                 self.state.updateFollowers(followers)
             } catch NetworkError.resourceNotFound {
-                view?.showFullScreenErrorMessageView(withTile: makeErrorTitle(.userNotFound), message: makeErrorMessage(.userNotFound))
+                self.view?.showFullScreenErrorMessageView(withTile: self.makeErrorTitle(.userNotFound), message: self.makeErrorMessage(.userNotFound))
             } catch {
-                view?.showFullScreenErrorMessageView(withTile: makeErrorTitle(.networkError), message: makeErrorMessage(.networkError))
+                self.view?.showFullScreenErrorMessageView(withTile: self.makeErrorTitle(.networkError), message: self.makeErrorMessage(.networkError))
             }
-            view?.hideLoadingView()
+            self.view?.hideLoadingView()
         }
     }
     

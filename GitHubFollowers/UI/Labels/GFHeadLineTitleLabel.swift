@@ -27,7 +27,6 @@ final class GFHeadLineTitleLabel: UILabel {
     private func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
         font = .systemFont(ofSize: 32, weight: .heavy)
-        textColor = .brand
-        textAlignment = .left
+        textColor = .label
     }
 }

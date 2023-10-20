@@ -35,6 +35,7 @@ extension NetworkError {
 protocol UserNetworkServiceProtocol {
     func fetchFollowers(for username: String) async throws -> [Follower]
     func fetchAvatarImage(fromURL avatarUrlString: String) async throws -> Data
+    func fetchUserInfo(for username: String) async throws -> User
 }
 
 final class UserNetworkService: BaseNetworkService, UserNetworkServiceProtocol {
@@ -54,5 +55,10 @@ final class UserNetworkService: BaseNetworkService, UserNetworkServiceProtocol {
     
     func fetchAvatarImage(fromURL avatarUrlString: String) async throws -> Data {
         return try await imageLoader.downloadImage(from: avatarUrlString)
+    }
+    
+    func fetchUserInfo(for username: String) async throws -> User {
+        let urlString = "https://api.github.com/users/\(username)"
+        return try await fetch(from: urlString)
     }
 }

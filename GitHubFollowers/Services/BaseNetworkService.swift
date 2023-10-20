@@ -39,8 +39,10 @@ class BaseNetworkService {
         do {
             return try decoder.decode(Resource.self, from: data)
         } catch let error as DecodingError {
+            debugPrint(error)
             throw NetworkError.invalidateJSON(error)
         } catch {
+            debugPrint(error)
             throw NetworkError.unknown(error)
         }
     }

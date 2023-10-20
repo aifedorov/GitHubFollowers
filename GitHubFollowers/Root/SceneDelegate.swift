@@ -11,7 +11,6 @@ import TinyDI
 enum DependanciesNames {
     enum Module {
         static let search = "SearchModule"
-        static let searchResults = "SearchResultsModule"
         static let favorites = "FavoritesModule"
     }
 }
@@ -38,25 +37,21 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let favoritesViewController = container.resolve(UIViewController.self, name: DependanciesNames.Module.favorites)!
         
         searchViewController.tabBarItem = UITabBarItem(title: "Followers",
-                                           image: UIImage(systemName: "person.3"),
-                                           selectedImage: UIImage(systemName: "person.3.fill"))
+                                                       image: UIImage(systemName: "person.3"),
+                                                       selectedImage: UIImage(systemName: "person.3.fill"))
         
         favoritesViewController.tabBarItem = UITabBarItem(title: "Favorites",
-                                           image: UIImage(systemName: "star"),
-                                           selectedImage: UIImage(systemName: "star.fill"))
+                                                          image: UIImage(systemName: "star"),
+                                                          selectedImage: UIImage(systemName: "star.fill"))
         
         rootViewController.viewControllers = [GFNavigationViewController(rootViewController: searchViewController),
                                               GFNavigationViewController(rootViewController: favoritesViewController)]
         rootViewController.selectedIndex = 0
-        
         return rootViewController
     }
     
     private func registerDependancies() {
         container.register(UIViewController.self, name: DependanciesNames.Module.search, factory: SearchAssembly.makeModule)
-        container.register(UIViewController.self, name: DependanciesNames.Module.searchResults) { (searchedUsername: String) in
-            SearchResultsAssembly.makeModule(searchedUsername: searchedUsername)
-        }
         container.register(UIViewController.self, name: DependanciesNames.Module.favorites) {
             FavoritesViewController()
         }

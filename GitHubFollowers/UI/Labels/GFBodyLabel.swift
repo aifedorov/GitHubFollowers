@@ -27,7 +27,6 @@ final class GFBodyLabel: UILabel {
         translatesAutoresizingMaskIntoConstraints = false
         font = .systemFont(ofSize: 14)
         textColor = .secondaryLabel
-        textAlignment = .center
         numberOfLines = 0
     }
 }
