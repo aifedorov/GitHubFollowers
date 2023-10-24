@@ -15,11 +15,15 @@ final class GFFullScreenMessageView: UIView {
     private let buttonAction: () -> ()
     
     private lazy var titleLabel: CGTitleLabel = {
-        CGTitleLabel(text: self.title)
+        let label = CGTitleLabel(text: self.title)
+        label.textAlignment = .center
+        return label
     }()
     
     private lazy var messageLabel: GFBodyLabel = {
-        GFBodyLabel(text: self.message)
+        let label = GFBodyLabel(text: self.message)
+        label.textAlignment = .center
+        return label
     }()
     
     private lazy var actionButton: GFButton = {

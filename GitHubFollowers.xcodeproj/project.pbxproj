@@ -43,6 +43,8 @@
 		F8C45EAA2AB363AE002332B7 /* UserNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C45EA92AB363AE002332B7 /* UserNetworkService.swift */; };
 		F8C45EB92AB581FD002332B7 /* BaseNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C45EB82AB581FD002332B7 /* BaseNetworkService.swift */; };
 		F8C7D3D52A5D5991000B1FE0 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7D3D42A5D5991000B1FE0 /* FollowerCell.swift */; };
+		F8CC8C242AE2957E0063DA9B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8C232AE2957E0063DA9B /* NetworkError.swift */; };
+		F8CC8C262AE295FD0063DA9B /* Error+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8C252AE295FD0063DA9B /* Error+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +85,8 @@
 		F8C45EA92AB363AE002332B7 /* UserNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNetworkService.swift; sourceTree = "<group>"; };
 		F8C45EB82AB581FD002332B7 /* BaseNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkService.swift; sourceTree = "<group>"; };
 		F8C7D3D42A5D5991000B1FE0 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
+		F8CC8C232AE2957E0063DA9B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		F8CC8C252AE295FD0063DA9B /* Error+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				3BF7AFCC2A1117CA00218AF8 /* Models */,
+				F8CC8C232AE2957E0063DA9B /* NetworkError.swift */,
 				F8C45EB82AB581FD002332B7 /* BaseNetworkService.swift */,
 				F8C45EA92AB363AE002332B7 /* UserNetworkService.swift */,
 				F861F8802A5F1F00008B02E7 /* ImageLoader.swift */,
@@ -220,6 +225,7 @@
 				F8089C422A548A2E00BE0CDC /* String+Validation.swift */,
 				F8443A212AC080B9007418F2 /* UIView+Extensions.swift */,
 				F895FE6A2AC5E3D8009A9D3F /* UIViewController+Extensions.swift */,
+				F8CC8C252AE295FD0063DA9B /* Error+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -379,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8C3F0EA2A9F403B00EC6590 /* ProfilePresenter.swift in Sources */,
+				F8CC8C242AE2957E0063DA9B /* NetworkError.swift in Sources */,
 				F8C7D3D52A5D5991000B1FE0 /* FollowerCell.swift in Sources */,
 				F895FE6B2AC5E3D8009A9D3F /* UIViewController+Extensions.swift in Sources */,
 				F884213E2A3F5CCB008C4A9B /* SearchResultsAssembly.swift in Sources */,
@@ -399,6 +406,7 @@
 				F8089C472A598C9400BE0CDC /* GFFullScreenMessageView.swift in Sources */,
 				3BB30BF22A0A37D100BE57A3 /* SearchViewController.swift in Sources */,
 				F808D1A62AD820270036739A /* GFBodyLabel.swift in Sources */,
+				F8CC8C262AE295FD0063DA9B /* Error+Extensions.swift in Sources */,
 				F84FD72E2AC9E73F005C4B71 /* GFUsernameTextField.swift in Sources */,
 				3BB30BEE2A0A37D100BE57A3 /* AppDelegate.swift in Sources */,
 				F8C45EB92AB581FD002332B7 /* BaseNetworkService.swift in Sources */,

@@ -7,12 +7,6 @@
 
 import Foundation
 
-enum CGSearchResultError {
-    case userNotFound
-    case userHaveNoFollowers
-    case networkError
-}
-
 protocol SearchResultsPresenterOutput: AnyObject {
     func showLoadingView()
     func hideLoadingView()
@@ -71,7 +65,7 @@ final class SearchResultsPresenter {
         
         let followers = state.getAllFollowers()
         if followers.isEmpty && !state.isSearching {
-            view?.showFullScreenErrorMessageView(withTile: makeErrorTitle(.userHaveNoFollowers), message: makeErrorMessage(.userHaveNoFollowers))
+            showFullScreenErrorMessageView(with: .userHaveNoFollowers)
         } else {
             view?.showFollowers(followers)
         }
@@ -82,26 +76,8 @@ final class SearchResultsPresenter {
         self.userNetworkService = userNetworkService
     }
     
-    private func makeErrorTitle(_ error: CGSearchResultError) -> String {
-        switch error {
-        case .userNotFound:
-            return "User not found"
-        case .userHaveNoFollowers:
-            return "No followers"
-        case .networkError:
-            return "Network error"
-        }
-    }
-    
-    private func makeErrorMessage(_ error: CGSearchResultError) -> String {
-        switch error {
-        case .userNotFound:
-            return "Sorry, the user not found."
-        case .userHaveNoFollowers:
-            return "This user doesn't have any followers."
-        case .networkError:
-            return "Please check the internet connection and try again."
-        }
+    private func showFullScreenErrorMessageView(with alertContent: AlertContent) {
+        view?.showFullScreenErrorMessageView(withTile: alertContent.title, message: alertContent.message)
     }
 }
 
@@ -126,9 +102,9 @@ extension SearchResultsPresenter: SearchResultsViewOutput {
                 let followers = try await self.userNetworkService.fetchFollowers(for: self.state.searchedUsername)
                 self.state.updateFollowers(followers)
             } catch NetworkError.resourceNotFound {
-                self.view?.showFullScreenErrorMessageView(withTile: self.makeErrorTitle(.userNotFound), message: self.makeErrorMessage(.userNotFound))
+                self.showFullScreenErrorMessageView(with: .userNotFound)
             } catch {
-                self.view?.showFullScreenErrorMessageView(withTile: self.makeErrorTitle(.networkError), message: self.makeErrorMessage(.networkError))
+                self.showFullScreenErrorMessageView(with: .networkError)
             }
             self.view?.hideLoadingView()
         }
