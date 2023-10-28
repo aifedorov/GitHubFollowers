@@ -18,7 +18,7 @@ public final class DIContainer {
                                   name: String? = nil,
                                   factory: @escaping () -> Service) {
         
-        let key = makeServiceKey(serviceType, name: name)
+        let key = makeServiceKey(serviceType, argType: Any.self, name: name)
         services[key] = factory()
     }
     
@@ -26,7 +26,7 @@ public final class DIContainer {
                                   name: String? = nil,
                                   factory: @escaping (DIContainer) -> Service) {
         
-        let key = makeServiceKey(serviceType, name: name)
+        let key = makeServiceKey(serviceType, argType: Any.self, name: name)
         services[key] = factory(self)
     }
     
@@ -34,14 +34,14 @@ public final class DIContainer {
                                        name: String? = nil,
                                        factory: @escaping (Arg) -> Service) {
         
-        let key = makeServiceKey(serviceType, name: name)
+        let key = makeServiceKey(serviceType, argType: Any.self, name: name)
         serviceFactories[key] = factory
     }
     
     public func resolve<Service>(_ serviceType: Service.Type,
                                       name: String? = nil) -> Service? {
         
-        let key = makeServiceKey(serviceType, name: name)
+        let key = makeServiceKey(serviceType, argType: Any.self, name: name)
         return services[key] as? Service
     }
     
@@ -49,7 +49,7 @@ public final class DIContainer {
                                       name: String? = nil,
                                       argument: Arg) -> Service {
         
-        let key = makeServiceKey(serviceType, name: name)
+        let key = makeServiceKey(serviceType, argType: Arg.self, name: name)
         let factory = serviceFactories[key] as! ((Arg) -> Service)
         
         return factory(argument)
@@ -60,8 +60,10 @@ public final class DIContainer {
     }
     
     private func makeServiceKey<Service>(_ serviceType: Service.Type,
+                                         argType: Any.Type,
                                          name: String? = nil) -> ServiceKey {
         return ServiceKey(serviceType: serviceType,
+                          argType: argType,
                           name: name ?? String(describing: serviceType))
     }
 }

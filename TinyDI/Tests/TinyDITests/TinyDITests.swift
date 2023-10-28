@@ -93,14 +93,14 @@ final class TinyDITests: XCTestCase {
     
     func testContainerCanRemoveAllRegisteredServices() {
         let animalNameOne = "MyPetOne"
-        let animalNameTwo = "MyPetTwo"
+        let catName = "MyCat"
         
         container.register(Animal.self, name: animalNameOne) { return Animal() }
-        container.register(Animal.self, name: animalNameTwo) { return Animal() }
+        container.register(Animal.self) { arg in Cat(name: arg) }
         container.removeAll()
         
         let animalFromDIOne = container.resolve(Animal.self, name: animalNameOne)
-        let animalFromDITwo = container.resolve(Animal.self, name: animalNameTwo)
+        let animalFromDITwo = container.resolve(Animal.self, argument: catName)
 
         XCTAssertNil(animalFromDIOne)
         XCTAssertNil(animalFromDITwo)
