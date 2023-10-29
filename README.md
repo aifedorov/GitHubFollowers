@@ -2,10 +2,10 @@
 
 Example take-home project job interview for my mentee or self-study.
 I published the design on [Figma Community](https://figma.com/@aifedorov).
-A GitHubFollowers iOS app written in `Swift` using `MVP` architectural pattern.
 
 ## Frameworks/Technologies
-
+The project consists of two projects: UIKit and SwiftUI versions.
+1) A GitHubFollowers iOS app written in `Swift` using `MVP` architectural pattern.
 - [x] 100% programmatic UI using `UIKit` and `NSLayoutAnchor`.
 - [x] No 3rd party libraries.
 - [x] iOS 14.0 or higher.
@@ -17,20 +17,28 @@ A GitHubFollowers iOS app written in `Swift` using `MVP` architectural pattern.
 - [x] Using `Codable` for encoding and decoding `JSON`.
 - [x] Error handling and displaying user fullscreen or alert.
 - [x] Caching image using `NSCache`.
+- [x] The dependency injection container (TinyDI) demonstrates how a simple DI container works without scopes, resolution graph dependencies, and other features. See more [Swinject](https://github.com/Swinject/Swinject/tree/master).
+
+2) A GitHubFollowers iOS app written using `SwiftUI` and `MVVM` architecture.
+- [x] iOS 15.0 or higher.
+- [x] No 3rd party libraries.
+- [x] `Swift Concurrency (async/await)` for the network.
+- [x] Using `Codable` for encoding and decoding `JSON`.
+- [ ] Error handling and displaying user alert.
+- [x] Caching image using `NSCache`.
 - [ ] Caching favorites in `Core Data`.
 - [ ] Supporting Dark Mode.
-- [ ] Observing internet connection status.
 - [ ] Unit tests.
 - [ ] UI/UISnapshot tests.
-- [ ] A dependency injection container (TinyDI) shows how a simple DI container works without scopes, resolution graph dependencies, and other features. See more [Swinject](https://github.com/Swinject/Swinject/tree/master).
+- [x] The dependency injection container (TinyDI) demonstrates how a simple DI container works without scopes, resolution graph dependencies, and other features. See more [Swinject](https://github.com/Swinject/Swinject/tree/master).
 
-**Disclaimer:** `Core Data` for this project is overwhelming, using cache on disk is enough. Also, TinyDI is not production-ready. This project exists only for studying iOS development.
+**Disclaimer:** `Core Data` for this project is overwhelming, using cache on disk is enough. Also, `TinyDI`` is not production-ready. This project exists only for studying iOS development.
 
 ## Getting Started
 
 1. `git clone https://github.com/aifedorov/GitHubFollowers.git`.
 2. `cd GitHubFollowers`.
-3. Open `GitHubFollowers.xcodeproj` in Xcode 15.0 or higher.
+3. Open `GitHubFollowers.GitHubFollowers.xcworkspace` in Xcode 15.0 or higher and choose UIKit or SwiftUI version xcodeproject.
 
 ## Screenshots
 
@@ -39,7 +47,7 @@ A GitHubFollowers iOS app written in `Swift` using `MVP` architectural pattern.
 
 ## Contributing
 
-Please feel free to help out with this project! If you see something that could be made better or want a new feature, open up an issue or send a Pull Request! I don't plan on putting this out on the App Store, but I think it's a great learning resource for those interested in iOS development.
+Please feel free to help out with this project! If you see something that could be made better or want a new feature, open up an issue or send a Pull Request! I don't plan on putting this out on the App Store, but it's a great learning resource for those interested in iOS development.
 
 ## Reach me
 
