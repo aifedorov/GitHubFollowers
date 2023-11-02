@@ -6,26 +6,16 @@
 //
 
 import UIKit
-import TinyDI
-
-enum DependanciesNames {
-    enum Module {
-        static let search = "SearchModule"
-        static let favorites = "FavoritesModule"
-    }
-}
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    let container = DIContainer()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = scene as? UIWindowScene else { return }
         window = UIWindow(windowScene: windowScene)
         
         setupAppearance()
-        registerDependancies()
         
         window?.rootViewController = makeRootViewController()
         window?.makeKeyAndVisible()
@@ -33,8 +23,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func makeRootViewController() -> UIViewController {
         let rootViewController = UITabBarController()
-        let searchViewController = container.resolve(UIViewController.self, name: DependanciesNames.Module.search)!
-        let favoritesViewController = container.resolve(UIViewController.self, name: DependanciesNames.Module.favorites)!
+        let searchViewController = SearchAssembly.makeModule()
+        let favoritesViewController = FavoritesViewController()
         
         searchViewController.tabBarItem = UITabBarItem(title: "Followers",
                                                        image: UIImage(systemName: "person.3"),
@@ -48,13 +38,6 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                               GFNavigationViewController(rootViewController: favoritesViewController)]
         rootViewController.selectedIndex = 0
         return rootViewController
-    }
-    
-    private func registerDependancies() {
-        container.register(UIViewController.self, name: DependanciesNames.Module.search, factory: SearchAssembly.makeModule)
-        container.register(UIViewController.self, name: DependanciesNames.Module.favorites) {
-            FavoritesViewController()
-        }
     }
     
     private func setupAppearance() {

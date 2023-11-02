@@ -53,14 +53,14 @@ final class GFButton: UIButton {
         let fontSize: CGFloat
         switch controlSize {
         case .big:
-            fontSize = 20
+            fontSize = 24
         case .small:
             fontSize = 16
         }
         
         let attributedTitle = NSMutableAttributedString(string: title, attributes: [
             .foregroundColor : UIColor.brand,
-            .font : UIFont.systemFont(ofSize: fontSize, weight: .bold)
+            .font : UIFont.systemFont(ofSize: fontSize, weight: .semibold)
         ])
                 
         setAttributedTitle(attributedTitle, for: .normal)

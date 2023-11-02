@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,11 +19,10 @@
 		3BF7A8E82A0EA82C00218AF8 /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7A8E72A0EA82C00218AF8 /* GFButton.swift */; };
 		3BF7AFEF2A13F31D00218AF8 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7AFEE2A13F31D00218AF8 /* SearchResultsViewController.swift */; };
 		3BF7B6AF2A14F67300218AF8 /* GFNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7B6AE2A14F67300218AF8 /* GFNavigationViewController.swift */; };
-		F8089C432A548A2E00BE0CDC /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8089C422A548A2E00BE0CDC /* String+Validation.swift */; };
+		F8089C432A548A2E00BE0CDC /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8089C422A548A2E00BE0CDC /* String+Extensions.swift */; };
 		F8089C472A598C9400BE0CDC /* GFFullScreenMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8089C462A598C9400BE0CDC /* GFFullScreenMessageView.swift */; };
 		F808D1A62AD820270036739A /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F808D1A42AD820270036739A /* GFBodyLabel.swift */; };
 		F808D1A72AD820270036739A /* GFTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F808D1A52AD820270036739A /* GFTitleLabel.swift */; };
-		F8332EFC2AE1252000DF2A15 /* TinyDI in Frameworks */ = {isa = PBXBuildFile; productRef = F8332EFB2AE1252000DF2A15 /* TinyDI */; };
 		F83D60472A9E1AF4009E15B3 /* followers.json in Resources */ = {isa = PBXBuildFile; fileRef = F83D60462A9E1AF4009E15B3 /* followers.json */; };
 		F8443A222AC080B9007418F2 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8443A212AC080B9007418F2 /* UIView+Extensions.swift */; };
 		F84FD72E2AC9E73F005C4B71 /* GFUsernameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84FD72D2AC9E73F005C4B71 /* GFUsernameTextField.swift */; };
@@ -33,6 +32,8 @@
 		F861F8812A5F1F01008B02E7 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F861F8802A5F1F00008B02E7 /* ImageLoader.swift */; };
 		F884213E2A3F5CCB008C4A9B /* SearchResultsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884213D2A3F5CCB008C4A9B /* SearchResultsAssembly.swift */; };
 		F88421402A3F5F31008C4A9B /* SearchResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884213F2A3F5F31008C4A9B /* SearchResultsPresenter.swift */; };
+		F890579A2AF0E4870007223E /* GFBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89057992AF0E4870007223E /* GFBlockView.swift */; };
+		F890579C2AF0E8400007223E /* GFBlockTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F890579B2AF0E8400007223E /* GFBlockTitleLabel.swift */; };
 		F895FE652AC47DF5009A9D3F /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = F895FE642AC47DF5009A9D3F /* user.json */; };
 		F895FE672AC47F69009A9D3F /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = F895FE662AC47F69009A9D3F /* Follower.swift */; };
 		F895FE692AC5DAA8009A9D3F /* GFAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F895FE682AC5DAA8009A9D3F /* GFAlertViewController.swift */; };
@@ -62,7 +63,7 @@
 		3BF7A8E72A0EA82C00218AF8 /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
 		3BF7AFEE2A13F31D00218AF8 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		3BF7B6AE2A14F67300218AF8 /* GFNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFNavigationViewController.swift; sourceTree = "<group>"; };
-		F8089C422A548A2E00BE0CDC /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
+		F8089C422A548A2E00BE0CDC /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		F8089C462A598C9400BE0CDC /* GFFullScreenMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFFullScreenMessageView.swift; sourceTree = "<group>"; };
 		F808D1A42AD820270036739A /* GFBodyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
 		F808D1A52AD820270036739A /* GFTitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GFTitleLabel.swift; sourceTree = "<group>"; };
@@ -75,6 +76,8 @@
 		F861F8802A5F1F00008B02E7 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		F884213D2A3F5CCB008C4A9B /* SearchResultsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsAssembly.swift; sourceTree = "<group>"; };
 		F884213F2A3F5F31008C4A9B /* SearchResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsPresenter.swift; sourceTree = "<group>"; };
+		F89057992AF0E4870007223E /* GFBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBlockView.swift; sourceTree = "<group>"; };
+		F890579B2AF0E8400007223E /* GFBlockTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBlockTitleLabel.swift; sourceTree = "<group>"; };
 		F895FE642AC47DF5009A9D3F /* user.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		F895FE662AC47F69009A9D3F /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		F895FE682AC5DAA8009A9D3F /* GFAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertViewController.swift; sourceTree = "<group>"; };
@@ -94,7 +97,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8332EFC2AE1252000DF2A15 /* TinyDI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,7 +224,7 @@
 		3BF7A8EA2A0EA84100218AF8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F8089C422A548A2E00BE0CDC /* String+Validation.swift */,
+				F8089C422A548A2E00BE0CDC /* String+Extensions.swift */,
 				F8443A212AC080B9007418F2 /* UIView+Extensions.swift */,
 				F895FE6A2AC5E3D8009A9D3F /* UIViewController+Extensions.swift */,
 				F8CC8C252AE295FD0063DA9B /* Error+Extensions.swift */,
@@ -265,6 +267,7 @@
 			children = (
 				F8089C462A598C9400BE0CDC /* GFFullScreenMessageView.swift */,
 				F84FD7342AC9EE66005C4B71 /* GFLoadingView.swift */,
+				F89057992AF0E4870007223E /* GFBlockView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				F808D1A52AD820270036739A /* GFTitleLabel.swift */,
 				F84FD72F2AC9EA39005C4B71 /* GFUsernameLabel.swift */,
 				F84FD7312AC9ECF7005C4B71 /* GFHeadLineTitleLabel.swift */,
+				F890579B2AF0E8400007223E /* GFBlockTitleLabel.swift */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -323,7 +327,6 @@
 			);
 			name = GitHubFollowers;
 			packageProductDependencies = (
-				F8332EFB2AE1252000DF2A15 /* TinyDI */,
 			);
 			productName = GithubFollowers;
 			productReference = 3BB30BEA2A0A37D100BE57A3 /* GitHubFollowers.app */;
@@ -354,7 +357,6 @@
 			);
 			mainGroup = 3BB30BE12A0A37D000BE57A3;
 			packageReferences = (
-				F8332EFA2AE1252000DF2A15 /* XCLocalSwiftPackageReference "TinyDI" */,
 			);
 			productRefGroup = 3BB30BEB2A0A37D100BE57A3 /* Products */;
 			projectDirPath = "";
@@ -389,6 +391,7 @@
 				F8C7D3D52A5D5991000B1FE0 /* FollowerCell.swift in Sources */,
 				F895FE6B2AC5E3D8009A9D3F /* UIViewController+Extensions.swift in Sources */,
 				F884213E2A3F5CCB008C4A9B /* SearchResultsAssembly.swift in Sources */,
+				F890579A2AF0E4870007223E /* GFBlockView.swift in Sources */,
 				F88421402A3F5F31008C4A9B /* SearchResultsPresenter.swift in Sources */,
 				F84FD7302AC9EA39005C4B71 /* GFUsernameLabel.swift in Sources */,
 				F861F8812A5F1F01008B02E7 /* ImageLoader.swift in Sources */,
@@ -396,7 +399,7 @@
 				F808D1A72AD820270036739A /* GFTitleLabel.swift in Sources */,
 				3BF7B6AF2A14F67300218AF8 /* GFNavigationViewController.swift in Sources */,
 				3B56D1262A224C4C002825D9 /* SearchPresenter.swift in Sources */,
-				F8089C432A548A2E00BE0CDC /* String+Validation.swift in Sources */,
+				F8089C432A548A2E00BE0CDC /* String+Extensions.swift in Sources */,
 				3B56CA462A1E3D88002825D9 /* SearchAssembly.swift in Sources */,
 				3BF7AFEF2A13F31D00218AF8 /* SearchResultsViewController.swift in Sources */,
 				F84FD7322AC9ECF7005C4B71 /* GFHeadLineTitleLabel.swift in Sources */,
@@ -409,6 +412,7 @@
 				F8CC8C262AE295FD0063DA9B /* Error+Extensions.swift in Sources */,
 				F84FD72E2AC9E73F005C4B71 /* GFUsernameTextField.swift in Sources */,
 				3BB30BEE2A0A37D100BE57A3 /* AppDelegate.swift in Sources */,
+				F890579C2AF0E8400007223E /* GFBlockTitleLabel.swift in Sources */,
 				F8C45EB92AB581FD002332B7 /* BaseNetworkService.swift in Sources */,
 				3BF7A8E82A0EA82C00218AF8 /* GFButton.swift in Sources */,
 				F895FE672AC47F69009A9D3F /* Follower.swift in Sources */,
@@ -628,20 +632,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCLocalSwiftPackageReference section */
-		F8332EFA2AE1252000DF2A15 /* XCLocalSwiftPackageReference "TinyDI" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = TinyDI;
-		};
-/* End XCLocalSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		F8332EFB2AE1252000DF2A15 /* TinyDI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = TinyDI;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3BB30BE22A0A37D000BE57A3 /* Project object */;
 }

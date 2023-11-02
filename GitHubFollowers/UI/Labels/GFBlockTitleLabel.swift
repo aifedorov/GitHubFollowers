@@ -1,13 +1,13 @@
 //
-//  CGTitleLabel.swift
+//  GFBlockTitleLabel.swift
 //  GitHubFollowers
 //
-//  Created by Aleksandr Fedorov on 01.10.23.
+//  Created by Aleksandr Fedorov on 31.10.23.
 //
 
 import UIKit
 
-final class CGTitleLabel: UILabel {
+final class GFBlockTitleLabel: UILabel {
     
     init(text: String) {
         super.init(frame: .zero)
@@ -26,8 +26,9 @@ final class CGTitleLabel: UILabel {
     
     private func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
-        font = .systemFont(ofSize: 20, weight: .bold)
+        font = .systemFont(ofSize: 14)
         textColor = .label
-        numberOfLines = 0
+        numberOfLines = 1
+        textAlignment = .center
     }
 }

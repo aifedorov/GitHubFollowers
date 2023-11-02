@@ -20,6 +20,7 @@ final class UserNetworkService: BaseNetworkService, UserNetworkServiceProtocol {
         self.imageLoader = imageLoader
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
         super.init(URLSession.shared, decoder)
     }
     
