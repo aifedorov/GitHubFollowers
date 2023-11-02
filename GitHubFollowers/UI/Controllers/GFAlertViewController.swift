@@ -19,11 +19,15 @@ final class GFAlertViewController: UIViewController {
     private let buttonTitle: String
     
     private lazy var titleLabel: CGTitleLabel = {
-        CGTitleLabel(text: alertTitle)
+        let label = CGTitleLabel(text: alertTitle)
+        label.textAlignment = .center
+        return label
     }()
         
     private lazy var messageLabel: GFBodyLabel = {
-        GFBodyLabel(text: message)
+        let label = GFBodyLabel(text: message)
+        label.textAlignment = .center
+        return label
     }()
     
     private lazy var actionButton: GFButton = {

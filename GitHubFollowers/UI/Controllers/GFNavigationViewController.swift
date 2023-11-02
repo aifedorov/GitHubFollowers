@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class GFNavigationViewController: UINavigationController {
+class GFNavigationViewController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

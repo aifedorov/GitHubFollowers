@@ -12,12 +12,10 @@ final class GFBlockView: UIView {
     struct DisplayData {
         let attributedText: NSAttributedString
         let buttonTitle: String
-        let buttonAction: () -> ()
         
-        init(attributedText: NSAttributedString = .init(), buttonTitle: String = "", buttonAction: @escaping () -> () = {}) {
+        init(attributedText: NSAttributedString = .init(), buttonTitle: String = "") {
             self.attributedText = attributedText
             self.buttonTitle = buttonTitle
-            self.buttonAction = buttonAction
         }
     }
     
@@ -27,6 +25,7 @@ final class GFBlockView: UIView {
             actionButton.setTitle(displayData.buttonTitle, for: .normal)
         }
     }
+    private let buttonAction: () -> Void
     
     private lazy var titleLabel: GFBlockTitleLabel = {
         GFBlockTitleLabel(text: self.displayData.buttonTitle)
@@ -45,15 +44,22 @@ final class GFBlockView: UIView {
         return view
     }()
     
-    init(_ displayData: DisplayData = DisplayData()) {
+    init(_ displayData: DisplayData = DisplayData(), buttonAction: @escaping () -> Void) {
         self.displayData = displayData
+        self.buttonAction = buttonAction
         super.init(frame: .zero)
+        
+        actionButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         
         setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func didTapButton() {
+        buttonAction()
     }
     
     func configure(with displayData: DisplayData) {

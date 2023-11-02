@@ -15,6 +15,7 @@ protocol ProfilePresenterOutput: AnyObject {
     func showUserInfo(_ displayData: ProfileViewController.DisplayData)
     func updateUserAvatar(withImageData imageData: Data)
     func showErrorAlert(title: String, message: String)
+    func showSafari(with url: URL)
 }
 
 final class ProfilePresenter {
@@ -56,15 +57,14 @@ final class ProfilePresenter {
         guard let user = state.user else { return }
         
         let followersDisplayData = GFBlockView.DisplayData(attributedText: makeFollowersString(for: user),
-                                                           buttonTitle: "Show followers",
-                                                           buttonAction: {})
+                                                           buttonTitle: "Show followers")
         
         let reposString = NSMutableAttributedString(string: "\(user.publicRepos) repos", systemName: "book.pages")
         let reposDisplayData = GFBlockView.DisplayData(attributedText: reposString,
-                                                       buttonTitle: "Open profile",
-                                                       buttonAction: {})
+                                                       buttonTitle: "Open profile")
         let onGitHubSince = "On Github from \(dateFormatter.string(from: user.createdAt))"
         let displayData = ProfileViewController.DisplayData(fullName: user.name ?? "",
+                                                            username: user.login,
                                                             followers: followersDisplayData,
                                                             noFollowers: user.followers == 0,
                                                             repos: reposDisplayData,
@@ -84,28 +84,37 @@ extension ProfilePresenter: ProfileViewOutput {
         view?.setupInitialState(username: state.follower.login)
         view?.showLoadingView()
         
-        Task { @MainActor [weak self] in
-            guard let self, let data = try? await self.userNetworkService.fetchAvatarImage(fromURL: self.state.follower.avatarUrl) else { return }
-            self.view?.updateUserAvatar(withImageData: data)
+        Task { @MainActor in
+            guard let data = try? await userNetworkService.fetchAvatarImage(fromURL: state.follower.avatarUrl) else { return }
+            view?.updateUserAvatar(withImageData: data)
         }
         
-        Task { @MainActor [weak self] in
-            guard let self else { return }
+        Task { @MainActor in
             do {
-                let user = try await self.userNetworkService.fetchUserInfo(for: self.state.follower.login)
-                self.state.user = user
+                let user = try await userNetworkService.fetchUserInfo(for: state.follower.login)
+                state.user = user
             } catch {
-                self.showErrorAlertView(with: .networkError)
+                showErrorAlertView(with: .networkError)
             }
+            
             view?.hideLoadingView()
         }
     }
     
-    func didTapOpenProfileButton() {
-        // TODO: Open profile URL
-    }
-    
     func didTapAddToFavoriteButton() {
         // TODO: Add to favorite
+    }
+    
+    func didTapShowFollowersButton() {
+        // TODO: Show followers
+    }
+    
+    func didTapOpenProfileButton() {
+        guard let user = state.user, let url = URL(string: user.htmlUrl) else {
+            view?.showErrorAlert(title: "Invalid URL", message: "The url attached to this user is invalid.")
+            return
+        }
+        
+        view?.showSafari(with: url)
     }
 }

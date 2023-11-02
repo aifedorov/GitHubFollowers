@@ -42,7 +42,7 @@ final class SearchResultsPresenter {
         mutating func updateFollowers(_ followers: [Follower]) {
             self.followers = followers
         }
-                
+        
         mutating func updateSearchResult(for query: String) {
             isSearching = !query.isEmpty
             guard isSearching else { return }
@@ -96,17 +96,16 @@ extension SearchResultsPresenter: SearchResultsViewOutput {
     
     func viewDidLoad() {
         view?.showLoadingView()
-        Task { @MainActor [weak self] in
-            guard let self else { return }
+        Task { @MainActor in
             do {
-                let followers = try await self.userNetworkService.fetchFollowers(for: self.state.searchedUsername)
-                self.state.updateFollowers(followers)
+                let followers = try await userNetworkService.fetchFollowers(for: state.searchedUsername)
+                state.updateFollowers(followers)
             } catch NetworkError.resourceNotFound {
-                self.showFullScreenErrorMessageView(with: .userNotFound)
+                showFullScreenErrorMessageView(with: .userNotFound)
             } catch {
-                self.showFullScreenErrorMessageView(with: .networkError)
+                showFullScreenErrorMessageView(with: .networkError)
             }
-            self.view?.hideLoadingView()
+            view?.hideLoadingView()
         }
     }
     

@@ -8,15 +8,17 @@
 import UIKit
 
 protocol ProfileViewOutput: AnyObject {
-    func didTapOpenProfileButton()
-    func didTapAddToFavoriteButton()
     func viewDidLoad()
+    func didTapAddToFavoriteButton()
+    func didTapOpenProfileButton()
+    func didTapShowFollowersButton()
 }
 
 final class ProfileViewController: UIViewController {
     
     struct DisplayData {
         let fullName: String
+        let username: String
         let followers: GFBlockView.DisplayData
         let noFollowers: Bool
         let repos: GFBlockView.DisplayData
@@ -42,6 +44,7 @@ final class ProfileViewController: UIViewController {
     
     private let usernameLabel: GFUsernameLabel = {
         let label = GFUsernameLabel()
+        label.textAlignment = .left
         label.numberOfLines = 1
         return label
     }()
@@ -54,8 +57,18 @@ final class ProfileViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var followersBlockView = GFBlockView()
-    private lazy var reposBlockView = GFBlockView()
+    private lazy var followersBlockView = {
+        GFBlockView { [weak self] in
+            self?.output?.didTapShowFollowersButton()
+        }
+    }()
+    
+    private lazy var reposBlockView = {
+        GFBlockView { [weak self] in
+            self?.output?.didTapOpenProfileButton()
+        }
+    }()
+    
     private lazy var blocksStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -81,6 +94,15 @@ final class ProfileViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         avatarImageView.layer.cornerRadius = avatarImageView.layer.frame.height / 2
+    }
+    
+    private func setupNavigationBar() {
+        guard let _ = navigationController else { return }
+        let closeItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeProfile))
+        let addToFavoriteItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(addToFavorite))
+        
+        navigationItem.leftBarButtonItem = closeItem
+        navigationItem.rightBarButtonItem = addToFavoriteItem
     }
     
     private func setupView() {
@@ -114,6 +136,14 @@ final class ProfileViewController: UIViewController {
             onGitHubSinceLabel.topAnchor.constraint(greaterThanOrEqualTo: blocksStackView.bottomAnchor, constant: 16)
         ])
     }
+    
+    @objc private func closeProfile() {
+        dismiss(animated: true)
+    }
+    
+    @objc private func addToFavorite() {
+        output?.didTapAddToFavoriteButton()
+    }
 }
 
 extension ProfileViewController: ProfilePresenterOutput {
@@ -124,8 +154,14 @@ extension ProfileViewController: ProfilePresenterOutput {
     }
     
     func showUserInfo(_ displayData: DisplayData) {
+        title = nil
+                
         if !displayData.fullName.isEmpty {
             fullNameLabel.text = displayData.fullName
+        }
+        
+        if !displayData.username.isEmpty {
+            usernameLabel.text = displayData.username
         }
         
         if displayData.noFollowers {
@@ -138,28 +174,18 @@ extension ProfileViewController: ProfilePresenterOutput {
         onGitHubSinceLabel.text = displayData.onGitHubSince
         
         UIView.animate(withDuration: 0.3) {
-            self.fullNameLabel.alpha = 1
-            self.followersBlockView.alpha = 1
-            self.reposBlockView.alpha = 1
+            self.userInfoStackView.alpha = 1
+            self.blocksStackView.alpha = 1
             self.onGitHubSinceLabel.alpha = 1
         }
-        
-        UIView.transition(with: usernameLabel,
-                          duration: 0.2,
-                          options: .transitionCrossDissolve,
-                          animations: {
-            self.usernameLabel.textAlignment = .left
-        }, completion: nil)
     }
     
     func setupInitialState(username: String) {
-        usernameLabel.textAlignment = .center
-        usernameLabel.text = username
+        title = username
         
-        self.fullNameLabel.alpha = 0
-        self.followersBlockView.alpha = 0
-        self.reposBlockView.alpha = 0
-        self.onGitHubSinceLabel.alpha = 0
+        userInfoStackView.alpha = 0
+        blocksStackView.alpha = 0
+        onGitHubSinceLabel.alpha = 0
     }
     
     func showLoadingView() {
@@ -174,5 +200,9 @@ extension ProfileViewController: ProfilePresenterOutput {
     
     func showErrorAlert(title: String, message: String) {
         presentAlert(title: title, message: message, type: .error)
+    }
+    
+    func showSafari(with url: URL) {
+        presentSafari(with: url)
     }
 }
