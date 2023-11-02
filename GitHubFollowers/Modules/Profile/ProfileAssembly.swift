@@ -8,10 +8,11 @@
 import UIKit
 
 enum ProfileAssembly {
-    static func makeModule(with follower: Follower) -> UIViewController {
+    static func makeModule(with follower: Follower, searchResultsModuleInput: SearchResultsModuleInput) -> UIViewController {
         let viewController = ProfileViewController()
         let presenter = ProfilePresenter(UserNetworkService(ImageLoader.shared), follower)
         
+        presenter.searchResultsModuleInput = searchResultsModuleInput
         viewController.output = presenter
         presenter.view = viewController
         

@@ -26,6 +26,8 @@ final class ProfilePresenter {
     }
     
     weak var view: ProfilePresenterOutput?
+    weak var searchResultsModuleInput: SearchResultsModuleInput?
+    
     private let userNetworkService: UserNetworkServiceProtocol
     
     private var state: State {
@@ -73,7 +75,7 @@ final class ProfilePresenter {
         view?.showUserInfo(displayData)
     }
     
-    private func showErrorAlertView(with alertContent: AlertContent) {
+    private func showErrorAlertView(with alertContent: ErrorContent) {
         view?.showErrorAlert(title: alertContent.title, message: alertContent.message)
     }
 }
@@ -106,7 +108,8 @@ extension ProfilePresenter: ProfileViewOutput {
     }
     
     func didTapShowFollowersButton() {
-        // TODO: Show followers
+        guard let user = state.user else { return }
+        searchResultsModuleInput?.showFollowers(username: user.login)
     }
     
     func didTapOpenProfileButton() {

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SearchResultsModuleInput: AnyObject {
+    func showFollowers(username: String)
+}
+
 enum SearchResultsAssembly {
     static func makeModule(searchedUsername: String) -> UIViewController {
         let viewController = SearchResultsViewController()

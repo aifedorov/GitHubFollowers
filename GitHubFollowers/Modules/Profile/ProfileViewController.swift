@@ -99,7 +99,7 @@ final class ProfileViewController: UIViewController {
     private func setupNavigationBar() {
         guard let _ = navigationController else { return }
         let closeItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeProfile))
-        let addToFavoriteItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(addToFavorite))
+        let addToFavoriteItem = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(addToFavorite))
         
         navigationItem.leftBarButtonItem = closeItem
         navigationItem.rightBarButtonItem = addToFavoriteItem
@@ -107,6 +107,8 @@ final class ProfileViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .systemBackground
+        
+        setupNavigationBar()
         
         userInfoStackView.addArrangedSubview(fullNameLabel)
         userInfoStackView.addArrangedSubview(usernameLabel)

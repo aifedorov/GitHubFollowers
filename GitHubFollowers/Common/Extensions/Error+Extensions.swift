@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AlertContent {
+enum ErrorContent {
     case userHaveNoFollowers
     case userNotFound
     case networkError

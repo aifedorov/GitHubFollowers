@@ -167,18 +167,27 @@ extension SearchResultsViewController: SearchResultsPresenterOutput {
     }
     
     func showLoadingView() {
-        loadingView.isHidden = false
         loadingView.startLoading()
+        loadingView.isHidden = false
     }
     
     func hideLoadingView() {
-        loadingView.isHidden = true
         loadingView.stopLoading()
+        loadingView.isHidden = true
     }
     
-    func showProfile(for follower: Follower) {
-        let profileViewController = ProfileAssembly.makeModule(with: follower)
+    func showProfile(for follower: Follower, searchResultsModuleInput: SearchResultsModuleInput) {
+        searchController.isActive = false
+        let profileViewController = ProfileAssembly.makeModule(with: follower, searchResultsModuleInput: searchResultsModuleInput)
         present(profileViewController, animated: true)
+    }
+    
+    func closeProfile(completion: @escaping () -> Void) {
+        presentedViewController?.dismiss(animated: true, completion: completion)
+    }
+    
+    func updateTitle(username: String) {
+        title = username
     }
 }
 
