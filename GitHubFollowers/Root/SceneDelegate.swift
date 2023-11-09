@@ -24,7 +24,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func makeRootViewController() -> UIViewController {
         let rootViewController = UITabBarController()
         let searchViewController = SearchAssembly.makeModule()
-        let favoritesViewController = FavoritesViewController()
+        let favoritesViewController = FavoritesAssembly.makeModule()
         
         searchViewController.tabBarItem = UITabBarItem(title: "Followers",
                                                        image: UIImage(systemName: "person.3"),

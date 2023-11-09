@@ -16,6 +16,8 @@ protocol ProfilePresenterOutput: AnyObject {
     func updateUserAvatar(withImageData imageData: Data)
     func showErrorAlert(title: String, message: String)
     func showSafari(with url: URL)
+    func updateFavoriteButton(isHighlighted: Bool)
+    func updateFavoriteButton(isEnabled: Bool)
 }
 
 final class ProfilePresenter {
@@ -23,12 +25,14 @@ final class ProfilePresenter {
     struct State {
         var follower: Follower
         var user: User?
+        var isFavoriteButtonHighlighted = false
     }
     
     weak var view: ProfilePresenterOutput?
     weak var searchResultsModuleInput: SearchResultsModuleInput?
     
     private let userNetworkService: UserNetworkServiceProtocol
+    private let storageProvider: StorageProvider
     
     private var state: State {
         didSet {
@@ -36,9 +40,21 @@ final class ProfilePresenter {
         }
     }
     
-    init(_ userNetworkService: UserNetworkServiceProtocol, _ follower: Follower) {
-        self.state = State(follower: follower)
+    init(_ userNetworkService: UserNetworkServiceProtocol, storageProvider: StorageProvider, _ follower: Follower) {
         self.userNetworkService = userNetworkService
+        self.storageProvider = storageProvider
+        self.state = State(follower: follower)
+        
+        updateFavoriteButton()
+    }
+    
+    private func updateFavoriteButton() {
+        view?.updateFavoriteButton(isEnabled: false)
+        Task { @MainActor in
+            state.isFavoriteButtonHighlighted = await storageProvider.containsInFavorites(state.follower)
+            view?.updateFavoriteButton(isHighlighted: state.isFavoriteButtonHighlighted)
+            view?.updateFavoriteButton(isEnabled: true)
+        }
     }
     
     private lazy var dateFormatter: DateFormatter = {
@@ -73,6 +89,7 @@ final class ProfilePresenter {
                                                             onGitHubSince: onGitHubSince)
         
         view?.showUserInfo(displayData)
+        updateFavoriteButton()
     }
     
     private func showErrorAlertView(with alertContent: ErrorContent) {
@@ -104,7 +121,17 @@ extension ProfilePresenter: ProfileViewOutput {
     }
     
     func didTapAddToFavoriteButton() {
-        // TODO: Add to favorite
+        
+        Task { @MainActor in
+            let follower = state.follower
+            if await !storageProvider.containsInFavorites(follower) {
+                await storageProvider.addToFavorite(follower)
+            } else {
+                await storageProvider.removeFromFavorite(follower)
+            }
+            
+            updateFavoriteButton()
+        }
     }
     
     func didTapShowFollowersButton() {

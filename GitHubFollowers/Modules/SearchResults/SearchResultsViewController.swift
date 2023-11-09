@@ -16,6 +16,9 @@ protocol SearchResultsViewOutput {
 
 final class SearchResultsViewController: UIViewController {
     
+    private typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
+    
     enum Section {
         case main
     }
@@ -29,9 +32,6 @@ final class SearchResultsViewController: UIViewController {
             self.username = follower.login
         }
     }
-    
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
     
     var output: SearchResultsViewOutput?
     
@@ -105,27 +105,31 @@ final class SearchResultsViewController: UIViewController {
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.cellId)
     }
     
-    private func setupDataSource() {
-        dataSource = DataSource(collectionView: collectionView, cellProvider: { [weak self]
-            (collectionView: UICollectionView, indexPath: IndexPath, item: Item) -> UICollectionViewCell? in
-            guard let self else { return nil }
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.cellId, for: indexPath) as! FollowerCell
+    private func configureCollectionViewCell(collectionView: UICollectionView, indexPath: IndexPath, item: Item) -> UICollectionViewCell? {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.cellId, for: indexPath) as? FollowerCell else {
+            assertionFailure("Wrong table view cell type")
+            return nil
+        }
+        
+        let displayData = FollowerCell.DisplayData(text: item.username)
+        cell.configure(with: displayData)
+        
+        Task { [weak cell] in
+            guard let cell, let data = await self.output?.fetchImage(at: indexPath) else { return }
+            let image = UIImage(data: data)
+            let displayData = FollowerCell.DisplayData(text: item.username, image: image)
             
-            Task {
-                if let data = await self.output?.fetchImage(at: indexPath) {
-                    let image = UIImage(data: data)
-                    let displayData = FollowerCell.DisplayData(text: item.username, image: image)
-                    
-                    DispatchQueue.main.async {
-                        cell.configure(with: displayData)
-                    }
-                }
+            await MainActor.run {
+                guard collectionView.indexPath(for: cell) == indexPath else { return }
+                cell.configure(with: displayData)
             }
-            
-            let displayData = FollowerCell.DisplayData(text: item.username)
-            cell.configure(with: displayData)
-            return cell
-        })
+        }
+        
+        return cell
+    }
+    
+    private func setupDataSource() {
+        dataSource = DataSource(collectionView: collectionView, cellProvider: configureCollectionViewCell)
     }
     
     private func updateSnapshot() {

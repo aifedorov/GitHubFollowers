@@ -13,3 +13,9 @@ struct Follower: Decodable {
     let avatarUrl: String
     let url: String
 }
+
+extension Follower: Equatable {
+    static func == (lhs: Follower, rhs: Follower) -> Bool {
+        lhs.id == rhs.id
+    }
+}

@@ -20,6 +20,7 @@ The project consists of two projects: `UIKit` and `SwiftUI` versions.
 - [ ] Caching favorites in `Core Data`.
 - [ ] Supporting Pagination.
 - [ ] Supporting Dark Mode.
+- [ ] Supporting iPhone SE (fix collection view and add scroll view for Profile Screen)
 
 1) A GitHubFollowers iOS app written using `SwiftUI` and `MVVM` architecture.
 - [x] iOS 15.0 or higher.

@@ -99,12 +99,12 @@ final class ProfileViewController: UIViewController {
     private func setupNavigationBar() {
         guard let _ = navigationController else { return }
         let closeItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeProfile))
-        let addToFavoriteItem = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(addToFavorite))
-        
+        let addToFavoriteItem = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(addToFavorite))
+                
         navigationItem.leftBarButtonItem = closeItem
         navigationItem.rightBarButtonItem = addToFavoriteItem
     }
-    
+        
     private func setupView() {
         view.backgroundColor = .systemBackground
         
@@ -166,6 +166,7 @@ extension ProfileViewController: ProfilePresenterOutput {
             usernameLabel.text = displayData.username
         }
         
+        #warning("Need to disable button open profile")
         if displayData.noFollowers {
             // TODO: Disable button open profile
         } else {
@@ -206,5 +207,15 @@ extension ProfileViewController: ProfilePresenterOutput {
     
     func showSafari(with url: URL) {
         presentSafari(with: url)
+    }
+    
+    func updateFavoriteButton(isHighlighted: Bool) {
+        guard let addToFavoriteItem = navigationItem.rightBarButtonItem else { return }
+        addToFavoriteItem.image = isHighlighted ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+    }
+    
+    func updateFavoriteButton(isEnabled: Bool) {
+        guard let addToFavoriteItem = navigationItem.rightBarButtonItem else { return }
+        addToFavoriteItem.isEnabled = isEnabled
     }
 }

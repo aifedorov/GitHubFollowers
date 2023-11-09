@@ -34,6 +34,10 @@
 		F88421402A3F5F31008C4A9B /* SearchResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884213F2A3F5F31008C4A9B /* SearchResultsPresenter.swift */; };
 		F890579A2AF0E4870007223E /* GFBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89057992AF0E4870007223E /* GFBlockView.swift */; };
 		F890579C2AF0E8400007223E /* GFBlockTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F890579B2AF0E8400007223E /* GFBlockTitleLabel.swift */; };
+		F890579E2AF776250007223E /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F890579D2AF776250007223E /* StorageProvider.swift */; };
+		F89057DC2AFB950E0007223E /* FavoritesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89057DB2AFB950E0007223E /* FavoritesAssembly.swift */; };
+		F89057DE2AFB954A0007223E /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89057DD2AFB954A0007223E /* FavoritesPresenter.swift */; };
+		F89057E02AFD54340007223E /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89057DF2AFD54340007223E /* FavoriteCell.swift */; };
 		F895FE652AC47DF5009A9D3F /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = F895FE642AC47DF5009A9D3F /* user.json */; };
 		F895FE672AC47F69009A9D3F /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = F895FE662AC47F69009A9D3F /* Follower.swift */; };
 		F895FE692AC5DAA8009A9D3F /* GFAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F895FE682AC5DAA8009A9D3F /* GFAlertViewController.swift */; };
@@ -78,6 +82,10 @@
 		F884213F2A3F5F31008C4A9B /* SearchResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsPresenter.swift; sourceTree = "<group>"; };
 		F89057992AF0E4870007223E /* GFBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBlockView.swift; sourceTree = "<group>"; };
 		F890579B2AF0E8400007223E /* GFBlockTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBlockTitleLabel.swift; sourceTree = "<group>"; };
+		F890579D2AF776250007223E /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
+		F89057DB2AFB950E0007223E /* FavoritesAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesAssembly.swift; sourceTree = "<group>"; };
+		F89057DD2AFB954A0007223E /* FavoritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
+		F89057DF2AFD54340007223E /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		F895FE642AC47DF5009A9D3F /* user.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		F895FE662AC47F69009A9D3F /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		F895FE682AC5DAA8009A9D3F /* GFAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +119,7 @@
 				F8C45EB82AB581FD002332B7 /* BaseNetworkService.swift */,
 				F8C45EA92AB363AE002332B7 /* UserNetworkService.swift */,
 				F861F8802A5F1F00008B02E7 /* ImageLoader.swift */,
+				F890579D2AF776250007223E /* StorageProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -187,7 +196,11 @@
 		3B56CA442A1E3D43002825D9 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				F89057E12AFD5F5C0007223E /* Cells */,
+				F89057DB2AFB950E0007223E /* FavoritesAssembly.swift */,
+				F89057DF2AFD54340007223E /* FavoriteCell.swift */,
 				3BB30C212A0D076B00BE57A3 /* FavoritesViewController.swift */,
+				F89057DD2AFB954A0007223E /* FavoritesPresenter.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -292,6 +305,13 @@
 			path = TextFields;
 			sourceTree = "<group>";
 		};
+		F89057E12AFD5F5C0007223E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		F8C3F0E42A9F3F4C00EC6590 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,10 +406,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F89057E02AFD54340007223E /* FavoriteCell.swift in Sources */,
 				F8C3F0EA2A9F403B00EC6590 /* ProfilePresenter.swift in Sources */,
 				F8CC8C242AE2957E0063DA9B /* NetworkError.swift in Sources */,
 				F8C7D3D52A5D5991000B1FE0 /* FollowerCell.swift in Sources */,
+				F89057DC2AFB950E0007223E /* FavoritesAssembly.swift in Sources */,
 				F895FE6B2AC5E3D8009A9D3F /* UIViewController+Extensions.swift in Sources */,
+				F890579E2AF776250007223E /* StorageProvider.swift in Sources */,
 				F884213E2A3F5CCB008C4A9B /* SearchResultsAssembly.swift in Sources */,
 				F890579A2AF0E4870007223E /* GFBlockView.swift in Sources */,
 				F88421402A3F5F31008C4A9B /* SearchResultsPresenter.swift in Sources */,
@@ -406,6 +429,7 @@
 				3BB30C222A0D076B00BE57A3 /* FavoritesViewController.swift in Sources */,
 				F895FE692AC5DAA8009A9D3F /* GFAlertViewController.swift in Sources */,
 				F8443A222AC080B9007418F2 /* UIView+Extensions.swift in Sources */,
+				F89057DE2AFB954A0007223E /* FavoritesPresenter.swift in Sources */,
 				F8089C472A598C9400BE0CDC /* GFFullScreenMessageView.swift in Sources */,
 				3BB30BF22A0A37D100BE57A3 /* SearchViewController.swift in Sources */,
 				F808D1A62AD820270036739A /* GFBodyLabel.swift in Sources */,
@@ -578,6 +602,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorov.githubfollowers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = targeted;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -605,6 +630,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorov.githubfollowers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = targeted;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
