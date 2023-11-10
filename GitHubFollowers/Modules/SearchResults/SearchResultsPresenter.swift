@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import NetworkService
 
 protocol SearchResultsPresenterOutput: AnyObject {
     func showLoadingView()

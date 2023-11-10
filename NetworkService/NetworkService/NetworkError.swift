@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NetworkError: Error {
+public enum NetworkError: Error {
     case invalidateURL(String)
     case wrongResponse
     case invalidateJSON(DecodingError)
@@ -17,7 +17,7 @@ enum NetworkError: Error {
 
 extension NetworkError: LocalizedError {
     
-    var errorDescription: String? {
+    public var errorDescription: String? {
         switch self {
         case .invalidateJSON(let decodingError):
             return "Invalidate JSON data: \(decodingError.localizedDescription)."

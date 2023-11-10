@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NetworkService
 
 enum ProfileAssembly {
     static func makeModule(with follower: Follower, searchResultsModuleInput: SearchResultsModuleInput) -> UIViewController {

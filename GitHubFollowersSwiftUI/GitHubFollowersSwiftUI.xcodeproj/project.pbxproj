@@ -16,12 +16,9 @@
 		F8F62F952AEE530B00AD7559 /* GitHubFollowersSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F62F942AEE530B00AD7559 /* GitHubFollowersSwiftUIUITestsLaunchTests.swift */; };
 		F8F62FCD2AEE545600AD7559 /* followers.json in Resources */ = {isa = PBXBuildFile; fileRef = F8F62FC32AEE545600AD7559 /* followers.json */; };
 		F8F62FCE2AEE545600AD7559 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = F8F62FC42AEE545600AD7559 /* user.json */; };
-		F8F62FCF2AEE545600AD7559 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F62FC62AEE545600AD7559 /* ImageLoader.swift */; };
-		F8F62FD02AEE545600AD7559 /* BaseNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F62FC72AEE545600AD7559 /* BaseNetworkService.swift */; };
 		F8F62FD12AEE545600AD7559 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F62FC92AEE545600AD7559 /* User.swift */; };
 		F8F62FD22AEE545600AD7559 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F62FCA2AEE545600AD7559 /* Follower.swift */; };
 		F8F62FD32AEE545600AD7559 /* UserNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F62FCB2AEE545600AD7559 /* UserNetworkService.swift */; };
-		F8F62FD42AEE545600AD7559 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F62FCC2AEE545600AD7559 /* NetworkError.swift */; };
 		F8F62FD72AEE59B000AD7559 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F62FD62AEE59B000AD7559 /* PrimaryButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,12 +52,9 @@
 		F8F62F942AEE530B00AD7559 /* GitHubFollowersSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubFollowersSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F8F62FC32AEE545600AD7559 /* followers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = followers.json; sourceTree = "<group>"; };
 		F8F62FC42AEE545600AD7559 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
-		F8F62FC62AEE545600AD7559 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		F8F62FC72AEE545600AD7559 /* BaseNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNetworkService.swift; sourceTree = "<group>"; };
 		F8F62FC92AEE545600AD7559 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F8F62FCA2AEE545600AD7559 /* Follower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		F8F62FCB2AEE545600AD7559 /* UserNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNetworkService.swift; sourceTree = "<group>"; };
-		F8F62FCC2AEE545600AD7559 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		F8F62FD62AEE59B000AD7559 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,10 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				F8F62FC82AEE545600AD7559 /* Models */,
-				F8F62FC62AEE545600AD7559 /* ImageLoader.swift */,
-				F8F62FC72AEE545600AD7559 /* BaseNetworkService.swift */,
 				F8F62FCB2AEE545600AD7559 /* UserNetworkService.swift */,
-				F8F62FCC2AEE545600AD7559 /* NetworkError.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -327,14 +318,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8F62F7A2AEE530A00AD7559 /* MainTabView.swift in Sources */,
-				F8F62FD42AEE545600AD7559 /* NetworkError.swift in Sources */,
 				F8F62FD22AEE545600AD7559 /* Follower.swift in Sources */,
-				F8F62FD02AEE545600AD7559 /* BaseNetworkService.swift in Sources */,
 				F8F62F782AEE530A00AD7559 /* GitHubFollowersSwiftUIApp.swift in Sources */,
 				F8F62FD72AEE59B000AD7559 /* PrimaryButtonStyle.swift in Sources */,
 				F8F62FD12AEE545600AD7559 /* User.swift in Sources */,
 				F8F62FD32AEE545600AD7559 /* UserNetworkService.swift in Sources */,
-				F8F62FCF2AEE545600AD7559 /* ImageLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

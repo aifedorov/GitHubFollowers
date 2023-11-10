@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NetworkService
 
 protocol SearchResultsModuleInput: AnyObject {
     func showFollowers(username: String)

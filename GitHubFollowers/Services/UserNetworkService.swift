@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import NetworkService
 
 protocol UserNetworkServiceProtocol {
     func fetchFollowers(for username: String) async throws -> [Follower]

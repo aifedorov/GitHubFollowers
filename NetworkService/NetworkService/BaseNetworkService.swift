@@ -1,22 +1,22 @@
 //
 //  BaseNetworkService.swift
-//  GitHubFollowers
+//  NetworkService
 //
-//  Created by Aleksandr Fedorov on 16.09.23.
+//  Created by Aleksandr Fedorov on 10.11.23.
 //
 
 import Foundation
 
-class BaseNetworkService {
+open class BaseNetworkService {
     private let session: URLSession
     private let decoder: JSONDecoder
     
-    init(_ session: URLSession = URLSession.shared, _ decoder: JSONDecoder = JSONDecoder()) {
+    public init(_ session: URLSession = URLSession.shared, _ decoder: JSONDecoder = JSONDecoder()) {
         self.session = session
         self.decoder = decoder
     }
     
-    func fetch<Resource: Decodable>(from urlString: String) async throws -> Resource {
+    public func fetch<Resource: Decodable>(from urlString: String) async throws -> Resource {
         guard let url = URL(string: urlString) else {
            throw NetworkError.invalidateURL(urlString)
         }

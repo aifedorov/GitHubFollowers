@@ -7,22 +7,22 @@
 
 import Foundation
 
-protocol ImageLoaderProtocol {
+public protocol ImageLoaderProtocol {
     func downloadImage(from urlString: String) async throws -> Data
 }
 
-final class ImageLoader {
+public final class ImageLoader {
     
-    static let shared = ImageLoader()
+    public static let shared = ImageLoader()
     
     private let session: URLSession
     private let imageDataCache = NSCache<NSString, NSData>()
     
-    init(_ session: URLSession = URLSession.shared) {
+    public init(_ session: URLSession = URLSession.shared) {
         self.session = session
     }
     
-    func downloadImage(from urlString: String) async throws -> Data {
+    public func downloadImage(from urlString: String) async throws -> Data {
         guard let url = URL(string: urlString) else {
             throw NetworkError.invalidateURL(urlString)
         }
