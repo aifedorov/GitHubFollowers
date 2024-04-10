@@ -70,10 +70,8 @@ final class GFButton: UIButton {
         super.tintColorDidChange()
         
         if tintAdjustmentMode == .dimmed || !isEnabled {
-            setTitleColor(.systemGray3, for: .normal)
-            backgroundColor = .systemGray2
+            backgroundColor = .disabledButton
         } else {
-            setTitleColor(.brand, for: .normal)
             backgroundColor = _backgroundColor
         }
     }

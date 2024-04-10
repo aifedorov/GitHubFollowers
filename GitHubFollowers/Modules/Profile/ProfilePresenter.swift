@@ -17,7 +17,7 @@ final class ProfilePresenter {
     
     struct State {
         var follower: Follower
-        var user: User?
+        var userInfo: User?
         var isFavoriteButtonHighlighted = false
     }
     
@@ -58,28 +58,37 @@ final class ProfilePresenter {
     
     private func makeFollowersString(for user: User) -> NSMutableAttributedString {
         let followersString = NSMutableAttributedString(string: "\(user.followers) followers", systemName: "person.2.fill")
-        let followingString = NSMutableAttributedString(string: "\(user.following) followers", systemName: "person.2.fill")
+        let followingString = NSMutableAttributedString(string: "\(user.following) following")
         followersString.append(NSAttributedString(string: " "))
         followersString.append(followingString)
         return followersString
     }
     
     private func updateView() {
-        guard let user = state.user else { return }
+        guard let user = state.userInfo else { return }
         
-        let followersDisplayData = GFBlockView.DisplayData(attributedText: makeFollowersString(for: user),
-                                                           buttonTitle: "Show followers")
+        let followersDisplayData = GFBlockView.DisplayData(
+            attributedText: makeFollowersString(for: user),
+            buttonTitle:user.followers > 0 ? "Show followers" : "No followers",
+            isEnabledButton: user.followers > 0
+        )
         
-        let reposString = NSMutableAttributedString(string: "\(user.publicRepos) repos", systemName: "book.pages")
-        let reposDisplayData = GFBlockView.DisplayData(attributedText: reposString,
-                                                       buttonTitle: "Open profile")
+        let reposString = NSMutableAttributedString(
+            string: "\(user.publicRepos) repos",
+            systemName: "book.pages"
+        )
+        let reposDisplayData = GFBlockView.DisplayData(
+            attributedText: reposString,
+            buttonTitle: "Open profile"
+        )
         let onGitHubSince = "On Github from \(dateFormatter.string(from: user.createdAt))"
-        let displayData = ProfileViewController.DisplayData(fullName: user.name ?? "",
-                                                            username: user.login,
-                                                            followers: followersDisplayData,
-                                                            noFollowers: user.followers == 0,
-                                                            repos: reposDisplayData,
-                                                            onGitHubSince: onGitHubSince)
+        let displayData = ProfileViewController.DisplayData(
+            fullName: user.name ?? "",
+            username: user.login,
+            followers: followersDisplayData,
+            repos: reposDisplayData,
+            onGitHubSince: onGitHubSince
+        )
         
         view?.showUserInfo(displayData)
         updateFavoriteButton()
@@ -104,7 +113,7 @@ extension ProfilePresenter: ProfileViewOutput {
         Task { @MainActor in
             do {
                 let user = try await userNetworkService.fetchUserInfo(for: state.follower.login)
-                state.user = user
+                state.userInfo = user
             } catch {
                 showErrorAlertView(with: .networkError)
             }
@@ -127,12 +136,12 @@ extension ProfilePresenter: ProfileViewOutput {
     }
     
     func didTapShowFollowersButton() {
-        guard let user = state.user else { return }
+        guard let user = state.userInfo else { return }
         searchResultsModuleInput?.showFollowers(username: user.login)
     }
     
     func didTapOpenProfileButton() {
-        guard let user = state.user, let url = URL(string: user.htmlUrl) else {
+        guard let user = state.userInfo, let url = URL(string: user.htmlUrl) else {
             view?.showErrorAlert(title: "Invalid URL", message: "The url attached to this user is invalid.")
             return
         }

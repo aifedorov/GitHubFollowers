@@ -5,10 +5,16 @@ final class GFBlockView: UIView {
     struct DisplayData {
         let attributedText: NSAttributedString
         let buttonTitle: String
+        let isEnabledButton: Bool
         
-        init(attributedText: NSAttributedString = .init(), buttonTitle: String = "") {
+        init(
+            attributedText: NSAttributedString = .init(),
+            buttonTitle: String = "",
+            isEnabledButton: Bool = true
+        ) {
             self.attributedText = attributedText
             self.buttonTitle = buttonTitle
+            self.isEnabledButton = isEnabledButton
         }
     }
     
@@ -16,6 +22,7 @@ final class GFBlockView: UIView {
         didSet {
             titleLabel.attributedText = displayData.attributedText
             actionButton.setTitle(displayData.buttonTitle, for: .normal)
+            actionButton.isEnabled = displayData.isEnabledButton
         }
     }
     private let buttonAction: () -> Void
@@ -37,7 +44,7 @@ final class GFBlockView: UIView {
         return view
     }()
     
-    init(_ displayData: DisplayData = DisplayData(), buttonAction: @escaping () -> Void) {
+    init(displayData: DisplayData = DisplayData(), buttonAction: @escaping () -> Void) {
         self.displayData = displayData
         self.buttonAction = buttonAction
         super.init(frame: .zero)

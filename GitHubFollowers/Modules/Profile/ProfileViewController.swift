@@ -13,7 +13,6 @@ final class ProfileViewController: UIViewController {
         let fullName: String
         let username: String
         let followers: GFBlockView.DisplayData
-        let noFollowers: Bool
         let repos: GFBlockView.DisplayData
         let onGitHubSince: String
     }
@@ -51,9 +50,9 @@ final class ProfileViewController: UIViewController {
     }()
     
     private lazy var followersBlockView = {
-        GFBlockView { [weak self] in
+        GFBlockView(displayData: GFBlockView.DisplayData(), buttonAction: { [weak self] in
             self?.output?.didTapShowFollowersButton()
-        }
+        })
     }()
     
     private lazy var reposBlockView = {
@@ -91,8 +90,19 @@ final class ProfileViewController: UIViewController {
     
     private func setupNavigationBar() {
         guard let _ = navigationController else { return }
-        let closeItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeProfile))
-        let addToFavoriteItem = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(addToFavorite))
+        let closeItem = UIBarButtonItem(
+            barButtonSystemItem: .close,
+            target: self,
+            action: #selector(closeProfile)
+        )
+        let addToFavoriteItem = UIBarButtonItem(
+            image: nil,
+            style: .plain,
+            target: self,
+            action: #selector(
+                addToFavorite
+            )
+        )
                 
         navigationItem.leftBarButtonItem = closeItem
         navigationItem.rightBarButtonItem = addToFavoriteItem
@@ -159,13 +169,7 @@ extension ProfileViewController: ProfilePresenterOutput {
             usernameLabel.text = displayData.username
         }
         
-        #warning("Need to disable button open profile")
-        if displayData.noFollowers {
-            // TODO: Disable button open profile
-        } else {
-            followersBlockView.configure(with: displayData.followers)
-        }
-        
+        followersBlockView.configure(with: displayData.followers)
         reposBlockView.configure(with: displayData.repos)
         onGitHubSinceLabel.text = displayData.onGitHubSince
         
