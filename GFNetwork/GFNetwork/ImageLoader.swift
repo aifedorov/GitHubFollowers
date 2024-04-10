@@ -1,10 +1,3 @@
-//
-//  GFImageLoader.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 12.07.23.
-//
-
 import Foundation
 
 public protocol ImageLoaderProtocol {

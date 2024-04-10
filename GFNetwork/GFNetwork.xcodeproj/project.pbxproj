@@ -7,154 +7,160 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F89058582AFE27AE0007223E /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F890584F2AFE27AE0007223E /* StorageService.framework */; };
-		F890585D2AFE27AE0007223E /* StorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F890585C2AFE27AE0007223E /* StorageServiceTests.swift */; };
-		F890585E2AFE27AE0007223E /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = F89058522AFE27AE0007223E /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F89058682AFE27C60007223E /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89058672AFE27C60007223E /* StorageService.swift */; };
+		F80D7BD32B0211FF0071124C /* GFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F80D7BCA2B0211FF0071124C /* GFNetwork.framework */; };
+		F80D7BD82B0211FF0071124C /* GFNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D7BD72B0211FF0071124C /* GFNetworkTests.swift */; };
+		F80D7BD92B0211FF0071124C /* GFNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = F80D7BCD2B0211FF0071124C /* GFNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F80D7BEA2B0212600071124C /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D7BE82B0212600071124C /* ImageLoader.swift */; };
+		F80D7BEB2B0212600071124C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D7BE92B0212600071124C /* NetworkError.swift */; };
+		F80D7BED2B02126B0071124C /* BaseNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D7BEC2B02126B0071124C /* BaseNetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F89058592AFE27AE0007223E /* PBXContainerItemProxy */ = {
+		F80D7BD42B0211FF0071124C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F89058462AFE27AE0007223E /* Project object */;
+			containerPortal = F80D7BC12B0211FF0071124C /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F890584E2AFE27AE0007223E;
-			remoteInfo = StorageService;
+			remoteGlobalIDString = F80D7BC92B0211FF0071124C;
+			remoteInfo = GFNetwork;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F890584F2AFE27AE0007223E /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F89058522AFE27AE0007223E /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
-		F89058572AFE27AE0007223E /* StorageServiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StorageServiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F890585C2AFE27AE0007223E /* StorageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceTests.swift; sourceTree = "<group>"; };
-		F89058672AFE27C60007223E /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		F80D7BCA2B0211FF0071124C /* GFNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GFNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F80D7BCD2B0211FF0071124C /* GFNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GFNetwork.h; sourceTree = "<group>"; };
+		F80D7BD22B0211FF0071124C /* GFNetworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GFNetworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F80D7BD72B0211FF0071124C /* GFNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFNetworkTests.swift; sourceTree = "<group>"; };
+		F80D7BE82B0212600071124C /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		F80D7BE92B0212600071124C /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		F80D7BEC2B02126B0071124C /* BaseNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F890584C2AFE27AE0007223E /* Frameworks */ = {
+		F80D7BC72B0211FF0071124C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F89058542AFE27AE0007223E /* Frameworks */ = {
+		F80D7BCF2B0211FF0071124C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F89058582AFE27AE0007223E /* StorageService.framework in Frameworks */,
+				F80D7BD32B0211FF0071124C /* GFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F89058452AFE27AE0007223E = {
+		F80D7BC02B0211FF0071124C = {
 			isa = PBXGroup;
 			children = (
-				F89058512AFE27AE0007223E /* StorageService */,
-				F890585B2AFE27AE0007223E /* StorageServiceTests */,
-				F89058502AFE27AE0007223E /* Products */,
+				F80D7BCC2B0211FF0071124C /* GFNetwork */,
+				F80D7BD62B0211FF0071124C /* GFNetworkTests */,
+				F80D7BCB2B0211FF0071124C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		F89058502AFE27AE0007223E /* Products */ = {
+		F80D7BCB2B0211FF0071124C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F890584F2AFE27AE0007223E /* StorageService.framework */,
-				F89058572AFE27AE0007223E /* StorageServiceTests.xctest */,
+				F80D7BCA2B0211FF0071124C /* GFNetwork.framework */,
+				F80D7BD22B0211FF0071124C /* GFNetworkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F89058512AFE27AE0007223E /* StorageService */ = {
+		F80D7BCC2B0211FF0071124C /* GFNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				F89058522AFE27AE0007223E /* StorageService.h */,
-				F89058672AFE27C60007223E /* StorageService.swift */,
+				F80D7BCD2B0211FF0071124C /* GFNetwork.h */,
+				F80D7BEC2B02126B0071124C /* BaseNetworkService.swift */,
+				F80D7BE82B0212600071124C /* ImageLoader.swift */,
+				F80D7BE92B0212600071124C /* NetworkError.swift */,
 			);
-			path = StorageService;
+			path = GFNetwork;
 			sourceTree = "<group>";
 		};
-		F890585B2AFE27AE0007223E /* StorageServiceTests */ = {
+		F80D7BD62B0211FF0071124C /* GFNetworkTests */ = {
 			isa = PBXGroup;
 			children = (
-				F890585C2AFE27AE0007223E /* StorageServiceTests.swift */,
+				F80D7BD72B0211FF0071124C /* GFNetworkTests.swift */,
 			);
-			path = StorageServiceTests;
+			path = GFNetworkTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		F890584A2AFE27AE0007223E /* Headers */ = {
+		F80D7BC52B0211FF0071124C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F890585E2AFE27AE0007223E /* StorageService.h in Headers */,
+				F80D7BD92B0211FF0071124C /* GFNetwork.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		F890584E2AFE27AE0007223E /* StorageService */ = {
+		F80D7BC92B0211FF0071124C /* GFNetwork */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F89058612AFE27AE0007223E /* Build configuration list for PBXNativeTarget "StorageService" */;
+			buildConfigurationList = F80D7BDC2B0211FF0071124C /* Build configuration list for PBXNativeTarget "GFNetwork" */;
 			buildPhases = (
-				F890584A2AFE27AE0007223E /* Headers */,
-				F890584B2AFE27AE0007223E /* Sources */,
-				F890584C2AFE27AE0007223E /* Frameworks */,
-				F890584D2AFE27AE0007223E /* Resources */,
+				F80D7BC52B0211FF0071124C /* Headers */,
+				F80D7BC62B0211FF0071124C /* Sources */,
+				F80D7BC72B0211FF0071124C /* Frameworks */,
+				F80D7BC82B0211FF0071124C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = StorageService;
-			productName = StorageService;
-			productReference = F890584F2AFE27AE0007223E /* StorageService.framework */;
+			name = GFNetwork;
+			productName = GFNetwork;
+			productReference = F80D7BCA2B0211FF0071124C /* GFNetwork.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		F89058562AFE27AE0007223E /* StorageServiceTests */ = {
+		F80D7BD12B0211FF0071124C /* GFNetworkTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F89058642AFE27AE0007223E /* Build configuration list for PBXNativeTarget "StorageServiceTests" */;
+			buildConfigurationList = F80D7BDF2B0211FF0071124C /* Build configuration list for PBXNativeTarget "GFNetworkTests" */;
 			buildPhases = (
-				F89058532AFE27AE0007223E /* Sources */,
-				F89058542AFE27AE0007223E /* Frameworks */,
-				F89058552AFE27AE0007223E /* Resources */,
+				F80D7BCE2B0211FF0071124C /* Sources */,
+				F80D7BCF2B0211FF0071124C /* Frameworks */,
+				F80D7BD02B0211FF0071124C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F890585A2AFE27AE0007223E /* PBXTargetDependency */,
+				F80D7BD52B0211FF0071124C /* PBXTargetDependency */,
 			);
-			name = StorageServiceTests;
-			productName = StorageServiceTests;
-			productReference = F89058572AFE27AE0007223E /* StorageServiceTests.xctest */;
+			name = GFNetworkTests;
+			productName = GFNetworkTests;
+			productReference = F80D7BD22B0211FF0071124C /* GFNetworkTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F89058462AFE27AE0007223E /* Project object */ = {
+		F80D7BC12B0211FF0071124C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					F890584E2AFE27AE0007223E = {
+					F80D7BC92B0211FF0071124C = {
 						CreatedOnToolsVersion = 15.0.1;
 						LastSwiftMigration = 1500;
 					};
-					F89058562AFE27AE0007223E = {
+					F80D7BD12B0211FF0071124C = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
 				};
 			};
-			buildConfigurationList = F89058492AFE27AE0007223E /* Build configuration list for PBXProject "StorageService" */;
+			buildConfigurationList = F80D7BC42B0211FF0071124C /* Build configuration list for PBXProject "GFNetwork" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -162,26 +168,26 @@
 				en,
 				Base,
 			);
-			mainGroup = F89058452AFE27AE0007223E;
-			productRefGroup = F89058502AFE27AE0007223E /* Products */;
+			mainGroup = F80D7BC02B0211FF0071124C;
+			productRefGroup = F80D7BCB2B0211FF0071124C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F890584E2AFE27AE0007223E /* StorageService */,
-				F89058562AFE27AE0007223E /* StorageServiceTests */,
+				F80D7BC92B0211FF0071124C /* GFNetwork */,
+				F80D7BD12B0211FF0071124C /* GFNetworkTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F890584D2AFE27AE0007223E /* Resources */ = {
+		F80D7BC82B0211FF0071124C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F89058552AFE27AE0007223E /* Resources */ = {
+		F80D7BD02B0211FF0071124C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -191,34 +197,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F890584B2AFE27AE0007223E /* Sources */ = {
+		F80D7BC62B0211FF0071124C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F89058682AFE27C60007223E /* StorageService.swift in Sources */,
+				F80D7BEA2B0212600071124C /* ImageLoader.swift in Sources */,
+				F80D7BEB2B0212600071124C /* NetworkError.swift in Sources */,
+				F80D7BED2B02126B0071124C /* BaseNetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F89058532AFE27AE0007223E /* Sources */ = {
+		F80D7BCE2B0211FF0071124C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F890585D2AFE27AE0007223E /* StorageServiceTests.swift in Sources */,
+				F80D7BD82B0211FF0071124C /* GFNetworkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F890585A2AFE27AE0007223E /* PBXTargetDependency */ = {
+		F80D7BD52B0211FF0071124C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F890584E2AFE27AE0007223E /* StorageService */;
-			targetProxy = F89058592AFE27AE0007223E /* PBXContainerItemProxy */;
+			target = F80D7BC92B0211FF0071124C /* GFNetwork */;
+			targetProxy = F80D7BD42B0211FF0071124C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		F890585F2AFE27AE0007223E /* Debug */ = {
+		F80D7BDA2B0211FF0071124C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -284,7 +292,7 @@
 			};
 			name = Debug;
 		};
-		F89058602AFE27AE0007223E /* Release */ = {
+		F80D7BDB2B0211FF0071124C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -343,7 +351,7 @@
 			};
 			name = Release;
 		};
-		F89058622AFE27AE0007223E /* Debug */ = {
+		F80D7BDD2B0211FF0071124C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -366,7 +374,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.StorageService;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.GFNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -376,7 +384,7 @@
 			};
 			name = Debug;
 		};
-		F89058632AFE27AE0007223E /* Release */ = {
+		F80D7BDE2B0211FF0071124C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -399,7 +407,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.StorageService;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.GFNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -408,7 +416,7 @@
 			};
 			name = Release;
 		};
-		F89058652AFE27AE0007223E /* Debug */ = {
+		F80D7BE02B0211FF0071124C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -417,7 +425,7 @@
 				DEVELOPMENT_TEAM = 8N27URG699;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.StorageServiceTests;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.GFNetworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -425,7 +433,7 @@
 			};
 			name = Debug;
 		};
-		F89058662AFE27AE0007223E /* Release */ = {
+		F80D7BE12B0211FF0071124C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -434,7 +442,7 @@
 				DEVELOPMENT_TEAM = 8N27URG699;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.StorageServiceTests;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.GFNetworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -445,34 +453,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F89058492AFE27AE0007223E /* Build configuration list for PBXProject "StorageService" */ = {
+		F80D7BC42B0211FF0071124C /* Build configuration list for PBXProject "GFNetwork" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F890585F2AFE27AE0007223E /* Debug */,
-				F89058602AFE27AE0007223E /* Release */,
+				F80D7BDA2B0211FF0071124C /* Debug */,
+				F80D7BDB2B0211FF0071124C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F89058612AFE27AE0007223E /* Build configuration list for PBXNativeTarget "StorageService" */ = {
+		F80D7BDC2B0211FF0071124C /* Build configuration list for PBXNativeTarget "GFNetwork" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F89058622AFE27AE0007223E /* Debug */,
-				F89058632AFE27AE0007223E /* Release */,
+				F80D7BDD2B0211FF0071124C /* Debug */,
+				F80D7BDE2B0211FF0071124C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F89058642AFE27AE0007223E /* Build configuration list for PBXNativeTarget "StorageServiceTests" */ = {
+		F80D7BDF2B0211FF0071124C /* Build configuration list for PBXNativeTarget "GFNetworkTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F89058652AFE27AE0007223E /* Debug */,
-				F89058662AFE27AE0007223E /* Release */,
+				F80D7BE02B0211FF0071124C /* Debug */,
+				F80D7BE12B0211FF0071124C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = F89058462AFE27AE0007223E /* Project object */;
+	rootObject = F80D7BC12B0211FF0071124C /* Project object */;
 }

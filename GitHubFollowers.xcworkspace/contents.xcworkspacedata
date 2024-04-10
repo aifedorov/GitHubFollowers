@@ -8,9 +8,9 @@
       location = "group:GitHubFollowers.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:NetworkService/NetworkService.xcodeproj">
+      location = "group:GFNetwork/GFNetwork.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:StorageService/StorageService.xcodeproj">
+      location = "group:GFStorage/GFStorage.xcodeproj">
    </FileRef>
 </Workspace>

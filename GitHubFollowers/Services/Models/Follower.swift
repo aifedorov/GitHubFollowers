@@ -1,13 +1,6 @@
-//
-//  Follower.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 27.09.23.
-//
-
 import Foundation
 
-struct Follower: Decodable {
+struct Follower: Codable, Identifiable {
     let id: Int
     let login: String
     let avatarUrl: String

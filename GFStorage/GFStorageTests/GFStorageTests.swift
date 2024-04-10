@@ -1,14 +1,14 @@
 //
-//  CoreDataServiceTests.swift
-//  CoreDataServiceTests
+//  GFStorageTests.swift
+//  GFStorageTests
 //
-//  Created by Aleksandr Fedorov on 10.11.23.
+//  Created by Aleksandr Fedorov on 13.11.23.
 //
 
 import XCTest
-@testable import CoreDataService
+@testable import GFStorage
 
-final class CoreDataServiceTests: XCTestCase {
+final class GFStorageTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

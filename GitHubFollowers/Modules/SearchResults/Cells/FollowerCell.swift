@@ -1,10 +1,3 @@
-//
-//  SearchResultCell.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr on 11.07.23.
-//
-
 import UIKit
 
 final class FollowerCell: UICollectionViewCell {

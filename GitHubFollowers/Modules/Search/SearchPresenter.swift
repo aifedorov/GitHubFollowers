@@ -1,10 +1,3 @@
-//
-//  SearchPresenter.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 27.05.23.
-//
-
 import Foundation
 
 protocol SearchPresenterOutput: AnyObject {

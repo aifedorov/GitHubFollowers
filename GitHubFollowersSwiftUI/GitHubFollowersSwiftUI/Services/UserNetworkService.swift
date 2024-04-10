@@ -1,11 +1,5 @@
-//
-//  GFNetworkService.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 23.05.23.
-//
-
 import Foundation
+import GFNetwork
 
 protocol UserNetworkServiceProtocol {
     func fetchFollowers(for username: String) async throws -> [Follower]

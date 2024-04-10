@@ -1,10 +1,3 @@
-//
-//  ProfileViewController.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 30.08.23.
-//
-
 import UIKit
 
 protocol ProfileViewOutput: AnyObject {

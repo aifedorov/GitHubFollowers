@@ -1,10 +1,3 @@
-//
-//  String+Validation.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr on 04.07.23.
-//
-
 import UIKit
 
 extension String {

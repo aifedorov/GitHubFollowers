@@ -1,12 +1,5 @@
-//
-//  SearchResultsAssembly.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr on 18.06.23.
-//
-
 import UIKit
-import NetworkService
+import GFNetwork
 
 protocol SearchResultsModuleInput: AnyObject {
     func showFollowers(username: String)

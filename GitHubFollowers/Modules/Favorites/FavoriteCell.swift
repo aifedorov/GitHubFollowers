@@ -1,10 +1,3 @@
-//
-//  FavoriteCell.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 09.11.23.
-//
-
 import UIKit
 
 final class FavoriteCell: UITableViewCell {

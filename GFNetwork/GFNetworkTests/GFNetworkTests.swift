@@ -1,14 +1,14 @@
 //
-//  NetworkServiceTests.swift
-//  NetworkServiceTests
+//  GFNetworkTests.swift
+//  GFNetworkTests
 //
-//  Created by Aleksandr Fedorov on 10.11.23.
+//  Created by Aleksandr Fedorov on 13.11.23.
 //
 
 import XCTest
-@testable import NetworkService
+@testable import GFNetwork
 
-final class NetworkServiceTests: XCTestCase {
+final class GFNetworkTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

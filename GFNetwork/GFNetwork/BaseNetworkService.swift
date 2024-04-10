@@ -1,10 +1,3 @@
-//
-//  BaseNetworkService.swift
-//  NetworkService
-//
-//  Created by Aleksandr Fedorov on 10.11.23.
-//
-
 import Foundation
 
 open class BaseNetworkService {

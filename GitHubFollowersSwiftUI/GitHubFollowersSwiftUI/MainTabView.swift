@@ -1,10 +1,3 @@
-//
-//  MainTabView.swift
-//  GitHubFollowersSwiftUI
-//
-//  Created by Aleksandr Fedorov on 29.10.23.
-//
-
 import SwiftUI
 
 struct MainTabView: View {

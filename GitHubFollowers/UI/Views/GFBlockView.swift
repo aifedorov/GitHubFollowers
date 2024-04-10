@@ -1,10 +1,3 @@
-//
-//  GFBlockView.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 31.10.23.
-//
-
 import UIKit
 
 final class GFBlockView: UIView {

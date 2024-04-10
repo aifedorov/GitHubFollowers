@@ -1,10 +1,3 @@
-//
-//  UIView+Extensions.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 24.09.23.
-//
-
 import UIKit
 
 extension UIView {

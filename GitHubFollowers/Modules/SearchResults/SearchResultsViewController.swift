@@ -1,10 +1,3 @@
-//
-//  SearchResultsViewController.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 16.05.23.
-//
-
 import UIKit
 
 protocol SearchResultsViewOutput {
@@ -43,7 +36,6 @@ final class SearchResultsViewController: UIViewController {
         }
     }
     
-    #warning("Move to parent view controller with loading / data / empty / error states")
     private let loadingView = GFLoadingView()
     
     private lazy var fullScreenErrorView: GFFullScreenMessageView = {

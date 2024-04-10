@@ -1,12 +1,5 @@
-//
-//  SearchResultsPresenter.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr on 18.06.23.
-//
-
 import Foundation
-import NetworkService
+import GFNetwork
 
 protocol SearchResultsPresenterOutput: AnyObject {
     func showLoadingView()

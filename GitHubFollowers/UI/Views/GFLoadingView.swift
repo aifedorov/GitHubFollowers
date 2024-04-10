@@ -1,10 +1,3 @@
-//
-//  GFActivityIndicatorViewController.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 01.10.23.
-//
-
 import UIKit
 
 final class GFLoadingView: UIView {

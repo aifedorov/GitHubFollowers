@@ -1,10 +1,3 @@
-//
-//  SearchAssembly.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 24.05.23.
-//
-
 import UIKit
 
 enum SearchAssembly {

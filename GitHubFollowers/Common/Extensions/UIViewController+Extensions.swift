@@ -1,10 +1,3 @@
-//
-//  UIViewController+Extensions.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 28.09.23.
-//
-
 import UIKit
 import SafariServices
 

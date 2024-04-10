@@ -30,9 +30,12 @@
 		F84FD7352AC9EE66005C4B71 /* GFLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84FD7342AC9EE66005C4B71 /* GFLoadingView.swift */; };
 		F884213E2A3F5CCB008C4A9B /* SearchResultsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884213D2A3F5CCB008C4A9B /* SearchResultsAssembly.swift */; };
 		F88421402A3F5F31008C4A9B /* SearchResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884213F2A3F5F31008C4A9B /* SearchResultsPresenter.swift */; };
+		F88BA4132BC6921A009F83AD /* GFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88BA4122BC6921A009F83AD /* GFNetwork.framework */; };
+		F88BA4142BC6921A009F83AD /* GFNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F88BA4122BC6921A009F83AD /* GFNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F88BA4172BC6921E009F83AD /* GFStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88BA4162BC6921E009F83AD /* GFStorage.framework */; };
+		F88BA4182BC6921E009F83AD /* GFStorage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F88BA4162BC6921E009F83AD /* GFStorage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F890579A2AF0E4870007223E /* GFBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89057992AF0E4870007223E /* GFBlockView.swift */; };
 		F890579C2AF0E8400007223E /* GFBlockTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F890579B2AF0E8400007223E /* GFBlockTitleLabel.swift */; };
-		F890579E2AF776250007223E /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F890579D2AF776250007223E /* StorageProvider.swift */; };
 		F89057DC2AFB950E0007223E /* FavoritesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89057DB2AFB950E0007223E /* FavoritesAssembly.swift */; };
 		F89057DE2AFB954A0007223E /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89057DD2AFB954A0007223E /* FavoritesPresenter.swift */; };
 		F89057E02AFD54340007223E /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89057DF2AFD54340007223E /* FavoriteCell.swift */; };
@@ -48,6 +51,21 @@
 		F8C7D3D52A5D5991000B1FE0 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7D3D42A5D5991000B1FE0 /* FollowerCell.swift */; };
 		F8CC8C262AE295FD0063DA9B /* Error+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8C252AE295FD0063DA9B /* Error+Extensions.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F88BA4152BC6921A009F83AD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F88BA4142BC6921A009F83AD /* GFNetwork.framework in Embed Frameworks */,
+				F88BA4182BC6921E009F83AD /* GFStorage.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3B56CA452A1E3D88002825D9 /* SearchAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAssembly.swift; sourceTree = "<group>"; };
@@ -75,9 +93,10 @@
 		F84FD7342AC9EE66005C4B71 /* GFLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFLoadingView.swift; sourceTree = "<group>"; };
 		F884213D2A3F5CCB008C4A9B /* SearchResultsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsAssembly.swift; sourceTree = "<group>"; };
 		F884213F2A3F5F31008C4A9B /* SearchResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsPresenter.swift; sourceTree = "<group>"; };
+		F88BA4122BC6921A009F83AD /* GFNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GFNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F88BA4162BC6921E009F83AD /* GFStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GFStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F89057992AF0E4870007223E /* GFBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBlockView.swift; sourceTree = "<group>"; };
 		F890579B2AF0E8400007223E /* GFBlockTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBlockTitleLabel.swift; sourceTree = "<group>"; };
-		F890579D2AF776250007223E /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		F89057DB2AFB950E0007223E /* FavoritesAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesAssembly.swift; sourceTree = "<group>"; };
 		F89057DD2AFB954A0007223E /* FavoritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
 		F89057DF2AFD54340007223E /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
@@ -99,6 +118,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F88BA4132BC6921A009F83AD /* GFNetwork.framework in Frameworks */,
+				F88BA4172BC6921E009F83AD /* GFStorage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,7 +131,6 @@
 			children = (
 				F890588D2AFE29870007223E /* Models */,
 				F890588E2AFE29A90007223E /* UserNetworkService.swift */,
-				F890579D2AF776250007223E /* StorageProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -187,7 +207,6 @@
 		3B56CA442A1E3D43002825D9 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				F89057E12AFD5F5C0007223E /* Cells */,
 				F89057DB2AFB950E0007223E /* FavoritesAssembly.swift */,
 				F89057DF2AFD54340007223E /* FavoriteCell.swift */,
 				3BB30C212A0D076B00BE57A3 /* FavoritesViewController.swift */,
@@ -201,6 +220,7 @@
 			children = (
 				3BB30BEC2A0A37D100BE57A3 /* GitHubFollowers */,
 				3BB30BEB2A0A37D100BE57A3 /* Products */,
+				F88BA4112BC6921A009F83AD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -287,11 +307,13 @@
 			path = TextFields;
 			sourceTree = "<group>";
 		};
-		F89057E12AFD5F5C0007223E /* Cells */ = {
+		F88BA4112BC6921A009F83AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F88BA4162BC6921E009F83AD /* GFStorage.framework */,
+				F88BA4122BC6921A009F83AD /* GFNetwork.framework */,
 			);
-			path = Cells;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		F890588D2AFE29870007223E /* Models */ = {
@@ -331,6 +353,7 @@
 				3BB30BE62A0A37D100BE57A3 /* Sources */,
 				3BB30BE72A0A37D100BE57A3 /* Frameworks */,
 				3BB30BE82A0A37D100BE57A3 /* Resources */,
+				F88BA4152BC6921A009F83AD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -402,7 +425,6 @@
 				F8C7D3D52A5D5991000B1FE0 /* FollowerCell.swift in Sources */,
 				F89057DC2AFB950E0007223E /* FavoritesAssembly.swift in Sources */,
 				F895FE6B2AC5E3D8009A9D3F /* UIViewController+Extensions.swift in Sources */,
-				F890579E2AF776250007223E /* StorageProvider.swift in Sources */,
 				F884213E2A3F5CCB008C4A9B /* SearchResultsAssembly.swift in Sources */,
 				F890579A2AF0E4870007223E /* GFBlockView.swift in Sources */,
 				F88421402A3F5F31008C4A9B /* SearchResultsPresenter.swift in Sources */,
@@ -575,7 +597,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 97857562T4;
+				DEVELOPMENT_TEAM = 8N27URG699;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GithubFollowers/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -590,7 +612,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorov.githubfollowers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_STRICT_CONCURRENCY = targeted;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -603,7 +624,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 97857562T4;
+				DEVELOPMENT_TEAM = 8N27URG699;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GithubFollowers/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -618,7 +639,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorov.githubfollowers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_STRICT_CONCURRENCY = targeted;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

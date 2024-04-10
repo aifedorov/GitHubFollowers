@@ -1,10 +1,3 @@
-//
-//  StateView.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr on 08.07.23.
-//
-
 import UIKit
 
 final class GFFullScreenMessageView: UIView {

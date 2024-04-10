@@ -1,11 +1,5 @@
-//
-//  FavoritesPresenter.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 08.11.23.
-//
-
 import Foundation
+import GFStorage
 
 protocol FavoritesPresenterOutput: AnyObject {
     func showFavorites(_ followers: [Follower])
@@ -19,17 +13,17 @@ final class FavoritesPresenter {
 
     weak var view: FavoritesPresenterOutput?
     
-    private let storageProvider: StorageProvider
+    private let storageProvider: StorageProvider<Follower>
     private var state: State
 
-    init(storageProvider: StorageProvider) {
+    init(storageProvider: StorageProvider<Follower>) {
         self.storageProvider = storageProvider
         self.state = State(favorites: [])
     }
         
     private func loadFavorites() {
         Task { @MainActor in
-            state.favorites = await storageProvider.savedFollowers
+            state.favorites = try await storageProvider.load()
             view?.showFavorites(state.favorites)
         }
     }
@@ -42,7 +36,6 @@ extension FavoritesPresenter: FavoritesViewOutput {
     }
     
     func fetchImage(at indexPath: IndexPath) async -> Data? {
-        #warning("Need return Image data from cache")
         return nil
     }
 }

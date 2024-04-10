@@ -1,16 +1,11 @@
-//
-//  FavoritesAssembly.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 08.11.23.
-//
-
 import UIKit
+import GFStorage
 
 enum FavoritesAssembly {
     static func makeModule() -> UIViewController {
         let viewController = FavoritesViewController()
-        let presenter = FavoritesPresenter(storageProvider: StorageProvider.shared)
+        let fileStorageService = FileStorageService<Follower>()
+        let presenter = FavoritesPresenter(storageProvider: StorageProvider<Follower>(fileStorageService))
         
         viewController.output = presenter
         presenter.view = viewController

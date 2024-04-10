@@ -1,12 +1,5 @@
-//
-//  ProfilePresenter.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 30.08.23.
-//
-
-import Foundation
 import UIKit
+import GFStorage
 
 protocol ProfilePresenterOutput: AnyObject {
     func showLoadingView()
@@ -32,7 +25,7 @@ final class ProfilePresenter {
     weak var searchResultsModuleInput: SearchResultsModuleInput?
     
     private let userNetworkService: UserNetworkServiceProtocol
-    private let storageProvider: StorageProvider
+    private let storageProvider: StorageProvider<Follower>
     
     private var state: State {
         didSet {
@@ -40,7 +33,7 @@ final class ProfilePresenter {
         }
     }
     
-    init(_ userNetworkService: UserNetworkServiceProtocol, storageProvider: StorageProvider, _ follower: Follower) {
+    init(_ userNetworkService: UserNetworkServiceProtocol, storageProvider: StorageProvider<Follower>, _ follower: Follower) {
         self.userNetworkService = userNetworkService
         self.storageProvider = storageProvider
         self.state = State(follower: follower)
@@ -51,7 +44,7 @@ final class ProfilePresenter {
     private func updateFavoriteButton() {
         view?.updateFavoriteButton(isEnabled: false)
         Task { @MainActor in
-            state.isFavoriteButtonHighlighted = await storageProvider.containsInFavorites(state.follower)
+            state.isFavoriteButtonHighlighted = await storageProvider.contains(state.follower)
             view?.updateFavoriteButton(isHighlighted: state.isFavoriteButtonHighlighted)
             view?.updateFavoriteButton(isEnabled: true)
         }
@@ -121,13 +114,12 @@ extension ProfilePresenter: ProfileViewOutput {
     }
     
     func didTapAddToFavoriteButton() {
-        
         Task { @MainActor in
             let follower = state.follower
-            if await !storageProvider.containsInFavorites(follower) {
-                await storageProvider.addToFavorite(follower)
+            if await !storageProvider.contains(follower) {
+                try await storageProvider.save([follower])
             } else {
-                await storageProvider.removeFromFavorite(follower)
+                try await storageProvider.delete([follower])
             }
             
             updateFavoriteButton()

@@ -1,10 +1,3 @@
-//
-//  SearchViewController.swift
-//  GithubFollowers
-//
-//  Created by Aleksandr Fedorov on 09.05.23.
-//
-
 import UIKit
 
 protocol SearchViewOutput {

@@ -1,13 +1,6 @@
-//
-//  GFNavigationViewController.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 17.05.23.
-//
-
 import UIKit
 
-class GFNavigationViewController: UINavigationController {
+final class GFNavigationViewController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
