@@ -1,7 +1,7 @@
 import UIKit
 
 final class GFLoadingView: UIView {
-    
+        
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let loadingView = UIActivityIndicatorView(style: .large)
         loadingView.translatesAutoresizingMaskIntoConstraints = false
@@ -25,18 +25,19 @@ final class GFLoadingView: UIView {
     
     private func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .systemBackground
-        
-        layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
-        layer.shadowOpacity = 1
-        layer.shadowRadius = 36
-        layer.shadowOffset = CGSize(width: 0, height: 8)
-        backgroundColor = .systemBackground
+        backgroundColor = .brand
         layer.cornerRadius = 8
+        clipsToBounds = true
         
         addSubview(activityIndicator)
         
-        activityIndicator.pinToCenterSuperview(centerX: 0, centerY: 0)
+        activityIndicator.pinToEdgesSuperview(
+            top: 16,
+            leading: 16,
+            trailing: -16,
+            bottom: -16,
+            withSafeArea: false
+        )
     }
     
     func startLoading() {

@@ -94,7 +94,7 @@ final class ProfilePresenter {
         updateFavoriteButton()
     }
     
-    private func showErrorAlertView(with alertContent: ErrorContent) {
+    private func showErrorAlertView(with alertContent: SearchResultErrorContent) {
         view?.showErrorAlert(title: alertContent.title, message: alertContent.message)
     }
 }

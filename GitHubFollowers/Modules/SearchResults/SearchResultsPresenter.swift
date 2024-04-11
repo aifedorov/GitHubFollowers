@@ -4,13 +4,12 @@ import GFNetwork
 protocol SearchResultsPresenterOutput: AnyObject {
     func showLoadingView()
     func hideLoadingView()
-    func showFullScreenErrorMessageView(withTile title: String, message: String)
-    func hideFullScreenErrorMessageView()
+    func showEmptyView(withTile title: String, message: String, imageType: GFEmptyView.ImageType)
+    func hideEmptyView()
     func showFollowers(_ followers: [Follower])
     func updateTitle(username: String)
     func showProfile(for follower: Follower, searchResultsModuleInput: SearchResultsModuleInput)
     func closeProfile(completion: @escaping () -> Void)
-    func showSuccessAlert(title: String, message: String)
     func showErrorAlert(title: String, message: String)
 }
 
@@ -18,7 +17,7 @@ final class SearchResultsPresenter {
     
     struct State {
         var searchedUsername: String = ""
-        var errorContent: ErrorContent?
+        var errorContent: SearchResultErrorContent?
         
         private var followers: [Follower] = []
         private var filteredFollowers: [Follower] = []
@@ -58,37 +57,45 @@ final class SearchResultsPresenter {
         self.userNetworkService = userNetworkService
     }
     
-    private func showError() {
-        guard let errorContent = state.errorContent else { return }
-        let activeFollowers = state.getAllFollowers()
-        if activeFollowers.isEmpty {
-            view?.showFullScreenErrorMessageView(withTile: errorContent.title, message: errorContent.message)
-        } else {
+    private func updateErrorView() {
+        guard let errorContent = state.errorContent else {
+            view?.hideEmptyView()
+            return
+        }
+        switch errorContent {
+        case .networkError:
             view?.showErrorAlert(title: errorContent.title, message: errorContent.message)
+        case .userHaveNoFollowers:
+            view?.showEmptyView(withTile: errorContent.title, message: errorContent.message, imageType: .noFollowers)
+        case .userNotFound:
+            view?.showEmptyView(withTile: errorContent.title, message: errorContent.message, imageType: .userNotFound)
         }
     }
     
-    private func showFollowers() {
+    private func updateFollowers() {
         view?.showFollowers(state.getAllFollowers())
     }
     
     private func fetchFollowers(username: String) {
         view?.showLoadingView()
-        view?.hideFullScreenErrorMessageView()
+        state.errorContent = nil
+        updateErrorView()
         
         Task { @MainActor in
             do {
                 let followers = try await userNetworkService.fetchFollowers(for: state.searchedUsername)
                 state.updateFollowers(followers)
-                showFollowers()
+                if followers.isEmpty {
+                    state.errorContent = .userHaveNoFollowers
+                }
             } catch NetworkError.resourceNotFound {
                 state.errorContent = .userNotFound
-                showError()
             } catch {
                 state.errorContent = .networkError
-                showError()
             }
             
+            updateFollowers()
+            updateErrorView()
             view?.hideLoadingView()
         }
     }
@@ -114,7 +121,7 @@ extension SearchResultsPresenter: SearchResultsViewOutput {
     
     func searchQueryDidChange(query: String) {
         state.updateSearchResult(for: query)
-        showFollowers()
+        updateFollowers()
     }
 }
 

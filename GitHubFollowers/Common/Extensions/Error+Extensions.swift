@@ -1,6 +1,6 @@
 import Foundation
 
-enum ErrorContent {
+enum SearchResultErrorContent {
     case userHaveNoFollowers
     case userNotFound
     case networkError
@@ -24,6 +24,29 @@ enum ErrorContent {
             return "This user doesn't have any followers."
         case .userNotFound:
             return "Sorry, the user not found."
+        }
+    }
+}
+
+enum FavoritesErrorContent {
+    case noFavorites
+    case unknownError
+    
+    var title: String {
+        switch self {
+        case .noFavorites:
+            return "No favorites"
+        case .unknownError:
+            return "Technical Error"
+        }
+    }
+    
+    var message: String {
+        switch self {
+        case .noFavorites:
+            return "You haven’t added any users yet."
+        case .unknownError:
+            return "Something is wrong. Please try again later."
         }
     }
 }

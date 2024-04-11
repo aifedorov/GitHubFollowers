@@ -26,6 +26,14 @@ final class FavoritesViewController: UIViewController {
     
     var output: FavoritesViewOutput?
     
+    private lazy var emptyView: GFEmptyView = {
+        GFEmptyView(
+            withTitle: "No favorites",
+            message: "You haven’t added any users yet.",
+            image: .noFavorites
+        )
+    }()
+    
     private var tableView: UITableView!
     private var dataSource: DataSource!
     private var displayItems: [Item] = [] {
@@ -104,5 +112,20 @@ extension FavoritesViewController: FavoritesPresenterOutput {
     
     func showFavorites(_ followers: [Follower]) {
         displayItems = followers.map(Item.init)
+    }
+    
+    func showEmptyView(withTile title: String, message: String, imageType: GFEmptyView.ImageType) {
+        emptyView.update(title: title, message: message, imageType: imageType)
+        tableView.backgroundView = emptyView
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    func hideEmptyView() {
+        tableView.backgroundView = nil
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    func showErrorAlert(title: String, message: String) {
+        presentAlert(title: title, message: message, type: .error)
     }
 }

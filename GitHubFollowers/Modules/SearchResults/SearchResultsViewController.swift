@@ -38,14 +38,13 @@ final class SearchResultsViewController: UIViewController {
     
     private let loadingView = GFLoadingView()
     
-    private lazy var fullScreenErrorView: GFFullScreenMessageView = {
-        let view = GFFullScreenMessageView(withTitle: "Something wrong",
-                                           message: "Something wrong, please try again",
-                                           buttonTitle: "Go back") { [weak self] in
-            guard let self else { return }
-            self.navigationController?.popViewController(animated: true)
-        }
-        return view
+    private lazy var emptyView: GFEmptyView = {
+        GFEmptyView(
+            buttonAction: { [weak self] in
+                guard let self else { return }
+                self.navigationController?.popViewController(animated: true)
+            }
+        )
     }()
     
     private lazy var searchController: UISearchController = {
@@ -81,12 +80,8 @@ final class SearchResultsViewController: UIViewController {
     
     private func makeCollectionViewLayout() -> UICollectionViewLayout {
         let collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.itemSize = CGSize(width: 100,
-                                               height: 130)
-        collectionViewLayout.sectionInset = UIEdgeInsets(top: 16,
-                                                         left: 30,
-                                                         bottom: 16,
-                                                         right: 30)
+        collectionViewLayout.itemSize = CGSize(width: 100, height: 130)
+        collectionViewLayout.sectionInset = UIEdgeInsets(top: 16, left: 30, bottom: 16, right: 30)
         return collectionViewLayout
     }
     
@@ -98,8 +93,16 @@ final class SearchResultsViewController: UIViewController {
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.cellId)
     }
     
-    private func configureCollectionViewCell(collectionView: UICollectionView, indexPath: IndexPath, item: Item) -> UICollectionViewCell? {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.cellId, for: indexPath) as? FollowerCell else {
+    private func configureCollectionViewCell(
+        collectionView: UICollectionView,
+        indexPath: IndexPath,
+        item: Item
+    ) -> UICollectionViewCell? {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: FollowerCell.cellId,
+            for: indexPath
+        ) as? FollowerCell
+        else {
             assertionFailure("Wrong table view cell type")
             return nil
         }
@@ -146,20 +149,16 @@ extension SearchResultsViewController: SearchResultsPresenterOutput {
         displayItems = followers.map(Item.init)
     }
     
-    func showSuccessAlert(title: String, message: String) {
-        presentAlert(title: title, message: message, type: .success)
-    }
-    
     func showErrorAlert(title: String, message: String) {
         presentAlert(title: title, message: message, type: .error)
     }
     
-    func showFullScreenErrorMessageView(withTile title: String, message: String) {
-        fullScreenErrorView.update(title: title, message: message)
-        collectionView.backgroundView = fullScreenErrorView
+    func showEmptyView(withTile title: String, message: String, imageType: GFEmptyView.ImageType) {
+        emptyView.update(title: title, message: message, imageType: imageType)
+        collectionView.backgroundView = emptyView
     }
     
-    func hideFullScreenErrorMessageView() {
+    func hideEmptyView() {
         collectionView.backgroundView = nil
     }
     
@@ -175,7 +174,10 @@ extension SearchResultsViewController: SearchResultsPresenterOutput {
     
     func showProfile(for follower: Follower, searchResultsModuleInput: SearchResultsModuleInput) {
         searchController.isActive = false
-        let profileViewController = ProfileAssembly.makeModule(with: follower, searchResultsModuleInput: searchResultsModuleInput)
+        let profileViewController = ProfileAssembly.makeModule(
+            with: follower,
+            searchResultsModuleInput: searchResultsModuleInput
+        )
         present(profileViewController, animated: true)
     }
     

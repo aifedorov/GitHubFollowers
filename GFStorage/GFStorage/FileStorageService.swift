@@ -98,7 +98,6 @@ public actor FileStorageService<Entity: Equatable & Codable & Identifiable> {
         } catch CocoaError.fileReadNoSuchFile {
             entities = []
             logger.debug("No file found--created an empty array.")
-            throw StorageError.fileReadNoSuchFile
             
         } catch {
             logger.error("*** An unexpected error occurred while loading the data from file: \(error.localizedDescription) ***")
