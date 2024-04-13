@@ -1,16 +1,12 @@
-//
-//  ProfileAssembly.swift
-//  GitHubFollowers
-//
-//  Created by Aleksandr Fedorov on 30.08.23.
-//
-
 import UIKit
 import GFNetwork
 import GFStorage
 
 enum ProfileAssembly {
-    static func makeModule(with follower: Follower, searchResultsModuleInput: SearchResultsModuleInput) -> UIViewController {
+    static func makeModule(
+        with follower: Follower,
+        profileModuleOutput: ProfileModuleOutput? = nil
+    ) -> UIViewController {
         let viewController = ProfileViewController()
         let presenter = ProfilePresenter(
             UserNetworkService(ImageLoader.shared),
@@ -18,7 +14,7 @@ enum ProfileAssembly {
             follower
         )
         
-        presenter.searchResultsModuleInput = searchResultsModuleInput
+        presenter.moduleOutput = profileModuleOutput
         viewController.output = presenter
         presenter.view = viewController
         

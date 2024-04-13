@@ -3,6 +3,7 @@ import UIKit
 protocol ProfileViewOutput: AnyObject {
     func viewDidLoad()
     func didTapAddToFavoriteButton()
+    func didTapCloseButton()
     func didTapOpenProfileButton()
     func didTapShowFollowersButton()
 }
@@ -99,9 +100,7 @@ final class ProfileViewController: UIViewController {
             image: nil,
             style: .plain,
             target: self,
-            action: #selector(
-                addToFavorite
-            )
+            action: #selector(addToFavorite)
         )
                 
         navigationItem.leftBarButtonItem = closeItem
@@ -143,7 +142,7 @@ final class ProfileViewController: UIViewController {
     }
     
     @objc private func closeProfile() {
-        dismiss(animated: true)
+        output?.didTapCloseButton()
     }
     
     @objc private func addToFavorite() {

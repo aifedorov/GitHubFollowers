@@ -172,16 +172,16 @@ extension SearchResultsViewController: SearchResultsPresenterOutput {
         loadingView.isHidden = true
     }
     
-    func showProfile(for follower: Follower, searchResultsModuleInput: SearchResultsModuleInput) {
+    func showProfile(for follower: Follower, profileModuleOutput: ProfileModuleOutput) {
         searchController.isActive = false
         let profileViewController = ProfileAssembly.makeModule(
             with: follower,
-            searchResultsModuleInput: searchResultsModuleInput
+            profileModuleOutput: profileModuleOutput
         )
         present(profileViewController, animated: true)
     }
     
-    func closeProfile(completion: @escaping () -> Void) {
+    func closeProfile(completion: (() -> Void)?) {
         presentedViewController?.dismiss(animated: true, completion: completion)
     }
     

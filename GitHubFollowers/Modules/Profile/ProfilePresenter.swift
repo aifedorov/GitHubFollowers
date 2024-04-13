@@ -1,6 +1,11 @@
 import UIKit
 import GFStorage
 
+protocol ProfileModuleOutput: AnyObject {
+    func profileWantsToClose()
+    func showFollowers(username: String)
+}
+
 protocol ProfilePresenterOutput: AnyObject {
     func showLoadingView()
     func hideLoadingView()
@@ -22,7 +27,7 @@ final class ProfilePresenter {
     }
     
     weak var view: ProfilePresenterOutput?
-    weak var searchResultsModuleInput: SearchResultsModuleInput?
+    weak var moduleOutput: ProfileModuleOutput?
     
     private let userNetworkService: UserNetworkServiceProtocol
     private let storageProvider: StorageProvider<Follower>
@@ -135,9 +140,13 @@ extension ProfilePresenter: ProfileViewOutput {
         }
     }
     
+    func didTapCloseButton() {
+        moduleOutput?.profileWantsToClose()
+    }
+    
     func didTapShowFollowersButton() {
         guard let user = state.userInfo else { return }
-        searchResultsModuleInput?.showFollowers(username: user.login)
+        moduleOutput?.showFollowers(username: user.login)
     }
     
     func didTapOpenProfileButton() {

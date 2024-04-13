@@ -3,6 +3,7 @@ import UIKit
 protocol FavoritesViewOutput: AnyObject {
     func viewWillAppear()
     func fetchImage(at indexPath: IndexPath) async -> Data?
+    func didSelectRow(at indexPath: IndexPath)
 }
 
 final class FavoritesViewController: UIViewController {
@@ -44,6 +45,7 @@ final class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Favorites"
         view.backgroundColor = .systemBackground
         
         setupTableView()
@@ -106,6 +108,11 @@ extension FavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 72
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        output?.didSelectRow(at: indexPath)
+    }
 }
 
 extension FavoritesViewController: FavoritesPresenterOutput {
@@ -117,7 +124,6 @@ extension FavoritesViewController: FavoritesPresenterOutput {
     func showEmptyView(withTile title: String, message: String, imageType: GFEmptyView.ImageType) {
         emptyView.update(title: title, message: message, imageType: imageType)
         tableView.backgroundView = emptyView
-        navigationController?.isNavigationBarHidden = true
     }
     
     func hideEmptyView() {
@@ -127,5 +133,20 @@ extension FavoritesViewController: FavoritesPresenterOutput {
     
     func showErrorAlert(title: String, message: String) {
         presentAlert(title: title, message: message, type: .error)
+    }
+    
+    func showProfile(for follower: Follower, profileModuleOutput: ProfileModuleOutput) {
+        let profileViewController = ProfileAssembly.makeModule(with: follower, profileModuleOutput: profileModuleOutput)
+        present(profileViewController, animated: true)
+    }
+    
+    func closeProfile() {
+        presentedViewController?.dismiss(animated: true)
+    }
+    
+    func showFollowers(username: String) {
+        presentedViewController?.dismiss(animated: false)
+        let searchResultsViewController = SearchResultsAssembly.makeModule(searchedUsername: username)
+        navigationController?.pushViewController(searchResultsViewController, animated: true)
     }
 }

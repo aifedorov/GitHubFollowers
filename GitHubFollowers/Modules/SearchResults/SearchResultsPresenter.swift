@@ -8,8 +8,8 @@ protocol SearchResultsPresenterOutput: AnyObject {
     func hideEmptyView()
     func showFollowers(_ followers: [Follower])
     func updateTitle(username: String)
-    func showProfile(for follower: Follower, searchResultsModuleInput: SearchResultsModuleInput)
-    func closeProfile(completion: @escaping () -> Void)
+    func showProfile(for follower: Follower, profileModuleOutput: ProfileModuleOutput)
+    func closeProfile(completion: (() -> Void)?)
     func showErrorAlert(title: String, message: String)
 }
 
@@ -105,7 +105,7 @@ extension SearchResultsPresenter: SearchResultsViewOutput {
     
     func didSelectItem(at indexPath: IndexPath) {
         let follower = state.getFollower(at: indexPath.row)
-        view?.showProfile(for: follower, searchResultsModuleInput: self)
+        view?.showProfile(for: follower, profileModuleOutput: self)
     }
     
     func fetchImage(at indexPath: IndexPath) async -> Data? {
@@ -125,7 +125,11 @@ extension SearchResultsPresenter: SearchResultsViewOutput {
     }
 }
 
-extension SearchResultsPresenter: SearchResultsModuleInput {
+extension SearchResultsPresenter: ProfileModuleOutput {
+    
+    func profileWantsToClose() {
+        view?.closeProfile(completion: nil)
+    }
     
     func showFollowers(username: String) {
         state.searchedUsername = username
