@@ -8,6 +8,6 @@ enum SearchAssembly {
         viewController.output = presenter
         presenter.view = viewController
         
-        return viewController
+        return GFNavigationViewController(rootViewController: viewController)
     }
 }

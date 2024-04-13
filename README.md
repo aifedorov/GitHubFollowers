@@ -4,8 +4,7 @@ Example take-home project job interview for my mentee or self-study.
 I published the design on [Figma Community](https://figma.com/@aifedorov).
 
 ## Frameworks/Technologies
-The project consists of two projects: `UIKit` and `SwiftUI` versions.
-1) A GitHubFollowers iOS app written in `Swift` using `MVP` architectural pattern.
+A GitHubFollowers iOS app written in `Swift` using `MVP` architectural pattern.
 - [x] 100% programmatic UI using `UIKit` and `NSLayoutAnchor`.
 - [x] No 3rd party libraries.
 - [x] iOS 14.0 or higher.
@@ -17,25 +16,6 @@ The project consists of two projects: `UIKit` and `SwiftUI` versions.
 - [x] Using `Codable` for encoding and decoding `JSON`.
 - [x] Error handling and displaying user fullscreen or alert.
 - [x] Caching image using `NSCache`.
-- [ ] Caching favorites in `Core Data`.
-- [ ] Supporting Pagination.
-- [ ] Supporting Dark Mode.
-- [ ] Supporting iPhone SE (fix collection view and add scroll view for Profile Screen)
-
-1) A GitHubFollowers iOS app written using `SwiftUI` and `MVVM` architecture.
-- [x] iOS 15.0 or higher.
-- [x] No 3rd party libraries.
-- [x] `Combine` и `Swift Concurrency (async/await)`.
-- [x] Caching image using `NSCache`.
-- [x] Using `Codable` for encoding and decoding `JSON`.
-- [ ] Error handling and displaying user alert.
-- [ ] Caching favorites in `Core Data`.
-- [ ] Supporting Pagination.
-- [ ] Supporting Dark Mode.
-- [ ] Unit tests.
-- [ ] UI tests.
-
-**Info:** Using `Core Data` for this project is overwhelming. Using a cache on a disk is enough. I use it for studying purposes.
 
 ## Getting Started
 

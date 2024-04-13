@@ -10,7 +10,7 @@ enum ProfileAssembly {
         let viewController = ProfileViewController()
         let presenter = ProfilePresenter(
             UserNetworkService(ImageLoader.shared),
-            storageProvider: StorageProvider<Follower>(FileStorageService()),
+            FavoritesStorageProvider.shared,
             follower
         )
         

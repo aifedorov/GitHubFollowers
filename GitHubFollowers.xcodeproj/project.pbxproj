@@ -50,6 +50,7 @@
 		F8C3F0EA2A9F403B00EC6590 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C3F0E92A9F403B00EC6590 /* ProfilePresenter.swift */; };
 		F8C7D3D52A5D5991000B1FE0 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7D3D42A5D5991000B1FE0 /* FollowerCell.swift */; };
 		F8CC8C262AE295FD0063DA9B /* Error+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8C252AE295FD0063DA9B /* Error+Extensions.swift */; };
+		F8DE3F202BCACD2300808B6A /* FavoritesStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DE3F1F2BCACD2300808B6A /* FavoritesStorageProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -111,6 +112,7 @@
 		F8C3F0E92A9F403B00EC6590 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		F8C7D3D42A5D5991000B1FE0 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		F8CC8C252AE295FD0063DA9B /* Error+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extensions.swift"; sourceTree = "<group>"; };
+		F8DE3F1F2BCACD2300808B6A /* FavoritesStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesStorageProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			children = (
 				F890588D2AFE29870007223E /* Models */,
 				F890588E2AFE29A90007223E /* UserNetworkService.swift */,
+				F8DE3F1F2BCACD2300808B6A /* FavoritesStorageProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				F84FD7302AC9EA39005C4B71 /* GFUsernameLabel.swift in Sources */,
 				F8C3F0E62A9F3F6100EC6590 /* ProfileAssembly.swift in Sources */,
 				F808D1A72AD820270036739A /* GFTitleLabel.swift in Sources */,
+				F8DE3F202BCACD2300808B6A /* FavoritesStorageProvider.swift in Sources */,
 				F890588C2AFE29820007223E /* User.swift in Sources */,
 				3BF7B6AF2A14F67300218AF8 /* GFNavigationViewController.swift in Sources */,
 				3B56D1262A224C4C002825D9 /* SearchPresenter.swift in Sources */,

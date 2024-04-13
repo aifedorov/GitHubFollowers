@@ -30,7 +30,7 @@ final class ProfilePresenter {
     weak var moduleOutput: ProfileModuleOutput?
     
     private let userNetworkService: UserNetworkServiceProtocol
-    private let storageProvider: StorageProvider<Follower>
+    private let favoritesStorageProvider: FavoritesStorageProvider
     
     private var state: State {
         didSet {
@@ -38,10 +38,16 @@ final class ProfilePresenter {
         }
     }
     
-    init(_ userNetworkService: UserNetworkServiceProtocol, storageProvider: StorageProvider<Follower>, _ follower: Follower) {
+    init(
+        _ userNetworkService: UserNetworkServiceProtocol,
+        _ favoritesStorageProvider: FavoritesStorageProvider,
+        _ follower: Follower
+    ) {
         self.userNetworkService = userNetworkService
-        self.storageProvider = storageProvider
-        self.state = State(follower: follower)
+        self.favoritesStorageProvider = favoritesStorageProvider
+        self.state = State(
+            follower: follower
+        )
         
         updateFavoriteButton()
     }
@@ -49,7 +55,7 @@ final class ProfilePresenter {
     private func updateFavoriteButton() {
         view?.updateFavoriteButton(isEnabled: false)
         Task { @MainActor in
-            state.isFavoriteButtonHighlighted = await storageProvider.contains(state.follower)
+            state.isFavoriteButtonHighlighted = await favoritesStorageProvider.storageProvider.contains(state.follower)
             view?.updateFavoriteButton(isHighlighted: state.isFavoriteButtonHighlighted)
             view?.updateFavoriteButton(isEnabled: true)
         }
@@ -130,10 +136,10 @@ extension ProfilePresenter: ProfileViewOutput {
     func didTapAddToFavoriteButton() {
         Task { @MainActor in
             let follower = state.follower
-            if await !storageProvider.contains(follower) {
-                try await storageProvider.save([follower])
+            if await !favoritesStorageProvider.storageProvider.contains(follower) {
+                try await favoritesStorageProvider.storageProvider.save([follower])
             } else {
-                try await storageProvider.delete([follower])
+                try await favoritesStorageProvider.storageProvider.delete([follower])
             }
             
             updateFavoriteButton()

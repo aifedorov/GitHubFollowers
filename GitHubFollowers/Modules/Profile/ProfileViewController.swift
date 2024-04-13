@@ -108,6 +108,7 @@ final class ProfileViewController: UIViewController {
     }
         
     private func setupView() {
+        title = nil
         view.backgroundColor = .systemBackground
         
         setupNavigationBar()
@@ -158,7 +159,6 @@ extension ProfileViewController: ProfilePresenterOutput {
     }
     
     func showUserInfo(_ displayData: DisplayData) {
-        title = nil
                 
         if !displayData.fullName.isEmpty {
             fullNameLabel.text = displayData.fullName

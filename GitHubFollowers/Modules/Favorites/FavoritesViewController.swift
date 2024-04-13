@@ -140,8 +140,8 @@ extension FavoritesViewController: FavoritesPresenterOutput {
         present(profileViewController, animated: true)
     }
     
-    func closeProfile() {
-        presentedViewController?.dismiss(animated: true)
+    func closeProfile(completion: @escaping () -> Void) {
+        presentedViewController?.dismiss(animated: true, completion: completion)
     }
     
     func showFollowers(username: String) {

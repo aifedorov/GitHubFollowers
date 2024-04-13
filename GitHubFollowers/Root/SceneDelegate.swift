@@ -27,8 +27,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                                           image: UIImage(systemName: "star"),
                                                           selectedImage: UIImage(systemName: "star.fill"))
         
-        rootViewController.viewControllers = [GFNavigationViewController(rootViewController: searchViewController),
-                                              GFNavigationViewController(rootViewController: favoritesViewController)]
+        rootViewController.viewControllers = [searchViewController, favoritesViewController]
         rootViewController.selectedIndex = 0
         return rootViewController
     }

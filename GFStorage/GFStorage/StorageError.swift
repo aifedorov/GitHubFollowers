@@ -1,17 +1,10 @@
-//
-//  StorageError.swift
-//  GFStorage
-//
-//  Created by Aleksandr Fedorov on 13.11.23.
-//
-
 import Foundation
 
 public enum StorageError: Error {
     case savingError
     case encodingError(EncodingError)
     case fileReadNoSuchFile
-    case unknown(Error)
+    case unknown(Error?)
 }
 
 extension StorageError: LocalizedError {
@@ -20,7 +13,10 @@ extension StorageError: LocalizedError {
         switch self {
         case .fileReadNoSuchFile:
             return "File not found."
-        case .unknown(let error):
+        case let .unknown(error):
+            guard let error else {
+                return "Unknown error."
+            }
             return "Unexpected error: \(error.localizedDescription)."
         case .encodingError(let error):
             return "Invalidate data: \(error.localizedDescription)."

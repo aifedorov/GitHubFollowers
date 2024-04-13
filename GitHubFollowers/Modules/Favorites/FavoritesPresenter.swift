@@ -7,7 +7,7 @@ protocol FavoritesPresenterOutput: AnyObject {
     func hideEmptyView()
     func showErrorAlert(title: String, message: String)
     func showProfile(for follower: Follower, profileModuleOutput: ProfileModuleOutput)
-    func closeProfile()
+    func closeProfile(completion: @escaping () -> Void)
     func showFollowers(username: String)
 }
 
@@ -20,12 +20,12 @@ final class FavoritesPresenter {
 
     weak var view: FavoritesPresenterOutput?
     
-    private let storageProvider: StorageProvider<Follower>
+    private let favoritesStorageProvider: FavoritesStorageProvider
     private let userNetworkService: UserNetworkServiceProtocol
     private var state: State
 
-    init(storageProvider: StorageProvider<Follower>, userNetworkService: UserNetworkServiceProtocol) {
-        self.storageProvider = storageProvider
+    init(_ favoritesStorageProvider: FavoritesStorageProvider, _ userNetworkService: UserNetworkServiceProtocol) {
+        self.favoritesStorageProvider = favoritesStorageProvider
         self.userNetworkService = userNetworkService
         self.state = State(favorites: [])
     }
@@ -49,7 +49,7 @@ final class FavoritesPresenter {
         
         Task { @MainActor in
             do {
-                state.favorites = try await storageProvider.load()
+                state.favorites = try await favoritesStorageProvider.storageProvider.load()
                 view?.showFavorites(state.favorites)
                 
                 if state.favorites.isEmpty {
@@ -83,7 +83,9 @@ extension FavoritesPresenter: FavoritesViewOutput {
 extension FavoritesPresenter: ProfileModuleOutput {
     
     func profileWantsToClose() {
-        view?.closeProfile()
+        view?.closeProfile { [weak self] in
+            self?.loadFavorites()
+        }
     }
     
     func showFollowers(username: String) {
