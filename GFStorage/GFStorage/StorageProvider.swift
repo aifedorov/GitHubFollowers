@@ -1,6 +1,6 @@
 import Foundation
 
-public final actor StorageProvider<Entity: Equatable & Codable & Identifiable> {
+public final actor StorageProvider<Entity: Equatable & Codable & Identifiable & Sendable> {
     private let fileStorageService: FileStorageService<Entity>
     
     public init(_ fileStorageService: FileStorageService<Entity>) {

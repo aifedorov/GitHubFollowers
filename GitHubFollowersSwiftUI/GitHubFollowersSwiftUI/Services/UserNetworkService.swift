@@ -8,9 +8,9 @@ protocol UserNetworkServiceProtocol {
 }
 
 final class UserNetworkService: BaseNetworkService, UserNetworkServiceProtocol {
-    private let imageLoader: ImageLoader
+    private let imageLoader: ImageLoaderProtocol
     
-    init(_ imageLoader: ImageLoader) {
+    init(_ imageLoader: ImageLoaderProtocol) {
         self.imageLoader = imageLoader
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase

@@ -1,11 +1,11 @@
 import Foundation
 
-enum SearchResultErrorContent {
+public enum SearchResultErrorContent {
     case userHaveNoFollowers
     case userNotFound
     case networkError
     
-    var title: String {
+    public var title: String {
         switch self {
         case .userHaveNoFollowers:
             return "No followers"
@@ -16,7 +16,7 @@ enum SearchResultErrorContent {
         }
     }
     
-    var message: String {
+    public var message: String {
         switch self {
         case .networkError:
             return "Please check the internet connection and try again."
@@ -28,11 +28,11 @@ enum SearchResultErrorContent {
     }
 }
 
-enum FavoritesErrorContent {
+public enum FavoritesErrorContent {
     case noFavorites
     case unknownError
     
-    var title: String {
+    public var title: String {
         switch self {
         case .noFavorites:
             return "No favorites"
@@ -41,7 +41,7 @@ enum FavoritesErrorContent {
         }
     }
     
-    var message: String {
+    public var message: String {
         switch self {
         case .noFavorites:
             return "You haven’t added any users yet."

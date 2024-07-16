@@ -3,191 +3,195 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F80D7C012B0212A70071124C /* GFStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F80D7BF82B0212A70071124C /* GFStorage.framework */; };
-		F80D7C062B0212A70071124C /* GFStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D7C052B0212A70071124C /* GFStorageTests.swift */; };
-		F80D7C072B0212A70071124C /* GFStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = F80D7BFB2B0212A70071124C /* GFStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F80D7C122B0212DC0071124C /* FileStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D7C102B0212DC0071124C /* FileStorageService.swift */; };
-		F80D7C152B0212EA0071124C /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D7C142B0212EA0071124C /* StorageProvider.swift */; };
-		F80D7C172B02442A0071124C /* StorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D7C162B02442A0071124C /* StorageError.swift */; };
+		F8F25A1B2C21A4F400571AC1 /* GFCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8F25A122C21A4F400571AC1 /* GFCommon.framework */; };
+		F8F25A202C21A4F400571AC1 /* GFCommonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F25A1F2C21A4F400571AC1 /* GFCommonTests.swift */; };
+		F8F25A212C21A4F400571AC1 /* GFCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = F8F25A152C21A4F400571AC1 /* GFCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F8F25A2D2C21A53100571AC1 /* Error+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F25A2A2C21A53100571AC1 /* Error+Extensions.swift */; };
+		F8F25A2E2C21A53100571AC1 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F25A2B2C21A53100571AC1 /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F80D7C022B0212A70071124C /* PBXContainerItemProxy */ = {
+		F8F25A1C2C21A4F400571AC1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F80D7BEF2B0212A70071124C /* Project object */;
+			containerPortal = F8F25A092C21A4F400571AC1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F80D7BF72B0212A70071124C;
-			remoteInfo = GFStorage;
+			remoteGlobalIDString = F8F25A112C21A4F400571AC1;
+			remoteInfo = GFCommon;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F80D7BF82B0212A70071124C /* GFStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GFStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F80D7BFB2B0212A70071124C /* GFStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GFStorage.h; sourceTree = "<group>"; };
-		F80D7C002B0212A70071124C /* GFStorageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GFStorageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F80D7C052B0212A70071124C /* GFStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFStorageTests.swift; sourceTree = "<group>"; };
-		F80D7C102B0212DC0071124C /* FileStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileStorageService.swift; sourceTree = "<group>"; };
-		F80D7C142B0212EA0071124C /* StorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
-		F80D7C162B02442A0071124C /* StorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageError.swift; sourceTree = "<group>"; };
+		F8F25A122C21A4F400571AC1 /* GFCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GFCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8F25A152C21A4F400571AC1 /* GFCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GFCommon.h; sourceTree = "<group>"; };
+		F8F25A1A2C21A4F400571AC1 /* GFCommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GFCommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8F25A1F2C21A4F400571AC1 /* GFCommonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFCommonTests.swift; sourceTree = "<group>"; };
+		F8F25A2A2C21A53100571AC1 /* Error+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extensions.swift"; sourceTree = "<group>"; };
+		F8F25A2B2C21A53100571AC1 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F80D7BF52B0212A70071124C /* Frameworks */ = {
+		F8F25A0F2C21A4F400571AC1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F80D7BFD2B0212A70071124C /* Frameworks */ = {
+		F8F25A172C21A4F400571AC1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F80D7C012B0212A70071124C /* GFStorage.framework in Frameworks */,
+				F8F25A1B2C21A4F400571AC1 /* GFCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F80D7BEE2B0212A70071124C = {
+		F8F25A082C21A4F400571AC1 = {
 			isa = PBXGroup;
 			children = (
-				F80D7BFA2B0212A70071124C /* GFStorage */,
-				F80D7C042B0212A70071124C /* GFStorageTests */,
-				F80D7BF92B0212A70071124C /* Products */,
+				F8F25A142C21A4F400571AC1 /* GFCommon */,
+				F8F25A1E2C21A4F400571AC1 /* GFCommonTests */,
+				F8F25A132C21A4F400571AC1 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		F80D7BF92B0212A70071124C /* Products */ = {
+		F8F25A132C21A4F400571AC1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F80D7BF82B0212A70071124C /* GFStorage.framework */,
-				F80D7C002B0212A70071124C /* GFStorageTests.xctest */,
+				F8F25A122C21A4F400571AC1 /* GFCommon.framework */,
+				F8F25A1A2C21A4F400571AC1 /* GFCommonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F80D7BFA2B0212A70071124C /* GFStorage */ = {
+		F8F25A142C21A4F400571AC1 /* GFCommon */ = {
 			isa = PBXGroup;
 			children = (
-				F80D7BFB2B0212A70071124C /* GFStorage.h */,
-				F80D7C142B0212EA0071124C /* StorageProvider.swift */,
-				F80D7C102B0212DC0071124C /* FileStorageService.swift */,
-				F80D7C162B02442A0071124C /* StorageError.swift */,
+				F8F25A152C21A4F400571AC1 /* GFCommon.h */,
+				F8F25A2C2C21A53100571AC1 /* Extensions */,
 			);
-			path = GFStorage;
+			path = GFCommon;
 			sourceTree = "<group>";
 		};
-		F80D7C042B0212A70071124C /* GFStorageTests */ = {
+		F8F25A1E2C21A4F400571AC1 /* GFCommonTests */ = {
 			isa = PBXGroup;
 			children = (
-				F80D7C052B0212A70071124C /* GFStorageTests.swift */,
+				F8F25A1F2C21A4F400571AC1 /* GFCommonTests.swift */,
 			);
-			path = GFStorageTests;
+			path = GFCommonTests;
+			sourceTree = "<group>";
+		};
+		F8F25A2C2C21A53100571AC1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F8F25A2A2C21A53100571AC1 /* Error+Extensions.swift */,
+				F8F25A2B2C21A53100571AC1 /* String+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		F80D7BF32B0212A70071124C /* Headers */ = {
+		F8F25A0D2C21A4F400571AC1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F80D7C072B0212A70071124C /* GFStorage.h in Headers */,
+				F8F25A212C21A4F400571AC1 /* GFCommon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		F80D7BF72B0212A70071124C /* GFStorage */ = {
+		F8F25A112C21A4F400571AC1 /* GFCommon */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F80D7C0A2B0212A70071124C /* Build configuration list for PBXNativeTarget "GFStorage" */;
+			buildConfigurationList = F8F25A242C21A4F400571AC1 /* Build configuration list for PBXNativeTarget "GFCommon" */;
 			buildPhases = (
-				F80D7BF32B0212A70071124C /* Headers */,
-				F80D7BF42B0212A70071124C /* Sources */,
-				F80D7BF52B0212A70071124C /* Frameworks */,
-				F80D7BF62B0212A70071124C /* Resources */,
+				F8F25A0D2C21A4F400571AC1 /* Headers */,
+				F8F25A0E2C21A4F400571AC1 /* Sources */,
+				F8F25A0F2C21A4F400571AC1 /* Frameworks */,
+				F8F25A102C21A4F400571AC1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = GFStorage;
-			productName = GFStorage;
-			productReference = F80D7BF82B0212A70071124C /* GFStorage.framework */;
+			name = GFCommon;
+			productName = GFCommon;
+			productReference = F8F25A122C21A4F400571AC1 /* GFCommon.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		F80D7BFF2B0212A70071124C /* GFStorageTests */ = {
+		F8F25A192C21A4F400571AC1 /* GFCommonTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F80D7C0D2B0212A70071124C /* Build configuration list for PBXNativeTarget "GFStorageTests" */;
+			buildConfigurationList = F8F25A272C21A4F400571AC1 /* Build configuration list for PBXNativeTarget "GFCommonTests" */;
 			buildPhases = (
-				F80D7BFC2B0212A70071124C /* Sources */,
-				F80D7BFD2B0212A70071124C /* Frameworks */,
-				F80D7BFE2B0212A70071124C /* Resources */,
+				F8F25A162C21A4F400571AC1 /* Sources */,
+				F8F25A172C21A4F400571AC1 /* Frameworks */,
+				F8F25A182C21A4F400571AC1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F80D7C032B0212A70071124C /* PBXTargetDependency */,
+				F8F25A1D2C21A4F400571AC1 /* PBXTargetDependency */,
 			);
-			name = GFStorageTests;
-			productName = GFStorageTests;
-			productReference = F80D7C002B0212A70071124C /* GFStorageTests.xctest */;
+			name = GFCommonTests;
+			productName = GFCommonTests;
+			productReference = F8F25A1A2C21A4F400571AC1 /* GFCommonTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F80D7BEF2B0212A70071124C /* Project object */ = {
+		F8F25A092C21A4F400571AC1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
-					F80D7BF72B0212A70071124C = {
-						CreatedOnToolsVersion = 15.0.1;
-						LastSwiftMigration = 1500;
+					F8F25A112C21A4F400571AC1 = {
+						CreatedOnToolsVersion = 16.0;
 					};
-					F80D7BFF2B0212A70071124C = {
-						CreatedOnToolsVersion = 15.0.1;
+					F8F25A192C21A4F400571AC1 = {
+						CreatedOnToolsVersion = 16.0;
 					};
 				};
 			};
-			buildConfigurationList = F80D7BF22B0212A70071124C /* Build configuration list for PBXProject "GFStorage" */;
-			compatibilityVersion = "Xcode 14.0";
+			buildConfigurationList = F8F25A0C2C21A4F400571AC1 /* Build configuration list for PBXProject "GFCommon" */;
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = F80D7BEE2B0212A70071124C;
-			productRefGroup = F80D7BF92B0212A70071124C /* Products */;
+			mainGroup = F8F25A082C21A4F400571AC1;
+			productRefGroup = F8F25A132C21A4F400571AC1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F80D7BF72B0212A70071124C /* GFStorage */,
-				F80D7BFF2B0212A70071124C /* GFStorageTests */,
+				F8F25A112C21A4F400571AC1 /* GFCommon */,
+				F8F25A192C21A4F400571AC1 /* GFCommonTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F80D7BF62B0212A70071124C /* Resources */ = {
+		F8F25A102C21A4F400571AC1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F80D7BFE2B0212A70071124C /* Resources */ = {
+		F8F25A182C21A4F400571AC1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -197,36 +201,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F80D7BF42B0212A70071124C /* Sources */ = {
+		F8F25A0E2C21A4F400571AC1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F80D7C172B02442A0071124C /* StorageError.swift in Sources */,
-				F80D7C152B0212EA0071124C /* StorageProvider.swift in Sources */,
-				F80D7C122B0212DC0071124C /* FileStorageService.swift in Sources */,
+				F8F25A2D2C21A53100571AC1 /* Error+Extensions.swift in Sources */,
+				F8F25A2E2C21A53100571AC1 /* String+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F80D7BFC2B0212A70071124C /* Sources */ = {
+		F8F25A162C21A4F400571AC1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F80D7C062B0212A70071124C /* GFStorageTests.swift in Sources */,
+				F8F25A202C21A4F400571AC1 /* GFCommonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F80D7C032B0212A70071124C /* PBXTargetDependency */ = {
+		F8F25A1D2C21A4F400571AC1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F80D7BF72B0212A70071124C /* GFStorage */;
-			targetProxy = F80D7C022B0212A70071124C /* PBXContainerItemProxy */;
+			target = F8F25A112C21A4F400571AC1 /* GFCommon */;
+			targetProxy = F8F25A1C2C21A4F400571AC1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		F80D7C082B0212A70071124C /* Debug */ = {
+		F8F25A222C21A4F400571AC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -279,21 +282,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 6.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		F80D7C092B0212A70071124C /* Release */ = {
+		F8F25A232C21A4F400571AC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -340,24 +340,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_VERSION = 6.0;
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		F80D7C0B2B0212A70071124C /* Debug */ = {
+		F8F25A252C21A4F400571AC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -369,31 +365,37 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.GFStorage;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.GFCommon;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
-		F80D7C0C2B0212A70071124C /* Release */ = {
+		F8F25A262C21A4F400571AC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -405,88 +407,107 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.GFStorage;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.GFCommon;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
-		F80D7C0E2B0212A70071124C /* Debug */ = {
+		F8F25A282C21A4F400571AC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8N27URG699;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.GFStorageTests;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.GFCommonTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
-		F80D7C0F2B0212A70071124C /* Release */ = {
+		F8F25A292C21A4F400571AC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8N27URG699;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.GFStorageTests;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.GFCommonTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F80D7BF22B0212A70071124C /* Build configuration list for PBXProject "GFStorage" */ = {
+		F8F25A0C2C21A4F400571AC1 /* Build configuration list for PBXProject "GFCommon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F80D7C082B0212A70071124C /* Debug */,
-				F80D7C092B0212A70071124C /* Release */,
+				F8F25A222C21A4F400571AC1 /* Debug */,
+				F8F25A232C21A4F400571AC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F80D7C0A2B0212A70071124C /* Build configuration list for PBXNativeTarget "GFStorage" */ = {
+		F8F25A242C21A4F400571AC1 /* Build configuration list for PBXNativeTarget "GFCommon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F80D7C0B2B0212A70071124C /* Debug */,
-				F80D7C0C2B0212A70071124C /* Release */,
+				F8F25A252C21A4F400571AC1 /* Debug */,
+				F8F25A262C21A4F400571AC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F80D7C0D2B0212A70071124C /* Build configuration list for PBXNativeTarget "GFStorageTests" */ = {
+		F8F25A272C21A4F400571AC1 /* Build configuration list for PBXNativeTarget "GFCommonTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F80D7C0E2B0212A70071124C /* Debug */,
-				F80D7C0F2B0212A70071124C /* Release */,
+				F8F25A282C21A4F400571AC1 /* Debug */,
+				F8F25A292C21A4F400571AC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = F80D7BEF2B0212A70071124C /* Project object */;
+	rootObject = F8F25A092C21A4F400571AC1 /* Project object */;
 }

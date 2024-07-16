@@ -6,12 +6,13 @@ struct MainTabView: View {
         case favorites
     }
 
+    @ObservedObject var model: GithubFollowersModel
     @State private var selection: Tab = .search
     
     var body: some View {
         TabView(selection: $selection) {
-            NavigationView {
-                Text("Search Screen")
+            NavigationStack {
+                SearchView(model: model)
             }
             .tabItem {
                 Label {
@@ -22,7 +23,7 @@ struct MainTabView: View {
             }
             .tag(Tab.search)
             
-            NavigationView {
+            NavigationStack {
                 Text("Favorites Screen")
             }
             .tabItem {
@@ -38,5 +39,5 @@ struct MainTabView: View {
 }
 
 #Preview {
-    MainTabView()
+    MainTabView(model: .mock)
 }

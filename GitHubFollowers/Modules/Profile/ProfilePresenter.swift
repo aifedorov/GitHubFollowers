@@ -1,5 +1,6 @@
 import UIKit
 import GFStorage
+import GFCommon
 
 protocol ProfileModuleOutput: AnyObject {
     func profileWantsToClose()

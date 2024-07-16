@@ -1,6 +1,6 @@
 import UIKit
 
-extension String {
+public extension String {
     var isValidGitHubUsername: Bool {
         let regex = "^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}$"
         let test = NSPredicate(format:"SELF MATCHES %@", regex)
@@ -8,7 +8,7 @@ extension String {
     }
 }
 
-extension NSMutableAttributedString {
+public extension NSMutableAttributedString {
     convenience init(string: String, systemName: String) {
         self.init()
         

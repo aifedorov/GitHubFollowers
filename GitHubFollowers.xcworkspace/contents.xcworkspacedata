@@ -13,4 +13,7 @@
    <FileRef
       location = "group:GFStorage/GFStorage.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:GFCommon/GFCommon.xcodeproj">
+   </FileRef>
 </Workspace>

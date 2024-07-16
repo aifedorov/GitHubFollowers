@@ -1,5 +1,6 @@
 import Foundation
 import GFStorage
+import GFCommon
 
 protocol FavoritesPresenterOutput: AnyObject {
     func showFavorites(_ followers: [Follower])
@@ -40,6 +41,8 @@ final class FavoritesPresenter {
             view?.showErrorAlert(title: errorContent.title, message: errorContent.message)
         case .noFavorites:
             view?.showEmptyView(withTile: errorContent.title, message: errorContent.message, imageType: .noFavorites)
+        @unknown default:
+            view?.showErrorAlert(title: errorContent.title, message: errorContent.message)
         }
     }
         

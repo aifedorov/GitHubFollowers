@@ -1,5 +1,6 @@
 import Foundation
 import GFNetwork
+import GFCommon
 
 protocol SearchResultsPresenterOutput: AnyObject {
     func showLoadingView()
@@ -69,6 +70,8 @@ final class SearchResultsPresenter {
             view?.showEmptyView(withTile: errorContent.title, message: errorContent.message, imageType: .noFollowers)
         case .userNotFound:
             view?.showEmptyView(withTile: errorContent.title, message: errorContent.message, imageType: .userNotFound)
+        @unknown default:
+            view?.showErrorAlert(title: errorContent.title, message: errorContent.message)
         }
     }
     

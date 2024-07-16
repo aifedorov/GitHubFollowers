@@ -4,7 +4,10 @@ open class BaseNetworkService {
     private let session: URLSession
     private let decoder: JSONDecoder
     
-    public init(_ session: URLSession = URLSession.shared, _ decoder: JSONDecoder = JSONDecoder()) {
+    public init(
+        _ session: URLSession = URLSession.shared,
+        _ decoder: JSONDecoder = JSONDecoder()
+    ) {
         self.session = session
         self.decoder = decoder
     }

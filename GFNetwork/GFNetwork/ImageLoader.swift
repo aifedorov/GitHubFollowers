@@ -4,10 +4,8 @@ public protocol ImageLoaderProtocol {
     func downloadImage(from urlString: String) async throws -> Data
 }
 
-public final class ImageLoader {
-    
-    public static let shared = ImageLoader()
-    
+public final class ImageLoader: ImageLoaderProtocol {
+        
     private let session: URLSession
     private let imageDataCache = NSCache<NSString, NSData>()
     
