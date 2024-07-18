@@ -1,7 +1,7 @@
 import Combine
 import GFNetwork
 
-struct Environment {
+struct AppEnvironment {
     
     let userNetworkService: UserNetworkServiceProtocol
     
@@ -10,17 +10,17 @@ struct Environment {
     }
 }
 
-extension Environment {
+extension AppEnvironment {
     
-    static let production = Environment(
+    static let production = AppEnvironment(
         userNetworkService: UserNetworkService(ImageLoader())
     )
 }
 
 #if DEBUG
-extension Environment {
+extension AppEnvironment {
     
-    static let mock = Environment(
+    static let mock = AppEnvironment(
         userNetworkService: FakeUserNetworkService(FakeImageLoader())
     )
 }

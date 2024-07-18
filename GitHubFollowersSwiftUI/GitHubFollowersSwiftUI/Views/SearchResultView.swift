@@ -4,6 +4,11 @@ struct SearchResultView: View {
     
     @ObservedObject var model: GithubFollowersModel
     @State private var searchText = ""
+    @State private var selectedFollower: Follower?
+    
+    private var filteredFollowers: [Follower] {
+        model.followers.filter { $0.matches(searchText: searchText) }
+    }
     
     private var gridItems: [GridItem] {
         [
@@ -16,8 +21,11 @@ struct SearchResultView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: gridItems, spacing: 16) {
-                ForEach(model.followers) { follower in
+                ForEach(filteredFollowers) { follower in
                     FollowerGridItemView(follower: follower)
+                        .onTapGesture {
+                            selectedFollower = follower
+                        }
                 }
             }
             .padding(.horizontal, 16)
@@ -28,6 +36,14 @@ struct SearchResultView: View {
         .navigationBarTitleDisplayMode(.inline)
         .task {
             try? await model.fetchFollowers()
+        }
+        .sheet(item: $selectedFollower) { follower in
+            NavigationStack {
+                ProfileView(
+                    model: model,
+                    username: follower.login
+                )
+            }
         }
     }
 }

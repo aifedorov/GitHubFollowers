@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F825F53B2C488F0600875D18 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F53A2C488F0600875D18 /* ProfileHeaderView.swift */; };
+		F825F53D2C488F3600875D18 /* FollowersGroupBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F53C2C488F3600875D18 /* FollowersGroupBoxView.swift */; };
+		F825F53F2C488F5400875D18 /* ReposGroupBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F53E2C488F5300875D18 /* ReposGroupBoxView.swift */; };
 		F8804A372C217B1200157411 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8804A362C217B1200157411 /* SearchView.swift */; };
 		F8AFE6552C43193D00A530C1 /* GithubFollowersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AFE6542C43193D00A530C1 /* GithubFollowersModel.swift */; };
 		F8AFE6582C44336400A530C1 /* UserNetworkService+Fake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AFE6572C44336400A530C1 /* UserNetworkService+Fake.swift */; };
 		F8AFE6E32C44368600A530C1 /* ImageLoader+Fake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AFE6E22C44368600A530C1 /* ImageLoader+Fake.swift */; };
-		F8AFE6E52C45436200A530C1 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AFE6E42C45435F00A530C1 /* Environment.swift */; };
+		F8AFE6E52C45436200A530C1 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AFE6E42C45435F00A530C1 /* AppEnvironment.swift */; };
+		F8AFE6E72C46D22A00A530C1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AFE6E62C46D22A00A530C1 /* ProfileView.swift */; };
 		F8F25A312C21A61000571AC1 /* GFCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8F25A302C21A61000571AC1 /* GFCommon.framework */; };
 		F8F25A322C21A61000571AC1 /* GFCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F8F25A302C21A61000571AC1 /* GFCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F8F25A352C21A62600571AC1 /* GFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8F25A342C21A62600571AC1 /* GFNetwork.framework */; };
@@ -55,11 +59,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F825F53A2C488F0600875D18 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		F825F53C2C488F3600875D18 /* FollowersGroupBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersGroupBoxView.swift; sourceTree = "<group>"; };
+		F825F53E2C488F5300875D18 /* ReposGroupBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposGroupBoxView.swift; sourceTree = "<group>"; };
 		F8804A362C217B1200157411 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		F8AFE6542C43193D00A530C1 /* GithubFollowersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubFollowersModel.swift; sourceTree = "<group>"; };
 		F8AFE6572C44336400A530C1 /* UserNetworkService+Fake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserNetworkService+Fake.swift"; sourceTree = "<group>"; };
 		F8AFE6E22C44368600A530C1 /* ImageLoader+Fake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageLoader+Fake.swift"; sourceTree = "<group>"; };
-		F8AFE6E42C45435F00A530C1 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		F8AFE6E42C45435F00A530C1 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		F8AFE6E62C46D22A00A530C1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F8F25A302C21A61000571AC1 /* GFCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GFCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8F25A342C21A62600571AC1 /* GFNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GFNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8F25A372C21A70F00571AC1 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
@@ -97,6 +105,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F825F5392C488EF100875D18 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F8AFE6E62C46D22A00A530C1 /* ProfileView.swift */,
+				F825F53A2C488F0600875D18 /* ProfileHeaderView.swift */,
+				F825F53C2C488F3600875D18 /* FollowersGroupBoxView.swift */,
+				F825F53E2C488F5300875D18 /* ReposGroupBoxView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		F8804A382C217B2500157411 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,7 +163,7 @@
 		F8F62F762AEE530A00AD7559 /* GitHubFollowersSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				F8AFE6E42C45435F00A530C1 /* Environment.swift */,
+				F8AFE6E42C45435F00A530C1 /* AppEnvironment.swift */,
 				F8F62F772AEE530A00AD7559 /* App.swift */,
 				F8F62FD52AEE599C00AD7559 /* Views */,
 				F8AFE6562C43194300A530C1 /* Models */,
@@ -199,6 +218,7 @@
 				F8804A362C217B1200157411 /* SearchView.swift */,
 				F8F25A372C21A70F00571AC1 /* SearchResultView.swift */,
 				F8F25A392C21AA2300571AC1 /* FollowerGridItemView.swift */,
+				F825F5392C488EF100875D18 /* Profile */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -318,14 +338,18 @@
 				F8F25A3A2C21AA2300571AC1 /* FollowerGridItemView.swift in Sources */,
 				F8AFE6E32C44368600A530C1 /* ImageLoader+Fake.swift in Sources */,
 				F8F25A382C21A70F00571AC1 /* SearchResultView.swift in Sources */,
+				F825F53D2C488F3600875D18 /* FollowersGroupBoxView.swift in Sources */,
 				F8F62FD22AEE545600AD7559 /* Follower.swift in Sources */,
 				F8F62F782AEE530A00AD7559 /* App.swift in Sources */,
 				F8804A372C217B1200157411 /* SearchView.swift in Sources */,
+				F825F53B2C488F0600875D18 /* ProfileHeaderView.swift in Sources */,
 				F8F62FD72AEE59B000AD7559 /* PrimaryButtonStyle.swift in Sources */,
-				F8AFE6E52C45436200A530C1 /* Environment.swift in Sources */,
+				F8AFE6E52C45436200A530C1 /* AppEnvironment.swift in Sources */,
+				F825F53F2C488F5400875D18 /* ReposGroupBoxView.swift in Sources */,
 				F8F62FD12AEE545600AD7559 /* User.swift in Sources */,
 				F8F62FD32AEE545600AD7559 /* UserNetworkService.swift in Sources */,
 				F8AFE6582C44336400A530C1 /* UserNetworkService+Fake.swift in Sources */,
+				F8AFE6E72C46D22A00A530C1 /* ProfileView.swift in Sources */,
 				F8AFE6552C43193D00A530C1 /* GithubFollowersModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

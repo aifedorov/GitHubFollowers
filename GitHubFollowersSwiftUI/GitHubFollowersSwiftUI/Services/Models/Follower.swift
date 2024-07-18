@@ -5,6 +5,11 @@ struct Follower: Decodable, Identifiable {
     let login: String
     let avatarUrl: String
     let url: String
+    
+    func matches(searchText: String) -> Bool {
+        guard !searchText.isEmpty else { return true }
+        return login.localizedCaseInsensitiveContains(searchText)
+    }
 }
 
 #if DEBUG

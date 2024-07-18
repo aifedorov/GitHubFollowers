@@ -5,8 +5,6 @@ struct SearchView: View {
     
     @ObservedObject var model: GithubFollowersModel
     
-    @State private var isSearchResultPresented = false
-    
     var body: some View {
         NavigationStack {
             VStack {
@@ -33,19 +31,16 @@ struct SearchView: View {
                 Spacer()
                 Spacer()
                 Spacer()
-                
-                Button {
-                    isSearchResultPresented.toggle()
+                                
+                NavigationLink {
+                    SearchResultView(model: model)
                 } label: {
                     Text("Get followers")
                 }
-                .disabled(!model.username.isValidGitHubUsername)
-                .buttonStyle(.primaryButton)
+                .buttonStyle(PrimaryButtonStyle())
                 .padding(.horizontal, 24)
                 .padding(.bottom, 40)
-            }
-            .navigationDestination(isPresented: $isSearchResultPresented) {
-                SearchResultView(model: model)
+                .disabled(!model.username.isValidGitHubUsername)
             }
         }
     }

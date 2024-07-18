@@ -7,12 +7,12 @@ final class GithubFollowersModel: ObservableObject {
     @Published var username = ""
     @Published var followers: [Follower] = []
     
-    let environment: Environment
+    let environment: AppEnvironment
     
     init(
         username: String =  "",
         followers: [Follower] = [],
-        environment: Environment
+        environment: AppEnvironment
     ) {
         self.username = username
         self.followers = followers
@@ -21,6 +21,10 @@ final class GithubFollowersModel: ObservableObject {
     
     func fetchFollowers() async throws {
         followers = try await environment.userNetworkService.fetchFollowers(for: username)
+    }
+    
+    func fetchUserInfo(for username: String) async throws -> User {
+        try await environment.userNetworkService.fetchUserInfo(for: username)
     }
 }
 

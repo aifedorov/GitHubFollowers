@@ -10,11 +10,12 @@ protocol UserNetworkServiceProtocol {
 final class UserNetworkService: BaseNetworkService, UserNetworkServiceProtocol {
     private let imageLoader: ImageLoaderProtocol
     
-    init(_ imageLoader: ImageLoaderProtocol) {
+    init(_ imageLoader: ImageLoader) {
         self.imageLoader = imageLoader
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        super.init(URLSession.shared, decoder)
+        decoder.dateDecodingStrategy = .iso8601
+        super.init(.shared, decoder)
     }
     
     func fetchFollowers(for username: String) async throws -> [Follower] {
