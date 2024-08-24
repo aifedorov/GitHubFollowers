@@ -7,13 +7,4 @@
    <FileRef
       location = "group:GitHubFollowers.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:GFNetwork/GFNetwork.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:GFStorage/GFStorage.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:GFCommon/GFCommon.xcodeproj">
-   </FileRef>
 </Workspace>

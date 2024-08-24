@@ -6,7 +6,7 @@ enum FavoritesAssembly {
         let viewController = FavoritesViewController()
         let presenter = FavoritesPresenter(
             FavoritesStorageProvider.shared,
-            UserNetworkService(ImageLoader.shared)
+            UserNetworkService(ImageLoader())
         )
         
         viewController.output = presenter

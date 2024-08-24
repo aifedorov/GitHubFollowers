@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,47 +16,19 @@
 		F8AFE6E32C44368600A530C1 /* ImageLoader+Fake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AFE6E22C44368600A530C1 /* ImageLoader+Fake.swift */; };
 		F8AFE6E52C45436200A530C1 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AFE6E42C45435F00A530C1 /* AppEnvironment.swift */; };
 		F8AFE6E72C46D22A00A530C1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AFE6E62C46D22A00A530C1 /* ProfileView.swift */; };
-		F8F25A312C21A61000571AC1 /* GFCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8F25A302C21A61000571AC1 /* GFCommon.framework */; };
-		F8F25A322C21A61000571AC1 /* GFCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F8F25A302C21A61000571AC1 /* GFCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F8F25A352C21A62600571AC1 /* GFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8F25A342C21A62600571AC1 /* GFNetwork.framework */; };
-		F8F25A362C21A62600571AC1 /* GFNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F8F25A342C21A62600571AC1 /* GFNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F8B194692C7A0224007ECC57 /* GFNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = F8B194682C7A0224007ECC57 /* GFNetwork */; };
+		F8B1946C2C7A0233007ECC57 /* GFCommon in Frameworks */ = {isa = PBXBuildFile; productRef = F8B1946B2C7A0233007ECC57 /* GFCommon */; };
 		F8F25A382C21A70F00571AC1 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F25A372C21A70F00571AC1 /* SearchResultView.swift */; };
 		F8F25A3A2C21AA2300571AC1 /* FollowerGridItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F25A392C21AA2300571AC1 /* FollowerGridItemView.swift */; };
 		F8F62F782AEE530A00AD7559 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F62F772AEE530A00AD7559 /* App.swift */; };
 		F8F62F7A2AEE530A00AD7559 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F62F792AEE530A00AD7559 /* MainTabView.swift */; };
 		F8F62F7C2AEE530B00AD7559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8F62F7B2AEE530B00AD7559 /* Assets.xcassets */; };
 		F8F62F7F2AEE530B00AD7559 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8F62F7E2AEE530B00AD7559 /* Preview Assets.xcassets */; };
-		F8F62F892AEE530B00AD7559 /* GitHubFollowersSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F62F882AEE530B00AD7559 /* GitHubFollowersSwiftUITests.swift */; };
 		F8F62FD12AEE545600AD7559 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F62FC92AEE545600AD7559 /* User.swift */; };
 		F8F62FD22AEE545600AD7559 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F62FCA2AEE545600AD7559 /* Follower.swift */; };
 		F8F62FD32AEE545600AD7559 /* UserNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F62FCB2AEE545600AD7559 /* UserNetworkService.swift */; };
 		F8F62FD72AEE59B000AD7559 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F62FD62AEE59B000AD7559 /* PrimaryButtonStyle.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		F8F62F852AEE530B00AD7559 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F8F62F6C2AEE530A00AD7559 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F8F62F732AEE530A00AD7559;
-			remoteInfo = GitHubFollowersSwiftUI;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		F8F25A332C21A61000571AC1 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				F8F25A362C21A62600571AC1 /* GFNetwork.framework in Embed Frameworks */,
-				F8F25A322C21A61000571AC1 /* GFCommon.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F825F53A2C488F0600875D18 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -77,8 +49,6 @@
 		F8F62F792AEE530A00AD7559 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		F8F62F7B2AEE530B00AD7559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8F62F7E2AEE530B00AD7559 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F8F62F842AEE530B00AD7559 /* GitHubFollowersSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubFollowersSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F8F62F882AEE530B00AD7559 /* GitHubFollowersSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubFollowersSwiftUITests.swift; sourceTree = "<group>"; };
 		F8F62FC92AEE545600AD7559 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F8F62FCA2AEE545600AD7559 /* Follower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		F8F62FCB2AEE545600AD7559 /* UserNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNetworkService.swift; sourceTree = "<group>"; };
@@ -90,15 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8F25A352C21A62600571AC1 /* GFNetwork.framework in Frameworks */,
-				F8F25A312C21A61000571AC1 /* GFCommon.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F8F62F812AEE530B00AD7559 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				F8B194692C7A0224007ECC57 /* GFNetwork in Frameworks */,
+				F8B1946C2C7A0233007ECC57 /* GFCommon in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				F8F62F762AEE530A00AD7559 /* GitHubFollowersSwiftUI */,
-				F8F62F872AEE530B00AD7559 /* UnitTests */,
 				F8F62F752AEE530A00AD7559 /* Products */,
 				F8F25A2F2C21A61000571AC1 /* Frameworks */,
 			);
@@ -155,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				F8F62F742AEE530A00AD7559 /* GitHubFollowersSwiftUI.app */,
-				F8F62F842AEE530B00AD7559 /* GitHubFollowersSwiftUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,14 +141,6 @@
 				F8F62F7E2AEE530B00AD7559 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		F8F62F872AEE530B00AD7559 /* UnitTests */ = {
-			isa = PBXGroup;
-			children = (
-				F8F62F882AEE530B00AD7559 /* GitHubFollowersSwiftUITests.swift */,
-			);
-			path = UnitTests;
 			sourceTree = "<group>";
 		};
 		F8F62FC52AEE545600AD7559 /* Services */ = {
@@ -241,7 +194,6 @@
 				F8F62F702AEE530A00AD7559 /* Sources */,
 				F8F62F712AEE530A00AD7559 /* Frameworks */,
 				F8F62F722AEE530A00AD7559 /* Resources */,
-				F8F25A332C21A61000571AC1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -251,24 +203,6 @@
 			productName = GitHubFollowersSwiftUI;
 			productReference = F8F62F742AEE530A00AD7559 /* GitHubFollowersSwiftUI.app */;
 			productType = "com.apple.product-type.application";
-		};
-		F8F62F832AEE530B00AD7559 /* GitHubFollowersSwiftUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F8F62F9B2AEE530B00AD7559 /* Build configuration list for PBXNativeTarget "GitHubFollowersSwiftUITests" */;
-			buildPhases = (
-				F8F62F802AEE530B00AD7559 /* Sources */,
-				F8F62F812AEE530B00AD7559 /* Frameworks */,
-				F8F62F822AEE530B00AD7559 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F8F62F862AEE530B00AD7559 /* PBXTargetDependency */,
-			);
-			name = GitHubFollowersSwiftUITests;
-			productName = GitHubFollowersSwiftUITests;
-			productReference = F8F62F842AEE530B00AD7559 /* GitHubFollowersSwiftUITests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -283,10 +217,6 @@
 					F8F62F732AEE530A00AD7559 = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
-					F8F62F832AEE530B00AD7559 = {
-						CreatedOnToolsVersion = 15.0.1;
-						TestTargetID = F8F62F732AEE530A00AD7559;
-					};
 				};
 			};
 			buildConfigurationList = F8F62F6F2AEE530A00AD7559 /* Build configuration list for PBXProject "GitHubFollowersSwiftUI" */;
@@ -299,13 +229,14 @@
 			);
 			mainGroup = F8F62F6B2AEE530A00AD7559;
 			packageReferences = (
+				F8B194672C7A0224007ECC57 /* XCLocalSwiftPackageReference "../GFNetwork" */,
+				F8B1946A2C7A0233007ECC57 /* XCLocalSwiftPackageReference "../GFCommon" */,
 			);
 			productRefGroup = F8F62F752AEE530A00AD7559 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				F8F62F732AEE530A00AD7559 /* GitHubFollowersSwiftUI */,
-				F8F62F832AEE530B00AD7559 /* GitHubFollowersSwiftUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -317,13 +248,6 @@
 			files = (
 				F8F62F7F2AEE530B00AD7559 /* Preview Assets.xcassets in Resources */,
 				F8F62F7C2AEE530B00AD7559 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F8F62F822AEE530B00AD7559 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,23 +278,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F8F62F802AEE530B00AD7559 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F8F62F892AEE530B00AD7559 /* GitHubFollowersSwiftUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		F8F62F862AEE530B00AD7559 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F8F62F732AEE530A00AD7559 /* GitHubFollowersSwiftUI */;
-			targetProxy = F8F62F852AEE530B00AD7559 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		F8F62F962AEE530B00AD7559 /* Debug */ = {
@@ -505,12 +413,14 @@
 				DEVELOPMENT_TEAM = 8N27URG699;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = GFollowers;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -518,9 +428,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.GitHubFollowersSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -535,12 +449,14 @@
 				DEVELOPMENT_TEAM = 8N27URG699;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = GFollowers;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -548,47 +464,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.GitHubFollowersSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		F8F62F9C2AEE530B00AD7559 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8N27URG699;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.GitHubFollowersSwiftUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GitHubFollowersSwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GitHubFollowersSwiftUI";
-			};
-			name = Debug;
-		};
-		F8F62F9D2AEE530B00AD7559 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8N27URG699;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.aifedorovrk.GitHubFollowersSwiftUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GitHubFollowersSwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GitHubFollowersSwiftUI";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -613,16 +495,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F8F62F9B2AEE530B00AD7559 /* Build configuration list for PBXNativeTarget "GitHubFollowersSwiftUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F8F62F9C2AEE530B00AD7559 /* Debug */,
-				F8F62F9D2AEE530B00AD7559 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		F8B194672C7A0224007ECC57 /* XCLocalSwiftPackageReference "../GFNetwork" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../GFNetwork;
+		};
+		F8B1946A2C7A0233007ECC57 /* XCLocalSwiftPackageReference "../GFCommon" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../GFCommon;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F8B194682C7A0224007ECC57 /* GFNetwork */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GFNetwork;
+		};
+		F8B1946B2C7A0233007ECC57 /* GFCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GFCommon;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F8F62F6C2AEE530A00AD7559 /* Project object */;
 }

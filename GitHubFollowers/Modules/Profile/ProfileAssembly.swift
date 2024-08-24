@@ -9,7 +9,7 @@ enum ProfileAssembly {
     ) -> UIViewController {
         let viewController = ProfileViewController()
         let presenter = ProfilePresenter(
-            UserNetworkService(ImageLoader.shared),
+            UserNetworkService(ImageLoader()),
             FavoritesStorageProvider.shared,
             follower
         )

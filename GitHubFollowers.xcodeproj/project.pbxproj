@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,10 +29,6 @@
 		F84FD7352AC9EE66005C4B71 /* GFLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84FD7342AC9EE66005C4B71 /* GFLoadingView.swift */; };
 		F884213E2A3F5CCB008C4A9B /* SearchResultsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884213D2A3F5CCB008C4A9B /* SearchResultsAssembly.swift */; };
 		F88421402A3F5F31008C4A9B /* SearchResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884213F2A3F5F31008C4A9B /* SearchResultsPresenter.swift */; };
-		F88BA4132BC6921A009F83AD /* GFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88BA4122BC6921A009F83AD /* GFNetwork.framework */; };
-		F88BA4142BC6921A009F83AD /* GFNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F88BA4122BC6921A009F83AD /* GFNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F88BA4172BC6921E009F83AD /* GFStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88BA4162BC6921E009F83AD /* GFStorage.framework */; };
-		F88BA4182BC6921E009F83AD /* GFStorage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F88BA4162BC6921E009F83AD /* GFStorage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F890579A2AF0E4870007223E /* GFBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89057992AF0E4870007223E /* GFBlockView.swift */; };
 		F890579C2AF0E8400007223E /* GFBlockTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F890579B2AF0E8400007223E /* GFBlockTitleLabel.swift */; };
 		F89057DC2AFB950E0007223E /* FavoritesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89057DB2AFB950E0007223E /* FavoritesAssembly.swift */; };
@@ -44,6 +40,10 @@
 		F895FE652AC47DF5009A9D3F /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = F895FE642AC47DF5009A9D3F /* user.json */; };
 		F895FE692AC5DAA8009A9D3F /* GFAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F895FE682AC5DAA8009A9D3F /* GFAlertViewController.swift */; };
 		F895FE6B2AC5E3D8009A9D3F /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F895FE6A2AC5E3D8009A9D3F /* UIViewController+Extensions.swift */; };
+		F8B1946F2C7A02B9007ECC57 /* GFCommon in Frameworks */ = {isa = PBXBuildFile; productRef = F8B1946E2C7A02B9007ECC57 /* GFCommon */; };
+		F8B194722C7A02C1007ECC57 /* GFNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = F8B194712C7A02C1007ECC57 /* GFNetwork */; };
+		F8B194752C7A0352007ECC57 /* GFStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F8B194742C7A0352007ECC57 /* GFStorage */; };
+		F8B194782C7A038A007ECC57 /* GFStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F8B194772C7A038A007ECC57 /* GFStorage */; };
 		F8C3F0E62A9F3F6100EC6590 /* ProfileAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C3F0E52A9F3F6100EC6590 /* ProfileAssembly.swift */; };
 		F8C3F0E82A9F3F9B00EC6590 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C3F0E72A9F3F9B00EC6590 /* ProfileViewController.swift */; };
 		F8C3F0EA2A9F403B00EC6590 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C3F0E92A9F403B00EC6590 /* ProfilePresenter.swift */; };
@@ -58,8 +58,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F88BA4142BC6921A009F83AD /* GFNetwork.framework in Embed Frameworks */,
-				F88BA4182BC6921E009F83AD /* GFStorage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,8 +114,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F88BA4132BC6921A009F83AD /* GFNetwork.framework in Frameworks */,
-				F88BA4172BC6921E009F83AD /* GFStorage.framework in Frameworks */,
+				F8B194752C7A0352007ECC57 /* GFStorage in Frameworks */,
+				F8B194722C7A02C1007ECC57 /* GFNetwork in Frameworks */,
+				F8B1946F2C7A02B9007ECC57 /* GFCommon in Frameworks */,
+				F8B194782C7A038A007ECC57 /* GFStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +358,10 @@
 			);
 			name = GitHubFollowers;
 			packageProductDependencies = (
+				F8B1946E2C7A02B9007ECC57 /* GFCommon */,
+				F8B194712C7A02C1007ECC57 /* GFNetwork */,
+				F8B194742C7A0352007ECC57 /* GFStorage */,
+				F8B194772C7A038A007ECC57 /* GFStorage */,
 			);
 			productName = GithubFollowers;
 			productReference = 3BB30BEA2A0A37D100BE57A3 /* GitHubFollowers.app */;
@@ -388,6 +392,9 @@
 			);
 			mainGroup = 3BB30BE12A0A37D000BE57A3;
 			packageReferences = (
+				F8B1946D2C7A02B9007ECC57 /* XCLocalSwiftPackageReference "GFCommon" */,
+				F8B194702C7A02C1007ECC57 /* XCLocalSwiftPackageReference "GFNetwork" */,
+				F8B194762C7A038A007ECC57 /* XCLocalSwiftPackageReference "GFStorage" */,
 			);
 			productRefGroup = 3BB30BEB2A0A37D100BE57A3 /* Products */;
 			projectDirPath = "";
@@ -596,6 +603,8 @@
 				DEVELOPMENT_TEAM = 8N27URG699;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GithubFollowers/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GFollowers;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -609,10 +618,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -626,6 +636,8 @@
 				DEVELOPMENT_TEAM = 8N27URG699;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GithubFollowers/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GFollowers;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -639,10 +651,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -668,6 +681,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		F8B1946D2C7A02B9007ECC57 /* XCLocalSwiftPackageReference "GFCommon" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = GFCommon;
+		};
+		F8B194702C7A02C1007ECC57 /* XCLocalSwiftPackageReference "GFNetwork" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = GFNetwork;
+		};
+		F8B194762C7A038A007ECC57 /* XCLocalSwiftPackageReference "GFStorage" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = GFStorage;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F8B1946E2C7A02B9007ECC57 /* GFCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GFCommon;
+		};
+		F8B194712C7A02C1007ECC57 /* GFNetwork */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GFNetwork;
+		};
+		F8B194742C7A0352007ECC57 /* GFStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GFStorage;
+		};
+		F8B194772C7A038A007ECC57 /* GFStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GFStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3BB30BE22A0A37D000BE57A3 /* Project object */;
 }
