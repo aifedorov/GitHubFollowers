@@ -2,12 +2,14 @@ import SwiftUI
 
 @main
 struct GitHubFollowersSwiftUIApp: App {
-    
-    @StateObject private var model = GithubFollowersModel(environment: .production)
+    @ObservedObject private var environment = AppEnvironment.production
+    @State private var userStore = UserStore(environment: .production)
     
     var body: some Scene {
         WindowGroup {
-            MainTabView(model: model)
+            MainTabView()
         }
+        .environment(userStore)
+        .environmentObject(environment)
     }
 }

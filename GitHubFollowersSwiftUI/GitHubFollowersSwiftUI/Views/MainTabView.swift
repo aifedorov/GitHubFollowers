@@ -1,18 +1,19 @@
 import SwiftUI
 
 struct MainTabView: View {
+    
     enum Tab {
         case search
         case favorites
     }
 
-    @ObservedObject var model: GithubFollowersModel
+    @Environment(UserStore.self) private var userStore
     @State private var selection: Tab = .search
     
     var body: some View {
         TabView(selection: $selection) {
             NavigationStack {
-                SearchView(model: model)
+                SearchView()
             }
             .tabItem {
                 Label {
@@ -39,5 +40,6 @@ struct MainTabView: View {
 }
 
 #Preview {
-    MainTabView(model: .mock)
+    MainTabView()
+        .environment(UserStore(environment: .mock))
 }

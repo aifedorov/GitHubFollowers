@@ -1,10 +1,10 @@
 import Foundation
 
-public protocol ImageLoaderProtocol {
+public protocol ImageLoaderProtocol: AnyObject {
     func downloadImage(from urlString: String) async throws -> Data
 }
 
-public final class ImageLoader: ImageLoaderProtocol {
+public final actor ImageLoader: ImageLoaderProtocol {
         
     private let session: URLSession
     private let imageDataCache = NSCache<NSString, NSData>()

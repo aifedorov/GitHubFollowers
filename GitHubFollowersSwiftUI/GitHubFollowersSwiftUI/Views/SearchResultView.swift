@@ -1,15 +1,9 @@
 import SwiftUI
 
 struct SearchResultView: View {
-    
-    @ObservedObject var model: GithubFollowersModel
-    @State private var searchText = ""
+    @Environment(UserStore.self) private var userStore
     @State private var selectedFollower: Follower?
-    
-    private var filteredFollowers: [Follower] {
-        model.followers.filter { $0.matches(searchText: searchText) }
-    }
-    
+        
     private var gridItems: [GridItem] {
         [
             GridItem(.fixed(96), spacing: 16),
@@ -19,9 +13,11 @@ struct SearchResultView: View {
     }
     
     var body: some View {
+        @Bindable var userStoreBindable = userStore
+        
         ScrollView {
             LazyVGrid(columns: gridItems, spacing: 16) {
-                ForEach(filteredFollowers) { follower in
+                ForEach(userStore.filteredFollowers) { follower in
                     FollowerGridItemView(follower: follower)
                         .onTapGesture {
                             selectedFollower = follower
@@ -31,16 +27,15 @@ struct SearchResultView: View {
             .padding(.horizontal, 16)
             .padding([.top, .bottom], 16)
         }
-        .searchable(text: $searchText, prompt: "username")
-        .navigationTitle(model.username)
+        .searchable(text: $userStoreBindable.searchText, prompt: "username")
+        .navigationTitle(userStore.username)
         .navigationBarTitleDisplayMode(.inline)
         .task {
-            try? await model.fetchFollowers()
+            try? await userStore.fetchFollowers()
         }
         .sheet(item: $selectedFollower) { follower in
             NavigationStack {
                 ProfileView(
-                    model: model,
                     username: follower.login
                 )
             }
@@ -50,6 +45,7 @@ struct SearchResultView: View {
 
 #Preview {
     NavigationStack {
-        SearchResultView(model: .mock)
+        SearchResultView()
+            .environment(UserStore(environment: .mock))
     }
 }

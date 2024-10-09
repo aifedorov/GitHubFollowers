@@ -2,10 +2,11 @@ import SwiftUI
 import GFCommon
 
 struct SearchView: View {
-    
-    @ObservedObject var model: GithubFollowersModel
+    @Environment(UserStore.self) private var userStore
     
     var body: some View {
+        @Bindable var userStoreBindable = userStore
+        
         NavigationStack {
             VStack {
                 Spacer()
@@ -16,7 +17,7 @@ struct SearchView: View {
                         .aspectRatio(contentMode: .fit)
                         .padding(.horizontal, 85)
 
-                    TextField("Enter username", text: $model.username)
+                    TextField("Enter username", text: $userStoreBindable.username)
                         .multilineTextAlignment(.center)
                         .font(.system(size: 24))
                         .frame(height: 64)
@@ -33,19 +34,20 @@ struct SearchView: View {
                 Spacer()
                                 
                 NavigationLink {
-                    SearchResultView(model: model)
+                    SearchResultView()
                 } label: {
                     Text("Get followers")
                 }
                 .buttonStyle(PrimaryButtonStyle())
                 .padding(.horizontal, 24)
                 .padding(.bottom, 40)
-                .disabled(!model.username.isValidGitHubUsername)
+                .disabled(!userStoreBindable.username.isValidGitHubUsername)
             }
         }
     }
 }
 
 #Preview {
-    SearchView(model: .mock)
+    SearchView()
+        .environment(UserStore(environment: .mock))
 }

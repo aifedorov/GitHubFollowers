@@ -1,6 +1,6 @@
 import Foundation
 
-struct Follower: Decodable, Identifiable {
+struct Follower: Decodable, Identifiable, Equatable {
     let id: Int
     let login: String
     let avatarUrl: String
@@ -16,7 +16,7 @@ struct Follower: Decodable, Identifiable {
 extension Follower {
     static let mock = Follower(
         id: 0,
-        login: "LoremIpsumPrintingandtypesettingindustry",
+        login: "user1",
         avatarUrl: "",
         url: ""
     )
@@ -27,31 +27,31 @@ extension Array where Element == Follower {
     static let mock = [
         Follower(
             id: 0,
-            login: "LoremIpsumPrintingandtypesettingindustry 0",
+            login: "user1",
             avatarUrl: "",
             url: ""
         ),
         Follower(
             id: 1,
-            login: "LoremIpsumPrintingandtypesettingindustry 1",
+            login: "user2",
             avatarUrl: "",
             url: ""
         ),
         Follower(
             id: 3,
-            login: "LoremIpsumPrintingandtypesettingindustry 1",
+            login: "user3",
             avatarUrl: "",
             url: ""
         ),
         Follower(
             id: 4,
-            login: "LoremIpsumPrintingandtypesettingindustry 1",
+            login: "user4",
             avatarUrl: "",
             url: ""
         ),
         Follower(
             id: 5,
-            login: "LoremIpsumPrintingandtypesettingindustry 1",
+            login: "user5",
             avatarUrl: "",
             url: ""
         )

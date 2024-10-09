@@ -1,7 +1,7 @@
 import Foundation
 import GFNetwork
 
-protocol UserNetworkServiceProtocol {
+protocol UserNetworkServiceProtocol: AnyObject {
     func fetchFollowers(for username: String) async throws -> [Follower]
     func fetchAvatarImage(fromURL avatarUrlString: String) async throws -> Data
     func fetchUserInfo(for username: String) async throws -> User

@@ -2,9 +2,9 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @ObservedObject var model: GithubFollowersModel
-    @State private var user: User?
+    @EnvironmentObject private var environment: AppEnvironment
     @Environment(\.dismiss) var dismiss
+    @State private var user: User?
     
     let username: String
     
@@ -46,7 +46,7 @@ struct ProfileView: View {
         }
         .task {
             do {
-                user = try await model.fetchUserInfo(for: username)
+                user = try await environment.userNetworkService.fetchUserInfo(for: username)
             } catch {
                 print(error.localizedDescription)
             }
@@ -56,9 +56,6 @@ struct ProfileView: View {
 
 #Preview {
     NavigationStack {
-        ProfileView(
-            model: .mock,
-            username: "fakeUsername"
-        )
+        ProfileView(username: "testuser")
     }
 }

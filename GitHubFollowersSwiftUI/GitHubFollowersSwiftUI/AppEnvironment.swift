@@ -1,7 +1,8 @@
 import Combine
 import GFNetwork
 
-struct AppEnvironment {
+@MainActor
+final class AppEnvironment: ObservableObject {
     
     let userNetworkService: UserNetworkServiceProtocol
     
