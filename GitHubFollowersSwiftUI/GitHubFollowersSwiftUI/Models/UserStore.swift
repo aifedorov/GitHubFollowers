@@ -1,5 +1,6 @@
 import Foundation
 
+@MainActor
 @Observable
 final class UserStore {
     
@@ -13,7 +14,10 @@ final class UserStore {
     private let environment: AppEnvironment
     private var followers: [Follower] = []
     
-    init(environment: AppEnvironment) {
+    init(
+        username: String = "",
+        environment: AppEnvironment
+    ) {
         self.environment = environment
     }
     
@@ -21,3 +25,12 @@ final class UserStore {
         followers = try await environment.userNetworkService.fetchFollowers(for: username)
     }
 }
+
+#if DEBUG
+extension UserStore {
+    static let mock = UserStore(
+        username: "mockUsername",
+        environment: .mock
+    )
+}
+#endif

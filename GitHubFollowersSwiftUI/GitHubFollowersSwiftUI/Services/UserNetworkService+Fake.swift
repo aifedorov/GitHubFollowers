@@ -2,7 +2,7 @@ import Foundation
 import GFNetwork
 import UIKit
 
-final class FakeUserNetworkService: BaseNetworkService, UserNetworkServiceProtocol {
+final class FakeUserNetworkService: BaseNetworkService, UserNetworkServiceProtocol, @unchecked Sendable {
     
     private let imageLoader: ImageLoaderProtocol
     

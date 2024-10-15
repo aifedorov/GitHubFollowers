@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol ImageLoaderProtocol: AnyObject {
+public protocol ImageLoaderProtocol: AnyObject, Sendable {
     func downloadImage(from urlString: String) async throws -> Data
 }
 

@@ -1,6 +1,6 @@
 import Foundation
 
-open class BaseNetworkService {
+open class BaseNetworkService: @unchecked Sendable {
     private let session: URLSession
     private let decoder: JSONDecoder
     

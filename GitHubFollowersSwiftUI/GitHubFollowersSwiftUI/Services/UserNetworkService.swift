@@ -1,13 +1,14 @@
 import Foundation
 import GFNetwork
 
-protocol UserNetworkServiceProtocol: AnyObject {
+protocol UserNetworkServiceProtocol: AnyObject, Sendable {
     func fetchFollowers(for username: String) async throws -> [Follower]
     func fetchAvatarImage(fromURL avatarUrlString: String) async throws -> Data
     func fetchUserInfo(for username: String) async throws -> User
 }
 
-final class UserNetworkService: BaseNetworkService, UserNetworkServiceProtocol {
+@MainActor
+final class UserNetworkService: BaseNetworkService, UserNetworkServiceProtocol, @unchecked Sendable {
     private let imageLoader: ImageLoaderProtocol
     
     init(_ imageLoader: ImageLoader) {

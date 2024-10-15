@@ -3,6 +3,7 @@ import SwiftUI
 struct SearchResultView: View {
     @Environment(UserStore.self) private var userStore
     @State private var selectedFollower: Follower?
+    @State private var isLoading = false
         
     private var gridItems: [GridItem] {
         [
@@ -15,31 +16,38 @@ struct SearchResultView: View {
     var body: some View {
         @Bindable var userStoreBindable = userStore
         
-        ScrollView {
-            LazyVGrid(columns: gridItems, spacing: 16) {
-                ForEach(userStore.filteredFollowers) { follower in
-                    FollowerGridItemView(follower: follower)
-                        .onTapGesture {
-                            selectedFollower = follower
+        Group {
+            if isLoading {
+                ProgressView()
+                    .progressViewStyle(.circular)
+            } else {
+                ScrollView {
+                    LazyVGrid(columns: gridItems, spacing: 16) {
+                        ForEach(userStore.filteredFollowers) { follower in
+                            FollowerGridItemView(follower: follower)
+                                .onTapGesture {
+                                    selectedFollower = follower
+                                }
                         }
+                    }
+                    .padding(.horizontal, 16)
+                    .padding([.top, .bottom], 16)
+                }
+                .searchable(text: $userStoreBindable.searchText, prompt: "username")
+                .task {
+                    try? await userStore.fetchFollowers()
+                }
+                .sheet(item: $selectedFollower) { follower in
+                    NavigationStack {
+                        ProfileView(
+                            username: follower.login
+                        )
+                    }
                 }
             }
-            .padding(.horizontal, 16)
-            .padding([.top, .bottom], 16)
         }
-        .searchable(text: $userStoreBindable.searchText, prompt: "username")
         .navigationTitle(userStore.username)
         .navigationBarTitleDisplayMode(.inline)
-        .task {
-            try? await userStore.fetchFollowers()
-        }
-        .sheet(item: $selectedFollower) { follower in
-            NavigationStack {
-                ProfileView(
-                    username: follower.login
-                )
-            }
-        }
     }
 }
 
